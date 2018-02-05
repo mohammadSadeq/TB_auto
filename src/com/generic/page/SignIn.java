@@ -123,6 +123,7 @@ public class SignIn extends SelTestCase {
 		subStrArr.add(SignInSelectors.forgotPasswordSubmitBtn);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		Thread.sleep(5000);
 		getCurrentFunctionName(false);
 	}
 	public static String getAlertPositiveForgottenPasswordd() throws Exception {

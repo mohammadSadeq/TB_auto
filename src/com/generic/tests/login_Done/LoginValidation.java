@@ -1,4 +1,4 @@
-package com.generic.tests.login;
+package com.generic.tests.login_Done;
 
 import java.text.MessageFormat;
 import java.util.Arrays;
