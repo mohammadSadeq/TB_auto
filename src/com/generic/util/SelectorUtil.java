@@ -371,7 +371,7 @@ public class SelectorUtil extends SelTestCase {
 						  if (value.contains("getCurrentValue")) {
 							  logs.debug(MessageFormat.format(LoggingMsg.GETTING_SEL,"txt", byAction.toString()));
 							  JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-							   jse.executeScript("arguments[0].scrollIntoView()", field);
+							   jse.executeScript("arguments[0].scrollIntoView(false)", field);
 							  // I used the value attr instead of getText() as the input has the text as a value
 							   textValue.set(field.getAttribute("value"));
 							   logs.debug("the text value is: " + SelectorUtil.textValue.get());
@@ -379,7 +379,7 @@ public class SelectorUtil extends SelTestCase {
 
 							  logs.debug(MessageFormat.format(LoggingMsg.WRITING_TO_SEL, "", value, byAction.toString()));
 							  JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-							   jse.executeScript("arguments[0].scrollIntoView()", field);
+							   jse.executeScript("arguments[0].scrollIntoView(false)", field);
 							   field.clear();
 							  String tempVal = value;
 							  if (value.contains("pressEnter")) {
@@ -405,7 +405,7 @@ public class SelectorUtil extends SelTestCase {
 						   
 						   logs.debug("Visual testing for: " + field.toString());
 						   JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-						   jse.executeScript("arguments[0].scrollIntoView()", field);
+						   jse.executeScript("arguments[0].scrollIntoView(false)", field);
 						   
 						   Thread.sleep(500);
 						   
@@ -426,7 +426,7 @@ public class SelectorUtil extends SelTestCase {
 					   
 						   logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, byAction.toString()));
 						   JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-						   jse.executeScript("arguments[0].scrollIntoView()", field); 
+						   jse.executeScript("arguments[0].scrollIntoView(false)", field); 
 						   Thread.sleep(200);
 						    WebElement field2 = wait.until(new Function<WebDriver, WebElement>() {
 							   public WebElement apply(WebDriver driver) {
@@ -458,7 +458,7 @@ public class SelectorUtil extends SelTestCase {
 								   //TODO: move it to general function
 									   logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, byAction.toString()));
 									   JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-									   jse.executeScript("arguments[0].scrollIntoView()", field); 
+									   jse.executeScript("arguments[0].scrollIntoView(false)", field); 
 									   Thread.sleep(200);
 									    WebElement field2 = wait.until(new Function<WebDriver, WebElement>() {
 										   public WebElement apply(WebDriver driver) {
@@ -491,7 +491,7 @@ public class SelectorUtil extends SelTestCase {
 								 //	TODO: move this to function 
 									   logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, byAction.toString()));
 									   JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-									   jse.executeScript("arguments[0].scrollIntoView()", field); 
+									   jse.executeScript("arguments[0].scrollIntoView(false)", field); 
 									   Thread.sleep(200);
 									    WebElement field2 = wait.until(new Function<WebDriver, WebElement>() {
 										   public WebElement apply(WebDriver driver) {
@@ -522,7 +522,7 @@ public class SelectorUtil extends SelTestCase {
 						   logs.debug(MessageFormat.format(LoggingMsg.GETTING_SEL, "txt, click", byAction.toString()));
 						   
 						   JavascriptExecutor jse = (JavascriptExecutor)getDriver();
-						   jse.executeScript("arguments[0].scrollIntoView()", field); 
+						   jse.executeScript("arguments[0].scrollIntoView(false)", field); 
 						   
 						   String textVal= "";
 						   try 
@@ -546,7 +546,7 @@ public class SelectorUtil extends SelTestCase {
 								   
 									   logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, byAction.toString()));
 									   JavascriptExecutor jse1 = (JavascriptExecutor)getDriver();
-									   jse1.executeScript("arguments[0].scrollIntoView()", field); 
+									   jse1.executeScript("arguments[0].scrollIntoView(false)", field); 
 									   Thread.sleep(200);
 									   WebElement field2 = wait.until(new Function<WebDriver, WebElement>() {
 										   public WebElement apply(WebDriver driver) {
