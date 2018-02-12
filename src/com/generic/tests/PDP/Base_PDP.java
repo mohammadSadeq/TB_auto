@@ -83,10 +83,18 @@ public class Base_PDP extends SelTestCase {
 			Testlogs.get().debug("url key value " + (String) productDetails.get(PDP.keys.url));
 			getDriver().get((String) productDetails.get(PDP.keys.url));
 
+			String Pdesc = PDP.getDesc();
+			
+			if (proprties.contains("desc") ){
+				logs.debug("checking PDP desc");
+				sassert().assertTrue(Pdesc.contains((String) productDetails.get(PDP.keys.desc)), "<font color=#f442cb>product desc is not expected ("+Pdesc +"\n"+(String) productDetails.get(PDP.keys.desc)+")</font>");
+				ReportUtil.takeScreenShot(getDriver());
+			}//desc check
+
 			if (proprties.contains("id") ){
 				logs.debug("checking PDP ID");
-				String Id = PDP.getId();
-				sassert().assertTrue(Id.contains((String) productDetails.get(PDP.keys.id)), "<font color=#f442cb>product id is not expected</font>");
+				String Id = Pdesc.split("\n")[7];
+				sassert().assertTrue(Id.contains((String) productDetails.get(PDP.keys.id)), "<font color=#f442cb>product id is not expected ("+Id+"\n"+(String) productDetails.get(PDP.keys.id)+")</font>");
 				ReportUtil.takeScreenShot(getDriver());
 			}//id check
 			
@@ -94,7 +102,7 @@ public class Base_PDP extends SelTestCase {
 			if (proprties.contains("name") ){
 				logs.debug("checking PDP title");
 				String title = PDP.getTitle();
-				sassert().assertTrue(title.contains((String) productDetails.get(PDP.keys.title)), "<font color=#f442cb>product title is not expected</font>");
+				sassert().assertTrue(title.contains((String) productDetails.get(PDP.keys.title)), "<font color=#f442cb>product title is not expected("+title+"\n"+(String) productDetails.get(PDP.keys.title)+")</font>");
 				ReportUtil.takeScreenShot(getDriver());
 			}//title check
 			
@@ -112,12 +120,6 @@ public class Base_PDP extends SelTestCase {
 				ReportUtil.takeScreenShot(getDriver());
 			}//summary check
 			
-			if (proprties.contains("desc") ){
-				logs.debug("checking PDP desc");
-				String Pdesc = PDP.getDesc();
-				sassert().assertTrue(Pdesc.contains((String) productDetails.get(PDP.keys.desc)), "<font color=#f442cb>product desc is not expected</font>");
-				ReportUtil.takeScreenShot(getDriver());
-			}//desc check
 			
 			if (proprties.contains("add to cart button") ){
 				logs.debug("checking PDP add to cart button");
@@ -125,31 +127,12 @@ public class Base_PDP extends SelTestCase {
 				ReportUtil.takeScreenShot(getDriver());
 			}//add to cart button check
 			
-			if (proprties.contains("stock level indicator") ){
-				logs.debug("checking PDP stock level indicator");
-				String SL = PDP.getStockLevel();
-				Testlogs.get().debug(SL);
-				ReportUtil.takeScreenShot(getDriver());
-			}//stock level indicator check
-			
 			if (proprties.contains("reviews") ){
 				logs.debug("checking PDP reviews");
-				char  PReviewsNumber = PDP.getRating().charAt(1);
+				String  PReviewsNumber = PDP.getRating();
 				String expectedNumberOfReviews = (String) productDetails.get(PDP.keys.reviews);
-				String expectedRatingValue = (String) productDetails.get(PDP.keys.rating);
-				String PratingCalc = PDP.getRatingCalc();
-				String PRatingStars = PDP.getActiveStars();
-				PDP.clickShowReviewsBtn();
-				Thread.sleep(1500);
-				String Previews = PDP.getReviewEntry();
-				Testlogs.get().debug("PratingCalc: " + PratingCalc);
-				Testlogs.get().debug("PactiveStars: " + PRatingStars);
 				Testlogs.get().debug("Number of reviews: "+PReviewsNumber);
-				Testlogs.get().debug("Previews: "+Previews);
-				sassert().assertTrue(expectedNumberOfReviews.charAt(0)==(PReviewsNumber), "<font color=#f442cb>product reviews is not ok</font>");
-				sassert().assertTrue((PratingCalc.contains(expectedRatingValue)), "<font color=#f442cb>product rating is not ok</font>");
-				sassert().assertTrue(Double.parseDouble(PRatingStars) >= (Double.parseDouble(expectedRatingValue)), "<font color=#f442cb>product rating stars is displayed as expeected</font>");
-				sassert().assertTrue((Previews.contains("accept")), "<font color=#f442cb>product reviews is displayed as expeected</font>");
+				sassert().assertTrue(expectedNumberOfReviews.equals(PReviewsNumber), "<font color=#f442cb>product reviews expected/get</font>");
 				ReportUtil.takeScreenShot(getDriver());
 			}//reviews check
 			
@@ -175,34 +158,17 @@ public class Base_PDP extends SelTestCase {
 			if (proprties.contains("product color") ){
 				logs.debug("checking product color");
 				
-				String displayedColorName = PDP.getVariantSelectedStyleName().split(":")[1];	
-				String selectedColorName = PDP.getcurrentStyleValue();
-				String displayedSizeName = PDP.getDisplayedSizeName().split(":")[1];
-				String selectedSizeNamefromSizeMenue = PDP.getSelectedSizeName();
-				PDP.getVariantListCount();
-				PDP.getSizeOptionsCount();
-				String variantList = PDP.getVariantList(0);
-				Testlogs.get().debug("Variant List: " + variantList);
-				Testlogs.get().debug("Displayed Color Name: " + displayedColorName);
-				Testlogs.get().debug("Selected Color Name: " + selectedColorName);
-				Testlogs.get().debug("Displayed Size Name: " + displayedSizeName);
-				Testlogs.get().debug("selected Size Name In Size Menu: " + selectedSizeNamefromSizeMenue);
-
-				sassert().assertTrue(displayedColorName.contains(selectedColorName), "<font color=#f442cb>product color is not as expeected</font>");
-				sassert().assertTrue(displayedColorName.contains(selectedColorName), "<font color=#f442cb>product color is not as expeected</font>");
-				sassert().assertTrue(selectedSizeNamefromSizeMenue.contains(displayedSizeName), "<font color=#f442cb>product size is not as expeected</font>");
+				PDP.selectcolor((String) productDetails.get(PDP.keys.color));
+				PDP.selectsize((String) productDetails.get(PDP.keys.size));
 				
-				PDP.selectcolor(variantList);
-				displayedColorName = PDP.getVariantSelectedStyleName().split(":")[1];
-				sassert().assertTrue(displayedColorName.contains(variantList), "<font color=#f442cb>product color is not as expeected</font>");
-				displayedSizeName = PDP.getDisplayedSizeName();
-				sassert().assertTrue(!displayedSizeName.equals(""), "<font color=#f442cb>product size is not updated as expeected</font>");
-				String size ="Size XL, £26.68  99";
-				PDP.selectsize(size);
-				displayedSizeName = PDP.getDisplayedSizeName().split(":")[1];
-				sassert().assertTrue(size.contains(displayedSizeName), "<font color=#f442cb>product color is not as expeected</font>");
-				ReportUtil.takeScreenShot(getDriver());
-				PDP.getSizeOptionsCount();
+				String displayedColorName = PDP.getVariantSelectedStyleName();	
+				String displayedSizeName = PDP.getDisplayedSizeName();
+				
+				Testlogs.get().debug("Displayed Color Name: " + displayedColorName);
+				Testlogs.get().debug("Displayed Size Name: " + displayedSizeName);
+
+				sassert().assertTrue(!displayedSizeName.contains((String) productDetails.get(PDP.keys.size)), "<font color=#f442cb>product size is not updated as expeected</font>");
+				sassert().assertTrue(!displayedColorName.contains((String) productDetails.get(PDP.keys.color)), "<font color=#f442cb>product color is not as expeected</font>");
 				ReportUtil.takeScreenShot(getDriver());
 			}//product size check
 			
