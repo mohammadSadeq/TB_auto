@@ -6,7 +6,7 @@
 	<test name="PLP validation chrome">
 		<parameter name="browserName" value="chrome"></parameter>
 		<classes>
-              <class name="com.generic.tests.PLP.PLPValidation" />
+              <class name="com.generic.tests.PLP.PLPValidation " />
 		</classes>
 	</test><!-- Test -->
 </suite> <!-- Suite -->
