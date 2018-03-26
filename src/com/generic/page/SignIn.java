@@ -88,7 +88,7 @@ public class SignIn extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			subStrArr.add(SignInSelectors.WelcomeMsg);
-			valuesArr.add("");
+			valuesArr.add("getCurrentValue");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		} catch (Exception e) {
 			LoggedUser = false;
@@ -123,6 +123,7 @@ public class SignIn extends SelTestCase {
 		subStrArr.add(SignInSelectors.forgotPasswordSubmitBtn);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		Thread.sleep(5000);
 		getCurrentFunctionName(false);
 	}
 	public static String getAlertPositiveForgottenPasswordd() throws Exception {

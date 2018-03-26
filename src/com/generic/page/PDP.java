@@ -40,8 +40,6 @@ public class PDP extends SelTestCase {
 
 		defineQty(qty);
 		clickAddToCartBtn();
-		Thread.sleep(2000);
-		clickcheckoutBtnCartPopup();
 		getCurrentFunctionName(false);
 	}
 	
@@ -71,16 +69,6 @@ public class PDP extends SelTestCase {
 		return SelectorUtil.textValue.get();
 	}
 
-	private static void clickcheckoutBtnCartPopup() throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		subStrArr.add(PDPSelectors.cart_popup);
-		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-
 	private static void clickAddToCartBtn() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
@@ -105,8 +93,8 @@ public class PDP extends SelTestCase {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		subStrArr.add(PDPSelectors.size);
-		valuesArr.add(size);
+		subStrArr.add(size);
+		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
 	}
@@ -119,17 +107,6 @@ public class PDP extends SelTestCase {
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
-	}
-
-	public static String getId() throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		subStrArr.add(PDPSelectors.id);
-		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-		return SelectorUtil.textValue.get();
 	}
 
 	public static String getTitle() throws Exception {
@@ -165,17 +142,6 @@ public class PDP extends SelTestCase {
 		return SelectorUtil.textValue.get();
 	}
 
-	public static String getStockLevel() throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		subStrArr.add(PDPSelectors.SL);
-		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-		return SelectorUtil.textValue.get();
-	}
-
 	public static boolean checkAddToCartButton() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
@@ -193,8 +159,9 @@ public class PDP extends SelTestCase {
 		subStrArr.add(PDPSelectors.rating);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		String numberOfFoundElements = SelectorUtil.textValue.get().replace("Reviews", "").trim();
 		getCurrentFunctionName(false);
-		return SelectorUtil.textValue.get();
+		return numberOfFoundElements;
 	}
 	
 
@@ -259,7 +226,7 @@ public class PDP extends SelTestCase {
 		subStrArr.add(PDPSelectors.activeStars);
 		valuesArr.add("noClick");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		String numberOfFoundElements = SelectorUtil.numberOfFoundElements.get();
+		String numberOfFoundElements = SelectorUtil.textValue.get().replace("Reviews", "").trim();
 		logs.debug(MessageFormat.format(LoggingMsg.NUMBER_OF_ACTIVE_STARS, numberOfFoundElements));
 		getCurrentFunctionName(false);
 		return numberOfFoundElements;
