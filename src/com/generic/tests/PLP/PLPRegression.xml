@@ -3,7 +3,7 @@
 <suite name="Suite" parallel="tests" thread-count="10" data-provider-thread-count="2">
 
 	
-	<test name="PLP validation chrome merge">
+	<test name="PLP validation chrome">
 		<parameter name="browserName" value="chrome"></parameter>
 		<classes>
               <class name="com.generic.tests.PLP.PLPValidation" />
