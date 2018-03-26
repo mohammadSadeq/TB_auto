@@ -5,6 +5,9 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import com.generic.selector.PLPSelectors;
 import com.generic.setup.LoggingMsg;
 import com.generic.setup.SelTestCase;
@@ -85,6 +88,18 @@ public class PLP extends SelTestCase {
 		numberOfProductsShownInHeader = Integer.parseInt(productsNum);
 		return productsNum;
 	}
+    
+    public static String getProductInformation(int index) throws Exception
+    {
+    	getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		List<String> valuesArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.product);
+		valuesArr.add("");
+		WebElement product  = SelectorUtil.getNthElement(subStrArr, index);
+		getCurrentFunctionName(false);
+		return product.findElement(By.className("description-price")).getText();
+    }
     
     public static boolean doesDisplayedProductsNumTextMatchesProductsDisplayed () throws Exception {
     	getCurrentFunctionName(true);

@@ -37,4 +37,5 @@ public class PLPSelectors {
 	public static final String pickupIncreaseQtyBtn = "js-qty-selector-plus";
 	public static final String pickupQtyInput = "js-qty-selector-input";
 	public static final String facetNavFirstPrice = "css,#test_facetNav_title_Price_$>div>div>ul>li>div>form>label>.facet__list__checkbox.js-facet-checkbox.sr-only";
+	public static final String product = "grid-item-container";
 }

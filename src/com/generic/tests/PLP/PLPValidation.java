@@ -64,79 +64,84 @@ public class PLPValidation extends SelTestCase {
 		try {
 			String url = PagesURLs.getPLP();
 			getDriver().get(url);
-			Thread.sleep(5000);
 			
-			PLP.selectSortOptions1ByValue(sortOptions1);
-			Thread.sleep(3000);
 			
-			PLP.selectSortOptions2ByValue(sortOptions2);
-			Thread.sleep(3000);
-			
-//			String productsNum = PLP.getNumberOfproducts();
-//			logs.debug(MessageFormat.format(LoggingMsg.NUMBER_OF_PRODUCTS, productsNum));
-			
-			sassert().assertTrue(PLP.doesDisplayedProductsNumTextMatchesProductsDisplayed());
-		
-			PLP.typeUserLocationStore(userLocationStore);
-			Thread.sleep(4000);
-			
-//			PLP.clickFindStores();
+			String X = PLP.getProductInformation(0);
+			logs.debug(X);
+//			
+//			Thread.sleep(5000);
+//			
+//			PLP.selectSortOptions1ByValue(sortOptions1);
 //			Thread.sleep(3000);
-			
-			PLP.clickMoreStores();
-			Thread.sleep(3000);
-			
-		
-			
-		     // PLP.clickleftNavCheckBoxCheckBox("London Hospital");
-			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "Store", PLP.getFacetNavTitleStoresCount()));
-			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "price", PLP.getFacetNavTitlePriceCount()));
-			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "colour", PLP.getFacetNavTitleColourCount()));
-			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "Size", PLP.getFacetNavTitleSizeCount()));
-			sassert().assertTrue(PLP.compareAppliedFilterWithDisplayedProductNumber(plpFilter));
-			
-			PLP.removeNthAppliedFacet(nthAppliedFacet);
-			
-			PLP.clickChangeLocationLink();
-			Thread.sleep(3000);
-			
-		    PLP.verifyChangeLocationLink();
-		    
-		    if (doClickAddToCart) {
-		    	PLP.clickAddToCart(addToCartProduct);
-				Thread.sleep(3000);
-				String productPriceAddedToCart = PLP.getPLPProductPriceFromCartBag();
-				logs.debug(MessageFormat.format(LoggingMsg.PLP_PRODUCT_PRICE, productPriceAddedToCart));
-				String productPrice = PLP.getPLPProductPrice(addToCartProduct);
-				logs.debug(MessageFormat.format(LoggingMsg.PLP_PRODUCT_PRICE, productPrice));
-				Thread.sleep(2000);
-				if (doClickCloseBtn) {
-					PLP.clickCboxCloseBtn();
-				} else if (doClickCheckoutBtn) {
-					PLP.clickCheckoutBtn();
-				} else {
-					PLP.clickContinueShoppingBtn();
-				}
-			}
-		    
-		    if (doClickPickupInStore) {
-		    	PLP.clickProductPickupInStoreButton(pickUpInStoreProduct);
-		    	PLP.typePickUpInStoreLocationForSearch(userLocationStore);
-		    	PLP.clickPickupNthAccessibleTabIcon(pickupNthIconIndex);
-		    	PLP.clickPickUpInStoreDecreaseQtyBtn(pickUpInStoreProduct);
-		    	PLP.clickPickUpInStoreIncreaseQtyBtn(pickUpInStoreProduct);
-		    	PLP.typePickUpInStoreQty(pickUpInStoreProduct, pickupInStoreQty);
-		    	PLP.clickPickUpInStoreAddToBagBtn(pickUpInStoreProduct);
-		    	PLP.clickCboxCloseBtn();
-		    	Thread.sleep(2000);
-		    }
-		    
-		    if (doClickNthProductItem) {
-		    	PLP.clickNthProductItem(nthProductItem);
-		    }
-		    
-			Thread.sleep(4000);
-			sassert().assertAll();
+//			
+//			PLP.selectSortOptions2ByValue(sortOptions2);
+//			Thread.sleep(3000);
+//			
+////			String productsNum = PLP.getNumberOfproducts();
+////			logs.debug(MessageFormat.format(LoggingMsg.NUMBER_OF_PRODUCTS, productsNum));
+//			
+//			sassert().assertTrue(PLP.doesDisplayedProductsNumTextMatchesProductsDisplayed());
+//		
+//			PLP.typeUserLocationStore(userLocationStore);
+//			Thread.sleep(4000);
+//			
+////			PLP.clickFindStores();
+////			Thread.sleep(3000);
+//			
+//			PLP.clickMoreStores();
+//			Thread.sleep(3000);
+//			
+//		
+//			
+//		     // PLP.clickleftNavCheckBoxCheckBox("London Hospital");
+//			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "Store", PLP.getFacetNavTitleStoresCount()));
+//			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "price", PLP.getFacetNavTitlePriceCount()));
+//			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "colour", PLP.getFacetNavTitleColourCount()));
+//			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "Size", PLP.getFacetNavTitleSizeCount()));
+//			sassert().assertTrue(PLP.compareAppliedFilterWithDisplayedProductNumber(plpFilter));
+//			
+//			PLP.removeNthAppliedFacet(nthAppliedFacet);
+//			
+//			PLP.clickChangeLocationLink();
+//			Thread.sleep(3000);
+//			
+//		    PLP.verifyChangeLocationLink();
+//		    
+//		    if (doClickAddToCart) {
+//		    	PLP.clickAddToCart(addToCartProduct);
+//				Thread.sleep(3000);
+//				String productPriceAddedToCart = PLP.getPLPProductPriceFromCartBag();
+//				logs.debug(MessageFormat.format(LoggingMsg.PLP_PRODUCT_PRICE, productPriceAddedToCart));
+//				String productPrice = PLP.getPLPProductPrice(addToCartProduct);
+//				logs.debug(MessageFormat.format(LoggingMsg.PLP_PRODUCT_PRICE, productPrice));
+//				Thread.sleep(2000);
+//				if (doClickCloseBtn) {
+//					PLP.clickCboxCloseBtn();
+//				} else if (doClickCheckoutBtn) {
+//					PLP.clickCheckoutBtn();
+//				} else {
+//					PLP.clickContinueShoppingBtn();
+//				}
+//			}
+//		    
+//		    if (doClickPickupInStore) {
+//		    	PLP.clickProductPickupInStoreButton(pickUpInStoreProduct);
+//		    	PLP.typePickUpInStoreLocationForSearch(userLocationStore);
+//		    	PLP.clickPickupNthAccessibleTabIcon(pickupNthIconIndex);
+//		    	PLP.clickPickUpInStoreDecreaseQtyBtn(pickUpInStoreProduct);
+//		    	PLP.clickPickUpInStoreIncreaseQtyBtn(pickUpInStoreProduct);
+//		    	PLP.typePickUpInStoreQty(pickUpInStoreProduct, pickupInStoreQty);
+//		    	PLP.clickPickUpInStoreAddToBagBtn(pickUpInStoreProduct);
+//		    	PLP.clickCboxCloseBtn();
+//		    	Thread.sleep(2000);
+//		    }
+//		    
+//		    if (doClickNthProductItem) {
+//		    	PLP.clickNthProductItem(nthProductItem);
+//		    }
+//		    
+//			Thread.sleep(4000);
+//			sassert().assertAll();
 			Common.testPass();
 		} catch (Throwable t) {
 			setTestCaseDescription(getTestCaseDescription());

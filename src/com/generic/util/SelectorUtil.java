@@ -665,6 +665,19 @@ public class SelectorUtil extends SelTestCase {
 	    	return isDisplayed;
 	    }
 	    
+	    @SuppressWarnings("rawtypes")
+		public static WebElement getNthElement(List<String> subStrArr, int index) throws Exception
+	    {
+	      	getCurrentFunctionName(true);
+	    	List<String> valuesArr = new ArrayList<String>();
+	    	valuesArr.add("");
+	    	LinkedHashMap<String, LinkedHashMap> webelementsInfo = initializeSelectorsAndDoActions(new ArrayList<String>(subStrArr), valuesArr, false);
+	    	List <WebElement> items = getDriver().findElements((By) webelementsInfo.get(subStrArr.get(0)).get("by"));
+	    	
+	    	getCurrentFunctionName(false);
+	    	return items.get(index);
+	    }
+	    
 	    @SuppressWarnings({ "rawtypes", "unused" })
 		public static boolean isNotDisplayed(List<String> subStrArr) throws Exception
 	    {
