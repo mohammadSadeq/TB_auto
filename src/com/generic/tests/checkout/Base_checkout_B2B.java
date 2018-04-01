@@ -14,6 +14,7 @@ import com.generic.page.PDP;
 import com.generic.page.Registration;
 import com.generic.page.Cart;
 import com.generic.page.CheckOut;
+import com.generic.page.HomePage;
 import com.generic.page.SignIn;
 import com.generic.setup.Common;
 import com.generic.setup.LoggingMsg;
@@ -54,7 +55,7 @@ public class Base_checkout_B2B extends SelTestCase {
 	
 	@BeforeTest
 	public static void initialSetUp(XmlTest test) throws Exception {
-		Testlogs.set(new SASLogger("checkout_setup"));
+		Testlogs.set(new SASLogger("checkout"));
 		testObject = test;
 		addresses = Common.readAddresses();
 		invintory = Common.readLocalInventory();
@@ -64,7 +65,7 @@ public class Base_checkout_B2B extends SelTestCase {
 
 	@DataProvider(name = "Orders", parallel = true)
 	public static Object[][] loadTestData() throws Exception {
-		//concurrency mentainance on sheet reading 
+		// concurrency mentainance on sheet reading
 		getBrowserWait(testObject.getParameter("browserName"));
 
 		dataProviderUtils TDP = dataProviderUtils.getInstance();
@@ -77,9 +78,9 @@ public class Base_checkout_B2B extends SelTestCase {
 	@Test(dataProvider = "Orders")
 	public void checkOutB2BBaseTest(String caseId, String runTest, String desc, String proprties, String products,
 			String shippingMethod, String payment, String shippingAddress, String billingAddress, String coupon,
-			String email, String orderId, String orderTotal, String orderSubtotal, String orderTax,
-			String orderShipping) throws Exception {
+			String email) throws Exception {
 		//Important to add this for logging/reporting 
+		Testlogs.get().debug("test");
 		Testlogs.set(new SASLogger("checkout_"+getBrowserName()));
 		setTestCaseReportName("Checkout Case");
 		logCaseDetailds(MessageFormat.format(LoggingMsg.CHECKOUTDESC, testDataSheet + "." + caseId,
@@ -89,12 +90,16 @@ public class Base_checkout_B2B extends SelTestCase {
 		caseIndexInDatasheet = getDatatable().getCellRowNum(testDataSheet, CheckOut.keys.caseId, caseId);
 		
 		try {
-			getDriver().get("https://hybrisdemo.conexus.co.uk:9002/yb2bacceleratorstorefront/powertools/en/USD/login?site=powertools");
+		//	getDriver().get("https://www.tommybahama.com/en/login");
 			if (proprties.contains(loggedInUser)) {
 				//you need to maintain the concurrency and get the main account information and log in in browser account 
 				LinkedHashMap<String, Object> userdetails = (LinkedHashMap<String, Object>) users.get(email);
 				Testlogs.get().debug(this.email);
 				Testlogs.get().debug((String) userdetails.get(Registration.keys.password) );
+				
+				Thread.sleep(3000);
+				HomePage.closeSubcriptionPopup();
+				
 				SignIn.logIn(this.email, (String) userdetails.get(Registration.keys.password));
 			}
 			if (proprties.contains(freshUser)) {
@@ -104,13 +109,10 @@ public class Base_checkout_B2B extends SelTestCase {
 				LinkedHashMap<String, Object> userdetails = (LinkedHashMap<String, Object>) users.entrySet().iterator()
 						.next().getValue();
 
-				boolean acceptRegTerm = true;
-
-				Registration.fillAndClickRegister((String) userdetails.get(Registration.keys.title),
-						(String) userdetails.get(Registration.keys.firstName),
-						(String) userdetails.get(Registration.keys.lastName), this.email,
-						(String) userdetails.get(Registration.keys.password),
-						(String) userdetails.get(Registration.keys.password), acceptRegTerm);
+				
+				Registration.fillAndClickRegister(this.email, this.email, (String) userdetails.get(Registration.keys.firstName), (String) userdetails.get(Registration.keys.lastName),
+						(String) userdetails.get(Registration.keys.country), (String) userdetails.get(Registration.keys.postalCode), (String) userdetails.get(Registration.keys.password),
+						(String) userdetails.get(Registration.keys.password), true);
 			}
 
 			for (String product : products.split("\n")) {
@@ -171,22 +173,20 @@ public class Base_checkout_B2B extends SelTestCase {
 				// in case guest the save shipping checkbox is not exist
 				if (saveShipping) {
 					CheckOut.shippingAddress.fillAndClickNext(
-							(String) addressDetails.get(CheckOut.shippingAddress.keys.countery),
-							(String) addressDetails.get(CheckOut.shippingAddress.keys.title),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.lastName),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.adddressLine),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.city),
+							(String) addressDetails.get(CheckOut.shippingAddress.keys.state),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.postal),
-							(String) addressDetails.get(CheckOut.shippingAddress.keys.phone), saveShipping);
+							(String) addressDetails.get(CheckOut.shippingAddress.keys.phone), true);
 				} else {
 					CheckOut.shippingAddress.fillAndClickNext(
-							(String) addressDetails.get(CheckOut.shippingAddress.keys.countery),
-							(String) addressDetails.get(CheckOut.shippingAddress.keys.title),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.lastName),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.adddressLine),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.city),
+							(String) addressDetails.get(CheckOut.shippingAddress.keys.state),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.postal),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.phone));
 				}
@@ -217,37 +217,35 @@ public class Base_checkout_B2B extends SelTestCase {
 						.get(billingAddress);
 
 				if (saveBilling) {
-					CheckOut.paymentInnformation.fillAndclickNext(payment,
+					CheckOut.paymentInnformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC), saveBilling,
 							billingAddress.equalsIgnoreCase(shippingAddress),
-							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.countery),
-							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.title),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.adddressLine),
+							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.countery),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.city),
-							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.postal),
-							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.phone));
+							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.state),
+							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.postal));
 				} else {
-					CheckOut.paymentInnformation.fillAndclickNext(payment,
+					CheckOut.paymentInnformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
 							billingAddress.equalsIgnoreCase(shippingAddress),
-							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.countery),
-							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.title),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.adddressLine),
+							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.countery),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.city),
-							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.postal),
-							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.phone));
+							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.state),
+							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.postal));
 				}
 			}
 			}
@@ -269,7 +267,7 @@ public class Base_checkout_B2B extends SelTestCase {
 			CheckOut.B2BOrderConfirmation.getShippingAddrerss();
 
 			if (proprties.contains(guestUser) && proprties.contains("register-guest")) {
-				CheckOut.guestCheckout.fillPreRegFormAndClickRegBtn("1234567", false);
+	//			CheckOut.guestCheckout.fillPreRegFormAndClickRegBtn("1234567", false);
 			}
 
 			Common.testPass();

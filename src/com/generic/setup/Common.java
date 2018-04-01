@@ -348,22 +348,22 @@ public class Common extends SelTestCase {
 		int addresscode = 0;
 		int firstName = 1;
 		int lastName = 2;
-		int title = 3;
-		int addressLine = 4;
-		int city = 5;
-		int postal = 6;
-		int countery = 7;
+		int addressLine = 3;
+		int city = 4;
+		int countery = 5;
+		int state = 6;
+		int postal = 7;
 		int phone = 8;
 
 		for (int row = 1; row < data.length; row++) {
 			LinkedHashMap<String, Object> address = new LinkedHashMap<>();
 			address.put((String) data[header][firstName], data[row][firstName]);
 			address.put((String) data[header][lastName], data[row][lastName]);
-			address.put((String) data[header][title], data[row][title]);
 			address.put((String) data[header][addressLine], data[row][addressLine]);
 			address.put((String) data[header][city], data[row][city]);
-			address.put((String) data[header][postal], data[row][postal]);
 			address.put((String) data[header][countery], data[row][countery]);
+			address.put((String) data[header][state], data[row][state]);
+			address.put((String) data[header][postal], data[row][postal]);
 			address.put((String) data[header][phone], data[row][phone]);
 
 			addresses.put((String) data[row][addresscode], address);
@@ -531,20 +531,22 @@ public class Common extends SelTestCase {
 		// data map
 		int header = 0;
 		int name = 0;
-		int title = 1;
-		int userName = 2;
-		int firstName = 3;
-		int lastName = 4;
-		int password = 5;
-		int mail = 6;
+		int userName = 1;
+		int firstName = 2;
+		int lastName = 3;
+		int country = 4;
+		int postalCode = 5;
+		int password = 6;
+		int mail = 7;
 
 		for (int row = 1; row < data.length; row++) {
 			LinkedHashMap<String, Object> user = new LinkedHashMap<>();
 			user.put((String) data[header][name], data[row][name]);
-			user.put((String) data[header][title], data[row][title]);
 			user.put((String) data[header][userName], data[row][userName]);
 			user.put((String) data[header][firstName], data[row][firstName]);
 			user.put((String) data[header][lastName], data[row][lastName]);
+			user.put((String) data[header][country], data[row][country]);
+			user.put((String) data[header][postalCode], data[row][postalCode]);
 			user.put((String) data[header][password], data[row][password]);
 			user.put((String) data[header][mail], data[row][mail]);
 

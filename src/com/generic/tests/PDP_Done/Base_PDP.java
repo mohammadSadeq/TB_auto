@@ -130,8 +130,9 @@ public class Base_PDP extends SelTestCase {
 			if (proprties.contains("reviews") ){
 				logs.debug("checking PDP reviews");
 				String  PReviewsNumber = PDP.getRating();
+				Testlogs.get().debug("Actual Number of reviews: "+PReviewsNumber);
 				String expectedNumberOfReviews = (String) productDetails.get(PDP.keys.reviews);
-				Testlogs.get().debug("Number of reviews: "+PReviewsNumber);
+				Testlogs.get().debug("Expected Number of reviews: "+expectedNumberOfReviews);
 				sassert().assertTrue(expectedNumberOfReviews.equals(PReviewsNumber), "<font color=#f442cb>product reviews expected/get</font>");
 				ReportUtil.takeScreenShot(getDriver());
 			}//reviews check

@@ -21,7 +21,7 @@ public class Cart extends SelTestCase {
 		public static final String invalidCoupon = "invalid";
 
 	}
-
+	
 	public static void clickCheckout() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();

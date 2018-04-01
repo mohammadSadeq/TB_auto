@@ -3,10 +3,13 @@ package com.generic.selector;
 
 public class CartSelectors
 {
-	public static final String checkoutBtn = "Check Out";
+	public static final String proceedToCheckout = "btn btn-secondary-blue narrow mini-cart-checkout";
+	public static final String checkoutBtn = "css,#cart-checkout-button>form>input";
 	public static final String continueShopping = "btn--continue-shopping";
+	public static final String OrderSubTotal = "css,.subtotals>.value";
+	public static final String cartOrderTotal = "estimatedTotalPrice";
+	
 	public static final String numberOfProducts = "cart__top--totals";
-	public static final String OrderSubTotal = "test_Order_Totals_Subtotal_$1";
 	public static final String couponField = "voucherCode";
 	public static final String couponErrorMessage = "js-voucher-validation-container help-block cart-voucher__help-block";
 	public static final String applyCouponButton = "Apply";
@@ -20,7 +23,6 @@ public class CartSelectors
 	public static final String actionMenue = "editEntry_";
 	public static final String removeItem = "actionEntry_";
 	public static final String cartContent = "yCmsComponent yComponentWrapper content__empty";
-	public static final String cartOrderTotal = "test_cart_totalPrice_label_$";
 	public static final String cartOrderShipping = "cart-totals";
 	public static final String cartOrderTax = "cart-totals-taxes text-right";
 	public static final String itemImages = "css,li>div>a>img";

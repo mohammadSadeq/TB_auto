@@ -721,7 +721,34 @@ public class SelectorUtil extends SelTestCase {
 		getCurrentFunctionName(false);
 		return attrValue;
 	}
+	
+    @SuppressWarnings("rawtypes")
+	public static void typeText(List<String> subStrArr, String value) throws Exception
+    {
+    	getCurrentFunctionName(true);
+    	List<String> valuesArr = new ArrayList<String>();
+    	valuesArr.add("");
+    	LinkedHashMap<String, LinkedHashMap> webelementsInfo = initializeSelectorsAndDoActions(new ArrayList<String>(subStrArr), valuesArr, false);
+    	
+    	List <WebElement> items = getDriver().findElements((By) webelementsInfo.get(subStrArr.get(0)).get("by"));
+    items.get(0).sendKeys(value);
+    	getCurrentFunctionName(false);
 
+    }
+    
+    @SuppressWarnings("rawtypes")
+	public static void clickButton(List<String> subStrArr) throws Exception
+    {
+    	getCurrentFunctionName(true);
+    	List<String> valuesArr = new ArrayList<String>();
+    	valuesArr.add("");
+    	LinkedHashMap<String, LinkedHashMap> webelementsInfo = initializeSelectorsAndDoActions(new ArrayList<String>(subStrArr), valuesArr, false);
+    	
+    	List <WebElement> items = getDriver().findElements((By) webelementsInfo.get(subStrArr.get(0)).get("by"));
+    items.get(0).click();
+    	getCurrentFunctionName(false);
+
+    }
 	    @SuppressWarnings("rawtypes")
 		public static LinkedHashMap<String, LinkedHashMap> initializeSelectorsAndDoActions(List<String> subStrArr, List<String> valuesArr ) throws Exception {
 	    	return initializeSelectorsAndDoActions(subStrArr,valuesArr , true);

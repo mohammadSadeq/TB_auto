@@ -17,7 +17,13 @@ public class SheetVariables {
 	
 	//SheetNames
     public static final String loginSheet = "LoginRegression";
-    public static final String checkoutSheet = "CheckOutRegression";
+    public static final String USAccountSetupsheet = "USAccountSetupRegression";
+    public static final String CanadaAccountSetupsheet = "CanadaAccountSetupRegression";
+    public static final String KioskAccountSetupsheet = "USCheckOutRegression";
+    public static final String checkoutSheet = "USCheckOutRegression";
+    public static final String CanadacheckoutSheet = "CanadaCheckOutRegression";
+    public static final String KioskcheckoutSheet = "KioskCheckOutRegression";
+    public static final String CSCcheckoutSheet = "CSCCheckOutRegression";
     public static final String plpSheet = "PLPRegression";
     public static final String personalDetailsSheet = "PersonalDetailsRegression";
     public static final String orderHistorySheet = "OrderHistoryRegression";
