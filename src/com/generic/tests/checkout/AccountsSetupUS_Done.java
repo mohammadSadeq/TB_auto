@@ -70,7 +70,7 @@ public class AccountsSetupUS_Done extends SelTestCase {
 
 	@SuppressWarnings("unchecked") // avoid warning from linked hashmap
 	@Test(dataProvider = "Account_Setup")
-	public void accountSetupBaseTest(String caseId, String runTest, String products, String shippingMethod, String payment,
+	public void accountSetupUSBaseTest(String caseId, String runTest, String products, String shippingMethod, String payment,
 			String shippingAddress, String billingAddress, String email) throws Exception {
 		// Important to add this for logging/reporting
 		Testlogs.set(new SASLogger("AccountSetup_" + getBrowserName()));

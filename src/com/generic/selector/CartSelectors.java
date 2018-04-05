@@ -4,10 +4,14 @@ package com.generic.selector;
 public class CartSelectors
 {
 	public static final String proceedToCheckout = "btn btn-secondary-blue narrow mini-cart-checkout";
+	public static final String totals = "totals-line-items";
 	public static final String checkoutBtn = "css,#cart-checkout-button>form>input";
 	public static final String continueShopping = "btn--continue-shopping";
 	public static final String OrderSubTotal = "css,.subtotals>.value";
 	public static final String cartOrderTotal = "estimatedTotalPrice";
+	
+	public static final String unitPrice = "css,.unit-price";
+	public static final String productSubtotal = "css,.sub-total";
 	
 	public static final String numberOfProducts = "cart__top--totals";
 	public static final String couponField = "voucherCode";

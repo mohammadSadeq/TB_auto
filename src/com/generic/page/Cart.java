@@ -2,6 +2,7 @@ package com.generic.page;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -331,4 +332,60 @@ public class Cart extends SelTestCase {
 		getCurrentFunctionName(false);
 		return PLink.contains(attrValue);
 	}
+
+	public static String getProductUnitPrice() throws Exception{
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		List<String> valuesArr = new ArrayList<String>();
+		subStrArr.add(CartSelectors.unitPrice);
+		valuesArr.add("");
+		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		logs.debug ( "unit price is: "+SelectorUtil.textValue.get());
+		String totals = SelectorUtil.textValue.get();
+		getCurrentFunctionName(false);
+		return totals;
+	}
+
+	public static String getProductSubtotal() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		List<String> valuesArr = new ArrayList<String>();
+		subStrArr.add(CartSelectors.productSubtotal);
+		valuesArr.add("");
+		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		logs.debug ( "product subtotal is: "+SelectorUtil.textValue.get());
+		String totals = SelectorUtil.textValue.get();
+		getCurrentFunctionName(false);
+		return totals;
+	}
+
+	public static String getOrderDiscount() throws Exception {
+		getCurrentFunctionName(true);
+		String totals = getTotals();
+		getCurrentFunctionName(false);
+		return totals.split("\n")[3].trim();
+
+	}
+	
+	public static String getPromotionalDiscount() throws Exception {
+		getCurrentFunctionName(true);
+		String totals = getTotals();
+		getCurrentFunctionName(false);
+		return totals.split("\n")[5].trim();
+
+	}
+	
+	public static String getTotals() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		List<String> valuesArr = new ArrayList<String>();
+		subStrArr.add(CartSelectors.totals);
+		valuesArr.add("");
+		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		logs.debug(MessageFormat.format(LoggingMsg.ORDER_TOTAL, SelectorUtil.textValue.get()));
+		String totals = SelectorUtil.textValue.get();
+		getCurrentFunctionName(false);
+		return totals;
+	}
+
 }

@@ -11,6 +11,8 @@ public class CheckOutSelectors
 	
 	
 	//Shipping Address
+	
+	public static final String addAdress = "add-address";
 	public static final String countery = "address-country";
 	public static final String state = "address-region";
 	public static final String firstName = "address-first-name";

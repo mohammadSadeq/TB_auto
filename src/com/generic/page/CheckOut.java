@@ -19,6 +19,23 @@ public class CheckOut extends SelTestCase {
 	}
 
 	public static class guestCheckout {
+		
+		public static void clickCheckout() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_CART_BUTTON, "checkout"));
+			subStrArr.add(CartSelectors.checkoutBtn);
+			valuesArr.add("");
+			try {
+				SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			} catch (Exception e) {
+				logs.debug("User is already in add shipping address page");
+			}
+			getCurrentFunctionName(false);
+
+		}
+		
 		public static void typeGuestMail(String email) throws Exception {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
@@ -269,6 +286,19 @@ public class CheckOut extends SelTestCase {
 			public static final String phone = "phone";
 		}
 
+		public static void clickAddAddressBtn() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.addAdress);
+			valuesArr.add("");
+			try {
+				SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			} catch (Exception e) {
+				logs.debug("Add address form is opened by default");
+			}
+		}
+		
 		public static void selectCountery(String countery) throws Exception {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
@@ -425,6 +455,7 @@ public class CheckOut extends SelTestCase {
 				logs.debug("Address suggest modal is not displayed");
 			}
 		}
+		
 		public static void fillAndClickNext(String firstName, String lastName,
 				String address, String city, String state, String postal, String phone, boolean saveAdderss) throws Exception {
 			getCurrentFunctionName(true);

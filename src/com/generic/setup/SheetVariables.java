@@ -28,6 +28,7 @@ public class SheetVariables {
     public static final String personalDetailsSheet = "PersonalDetailsRegression";
     public static final String orderHistorySheet = "OrderHistoryRegression";
     public static final String cartSheet = "CartRegression";
+    public static final String cart2Sheet = "Cart2Regression";
     public static final String PDPSheet = "PDPRegression";
     public static final String testCasesSheet = "Test Cases";
     public static final String AddressBookSheet = "AddressBookRegression";
@@ -35,7 +36,7 @@ public class SheetVariables {
     public static final String myAccountSheet = "MyAccountRegression";
     public static final String storeLocatorSheet = "StoreLocatorRegression";
 	public static final String orderDetailsSheet = "OrderDetailsRegression";
-	public static final String EmailAddressRegressionSheet = "EmailAddressRegression";
+	public static final String MyAccountRegressionSheet = "MyAccountRegression";
 	public static final String PasswordRegressionSheet = "PasswordRegression";
 	public static final String registrationRegressionSheet = "RegistrationRegression";
 	public static final String ErrorPagesRegressionSheet = "ErrorPagesRegression";

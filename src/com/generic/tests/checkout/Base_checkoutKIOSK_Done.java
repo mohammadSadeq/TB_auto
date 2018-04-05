@@ -17,6 +17,7 @@ import com.generic.page.CheckOut;
 import com.generic.page.SignIn;
 import com.generic.setup.Common;
 import com.generic.setup.LoggingMsg;
+import com.generic.setup.PagesURLs;
 import com.generic.setup.SelTestCase;
 import com.generic.setup.SheetVariables;
 import com.generic.util.TestUtilities;
@@ -68,7 +69,7 @@ public class Base_checkoutKIOSK_Done extends SelTestCase {
 
 	@SuppressWarnings("unchecked") // avoid warning from linked hashmap
 	@Test(dataProvider = "Orders")
-	public void checkOutBaseTest(String caseId, String runTest, String desc, String proprties, String products,
+	public void checkOutKioskBaseTest(String caseId, String runTest, String desc, String proprties, String products,
 			String shippingMethod, String payment, String shippingAddress, String billingAddress, String coupon,
 			String email) throws Exception {
 		//Important to add this for logging/reporting 
@@ -91,15 +92,15 @@ public class Base_checkoutKIOSK_Done extends SelTestCase {
 		Pemail = getSubMailAccount(email);
 		
 		try {
+			getDriver().get(PagesURLs.getKioskPage());
 			if (proprties.contains(loggedInUser)) {
 				//you need to maintain the concurrency and get the main account information and log in in browser account 
 				LinkedHashMap<String, Object> userdetails = (LinkedHashMap<String, Object>) users.get(email);
 				Testlogs.get().debug(Pemail);
 				Testlogs.get().debug((String) userdetails.get(Registration.keys.password) );
-				getDriver().get("https://qa-kiosk.tommybahama.com/en/?kiosk=true");
-				Thread.sleep(3000);
-				getDriver().get("https://qa-kiosk.tommybahama.com/en/login");
 		//		SignIn.logIn(Pemail, (String) userdetails.get(Registration.keys.password));
+				Thread.sleep(1500);
+				getDriver().get(PagesURLs.getLoginPage());
 				Registration.loginToKioskAccount(Pemail);
 			}
 			if (proprties.contains(freshUser)) {
@@ -108,7 +109,8 @@ public class Base_checkoutKIOSK_Done extends SelTestCase {
 				// take any user as template
 				LinkedHashMap<String, Object> userdetails = (LinkedHashMap<String, Object>) users.entrySet().iterator()
 						.next().getValue();
-
+				Thread.sleep(1500);
+				getDriver().get(PagesURLs.getLoginPage());
 				Registration.fillAndClickRegister(Pemail, Pemail, (String) userdetails.get(Registration.keys.firstName), (String) userdetails.get(Registration.keys.lastName),
 						(String) userdetails.get(Registration.keys.country), (String) userdetails.get(Registration.keys.postalCode), (String) userdetails.get(Registration.keys.password),
 						(String) userdetails.get(Registration.keys.password), true);
@@ -143,7 +145,9 @@ public class Base_checkoutKIOSK_Done extends SelTestCase {
 				Testlogs.get().debug("Login during checkout with: "+Pemail);
 				Testlogs.get().debug("Using password: "+(String) userdetails.get(Registration.keys.password) );
 				CheckOut.guestCheckout.returningCustomerLogin(Pemail, (String) userdetails.get(Registration.keys.password));
-				Registration.clickStartSessionBtn();
+		//		Registration.clickStartSessionBtn();
+		//		getDriver().get(PagesURLs.getShoppingCartPage());
+				CheckOut.guestCheckout.clickCheckout();
 			}
 			if (proprties.contains(guestUser)) {
 				Pemail = RandomUtilities.getRandomEmail();
@@ -170,6 +174,7 @@ public class Base_checkoutKIOSK_Done extends SelTestCase {
 
 				// in case guest the save shipping check-box is not exist
 				if (saveShipping) {
+					CheckOut.shippingAddress.clickAddAddressBtn();
 					CheckOut.shippingAddress.fillAndClickNext(
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.lastName),

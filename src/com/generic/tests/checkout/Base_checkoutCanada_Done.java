@@ -69,7 +69,7 @@ public class Base_checkoutCanada_Done extends SelTestCase {
 
 	@SuppressWarnings("unchecked") // avoid warning from linked hashmap
 	@Test(dataProvider = "Orders")
-	public void checkOutBaseTest(String caseId, String runTest, String desc, String proprties, String products,
+	public void checkOutCandaBaseTest(String caseId, String runTest, String desc, String proprties, String products,
 			String shippingMethod, String payment, String shippingAddress, String billingAddress, String coupon,
 			String email) throws Exception {
 		//Important to add this for logging/reporting 
@@ -139,7 +139,7 @@ public class Base_checkoutCanada_Done extends SelTestCase {
 				Testlogs.get().debug("Login during checkout with: "+Pemail);
 				Testlogs.get().debug("Using password: "+(String) userdetails.get(Registration.keys.password) );
 				CheckOut.guestCheckout.returningCustomerLogin(Pemail, (String) userdetails.get(Registration.keys.password));
-				
+				CheckOut.guestCheckout.clickCheckout();
 			}
 			if (proprties.contains(guestUser)) {
 				Pemail = RandomUtilities.getRandomEmail();
@@ -166,6 +166,7 @@ public class Base_checkoutCanada_Done extends SelTestCase {
 
 				// in case guest the save shipping check-box is not exist
 				if (saveShipping) {
+					CheckOut.shippingAddress.clickAddAddressBtn();
 					CheckOut.shippingAddress.fillAndClickNext(
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) addressDetails.get(CheckOut.shippingAddress.keys.lastName),
