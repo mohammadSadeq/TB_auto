@@ -30,8 +30,8 @@ public class RegistrationSelectors {
 	public static final String emailAddressError = "email.errors";
 	public static final String confirmPasswordError = "checkPwd.errors"; 
 	public static final String passwordError = "pwd.errors";
-	public static final String passwordRulesError = "pwd.errors";
-	public static final String passwordMatchError = "pwd.errors";
+	public static final String passwordRulesError = "pstrength-minchar";
+	public static final String passwordMatchError = "checkPwd.errors";
 	
 	public static final String countryError= "country.errors";
 	public static final String postalCodeError = "postalCode.errors";

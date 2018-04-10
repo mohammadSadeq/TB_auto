@@ -19,6 +19,7 @@ import com.generic.page.Registration;
 import com.generic.page.SignIn;
 import com.generic.setup.Common;
 import com.generic.setup.LoggingMsg;
+import com.generic.setup.PagesURLs;
 import com.generic.setup.SelTestCase;
 import com.generic.setup.SheetVariables;
 import com.generic.util.ReportUtil;
@@ -64,7 +65,7 @@ public class Base_cart extends SelTestCase {
 	@Test(dataProvider = "Carts")
 	public void CartBaseTest(String caseId, String runTest, String desc, String proprties, String products,
 			String email, String newQty, String promotion, String OrderSubtotal, String ProductDiscounts,
-			String PromotionalDiscounts, String ClubOrchardRewards, String OrderTotal, String ValidationMSG)
+			String orderDiscounts, String OrderTotal, String ValidationMSG)
 			throws Exception {
 		// Important to add this for logging/reporting
 		Testlogs.set(new SASLogger("cart_" + getBrowserName()));
@@ -74,6 +75,7 @@ public class Base_cart extends SelTestCase {
 		
 		String CaseMail = "";
 		LinkedHashMap<String, Object> userdetails = null; 
+		String url = PagesURLs.getShoppingCartPage();
 		if (!email.equals(""))
 		{
 			userdetails = (LinkedHashMap<String, Object>) users.get(email);
@@ -92,13 +94,13 @@ public class Base_cart extends SelTestCase {
 				for (String product : products.split("\n"))
 					prepareCartNotLoggedInUser(product);
 			
-			getDriver().get("http://stage.com/oshstorefront/cart");
+			getDriver().get(url);
 			
 			// Excluded from Bronze package
 			if (proprties.contains("cart UI")) {
 				logs.debug("checking the cart UI");
 				sassert().assertTrue(Cart.checkItemImage(), "<font color=#f442cb>NOT All product images are ok</font>");
-				sassert().assertTrue(Cart.checkProductLink((String) productDetails.get(PDP.keys.url)),
+				sassert().assertTrue(Cart.checkProductLink((String) productDetails.get(PDP.keys.scene7Image)),
 						"<font color=#f442cb>Product link is Not ok</font>");
 			}
 
@@ -106,7 +108,7 @@ public class Base_cart extends SelTestCase {
 			if (!"".equals(promotion)) {
 				Cart.applyCoupon(promotion);
 				ReportUtil.takeScreenShot(getDriver());
-				String validationMessage = Cart.validateCoupon();
+				String validationMessage = Cart.getGlobalMessage();
 				if (!ValidationMSG.equals(""))
 					sassert().assertTrue(ValidationMSG.contains(validationMessage),
 							"<font color=#f442cb>coupon messgae is not same:  " + ValidationMSG + "</font>");
@@ -117,12 +119,12 @@ public class Base_cart extends SelTestCase {
 			if (!newQty.equals("") && "".contains(newQty)) {// just to make sure that code will not flow down in this
 															// branch
 				// verifying that no new lines being added to cart
-				double subtotal = Double.parseDouble(Cart.getOrderSubTotal().replace("£", ""));
+				double subtotal = Double.parseDouble(Cart.getOrderSubTotal().replace("$", ""));
 				String numberOfItems = "";
 				String productQty = Cart.getProductQty(getBrowserName(), 0);
-				Cart.updateQuantityValue(getBrowserName(), "0", newQty);
+				Cart.selectQty(newQty);
 				if (!newQty.equals("0") && !Cart.isCartEmpty()) {
-					double subtotalAfter = Double.parseDouble(Cart.getOrderSubTotal().replace("£", ""));
+					double subtotalAfter = Double.parseDouble(Cart.getOrderSubTotal().replace("$", ""));
 					String numberOfItemsAfterUpdate = "";
 					String validationMessage = Cart.getCartMsg();
 					String productQtyAfter = Cart.getProductQty(getBrowserName(), 0);
@@ -195,7 +197,7 @@ public class Base_cart extends SelTestCase {
 			
 			if (proprties.contains("Verify Promotion")) {
 	//			double sitePromotionDiscount = Double.parseDouble(Cart.getPromotionalDiscount().replace("$", "").trim());
-				double SheetPromotionDiscount = Double.parseDouble(PromotionalDiscounts.replace("$", "").trim());
+				double SheetPromotionDiscount = Double.parseDouble(orderDiscounts.replace("$", "").trim());
 				
 		//		String promoMessage = "<font color=#f442cb>sitePromotionDiscount: " + sitePromotionDiscount +
 	//					"<br>SheetPromotionDiscount: "+ SheetPromotionDiscount+"</font>" ; 
@@ -229,15 +231,13 @@ public class Base_cart extends SelTestCase {
 			
 			if (proprties.contains("click checkout")) {
 				Cart.clickCheckout();
-			} else {
-				Cart.clickContinueShoping();
 			}
 
 			ReportUtil.takeScreenShot(getDriver());
 			
 			if (proprties.contains("Loggedin")) {
 				// navigate back to cart
-				getDriver().get("http://stage.com/oshstorefront/cart");
+				getDriver().get(url);
 				Cart.removeAllItemsFromCart();
 			}
 			

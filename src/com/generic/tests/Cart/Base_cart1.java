@@ -103,7 +103,7 @@ public class Base_cart1 extends SelTestCase {
 				double subtotal = Double.parseDouble(Cart.getOrderSubTotal().replace("£", ""));
 				String numberOfItems = Cart.getNumberOfproducts().split("item")[0].trim();
 				String productQty = Cart.getProductQty(getBrowserName(), 0);
-				Cart.updateQuantityValue(getBrowserName(), "0", newQTY);
+		//		Cart.updateQuantityValue(getBrowserName(), "0", newQTY);
 				if (!newQTY.equals("0") && !Cart.isCartEmpty()) {
 					double subtotalAfter = Double.parseDouble(Cart.getOrderSubTotal().replace("£", ""));
 					String numberOfItemsAfterUpdate = Cart.getNumberOfproducts().split("item")[0].trim();

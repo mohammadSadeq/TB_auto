@@ -1,4 +1,4 @@
-package com.generic.tests.Registration;
+package com.generic.tests.Registration_Done;
 
 import java.text.MessageFormat;
 import java.util.Arrays;
@@ -41,7 +41,9 @@ public class RegistrationFormValidation extends SelTestCase {
 	//messagesValidations
 	public static final String successMessage = "success";
 	public static final String invalidEmail = "invalidEmail";
-	public static final String titleError = "titleError";
+	public static final String checkEmailError = "checkEmailError";
+	public static final String postalCodeError = "postalError";
+	public static final String countryError = "countryError";
 	public static final String firstNameError = "firstNameError";
 	public static final String lastNameError = "lastNameError";
 	public static final String passwordError = "passwordError";
@@ -139,7 +141,7 @@ public class RegistrationFormValidation extends SelTestCase {
 				String postalCode = "10167";
 				Registration.fillAndClickRegister(email, email, firstName, lastName,
 						country, postalCode, password,
-						password, true);
+						confPassword, true);
 			}
 			if (proprties.contains(invalidPassword)) {
 				String firstName = RandomUtilities.getRandomName();
@@ -170,11 +172,11 @@ public class RegistrationFormValidation extends SelTestCase {
 					String expectedMessage = messageText;
 					sassert().assertEquals(actualMessage, expectedMessage);
 				}
-//				if (key.equalsIgnoreCase(titleError)) {
-//					String actualMessage =Registration.getTitleError();
-//					String expectedMessage = messageText;
-//					sassert().assertEquals(actualMessage, expectedMessage);
-//				}
+				if (key.equalsIgnoreCase(checkEmailError)) {
+					String actualMessage = Registration.getConfirmEmailAddressError();
+					String expectedMessage = messageText;
+					sassert().assertEquals(actualMessage, expectedMessage);
+				}
 				if (key.equalsIgnoreCase(firstNameError)) {
 					String actualMessage =Registration.getFirstNameError();
 					String expectedMessage = messageText;
@@ -182,6 +184,21 @@ public class RegistrationFormValidation extends SelTestCase {
 				}
 				if (key.equalsIgnoreCase(lastNameError)) {
 					String actualMessage =Registration.getLastNameError();
+					String expectedMessage = messageText;
+					sassert().assertEquals(actualMessage, expectedMessage);
+				}
+				if (key.equalsIgnoreCase(countryError)) {
+					String actualMessage = Registration.getCountryError();
+					String expectedMessage = messageText;
+					sassert().assertEquals(actualMessage, expectedMessage);
+				}
+				if (key.equalsIgnoreCase(postalCodeError)) {
+					String actualMessage = Registration.getPostalCodeError();
+					String expectedMessage = messageText;
+					sassert().assertEquals(actualMessage, expectedMessage);
+				}
+				if (key.equalsIgnoreCase(passwordRulesError)) {
+					String actualMessage =Registration.getPasswordRulesError();
 					String expectedMessage = messageText;
 					sassert().assertEquals(actualMessage, expectedMessage);
 				}
@@ -195,18 +212,12 @@ public class RegistrationFormValidation extends SelTestCase {
 					String expectedMessage = messageText;
 					sassert().assertEquals(actualMessage, expectedMessage);
 				}
-				if (key.equalsIgnoreCase(passwordRulesError)) {
-					String actualMessage =Registration.getPasswordRulesError();
-					String expectedMessage = messageText;
-					sassert().assertEquals(actualMessage, expectedMessage);
-				}
 				if (key.equalsIgnoreCase(passwordMisatchError)) {
 					String actualMessage = Registration.getPasswordMatchError();
 					String expectedMessage = messageText;
 					sassert().assertEquals(actualMessage, expectedMessage);
 				}
 			}
-			
 			sassert().assertAll();
 			Common.testPass();
 		} catch (Throwable t) {

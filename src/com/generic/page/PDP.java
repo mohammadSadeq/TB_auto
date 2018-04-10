@@ -26,8 +26,8 @@ public class PDP extends SelTestCase {
 		public static final String desc = "desc";
 		public static final String reviews = "reviews";
 		public static final String rating = "rating";
-		
-		
+		public static final String scene7Image = "scene7Image";
+			
 	}
 	public static void addProductsToCartAndClickCheckOut(String url, String color, String size, String qty) throws Exception {
 		getDriver().get(url);

@@ -4,7 +4,8 @@
 	<test name="Registration Chrome">
 		<parameter name="browserName" value="chrome"></parameter>
 		<classes>
-			<class name="com.generic.tests.Registration.CreateNewAccounts" />
+			<class name="com.generic.tests.Registration_Done.RegistrationFormValidation" />
 		</classes>
 	</test><!-- Test -->
+
 </suite> <!-- Suite -->
