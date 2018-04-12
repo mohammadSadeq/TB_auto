@@ -25,12 +25,13 @@ public class CartSelectors
 	
 	//public static final String qty = "quantity_0";
 	public static final String qty = "quantityselect_0";
+	public static final String selectedQty = "css,#quantityselect_0>option[selected='selected']";
 	public static final String productQtyBox = "css,td>li>div>form>div>input#quantity_";
 	public static final String productQtyBoxMobile = "css,td>li>div>div>div>form>div>input#quantity_";
 	public static final String updateQunatityBtn = "test_Order_Totals_Subtotal_$1";
-	public static final String errorMessage = "global-alerts";
+	public static final String errorMessage = "css,.pdp-message-container>div";
 	public static final String actionMenue = "editEntry_";
-	public static final String removeItem = "actionEntry_";
+	public static final String removeItem = "css,.submitRemoveProduct";
 	public static final String cartContent = "yCmsContentSlot";
 	public static final String cartOrderShipping = "cart-totals";
 	public static final String cartOrderTax = "cart-totals-taxes text-right";

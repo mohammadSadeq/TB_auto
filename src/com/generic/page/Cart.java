@@ -55,19 +55,16 @@ public class Cart extends SelTestCase {
 		subStrArr.add(CartSelectors.numberOfProducts);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		logs.debug(MessageFormat.format(LoggingMsg.NUMBER_OF_PRODUCTS, SelectorUtil.textValue.get()));
+		logs.debug(MessageFormat.format(LoggingMsg.NUMBER_OF_PRODUCTS, SelectorUtil.numberOfFoundElements.get()));
 		getCurrentFunctionName(false);
-		return SelectorUtil.textValue.get();
+		return SelectorUtil.numberOfFoundElements.get();
 	}
 	
-	public static String getProductQty(String browser, int lineOrder) throws Exception {
+	public static String getProductQty() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		if (browser.contains("mobile"))
-			subStrArr.add(CartSelectors.productQtyBoxMobile+lineOrder);
-		else
-			subStrArr.add(CartSelectors.productQtyBox+lineOrder);
+		subStrArr.add(CartSelectors.selectedQty);
 		valuesArr.add("getCurrentValue");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		logs.debug(MessageFormat.format(LoggingMsg.NUMBER_OF_PRODUCTS, SelectorUtil.textValue.get()));
@@ -283,7 +280,7 @@ public class Cart extends SelTestCase {
 		getCurrentFunctionName(true);
 
 		if (!isCartEmpty()) {
-			int numberOfItems = Integer.parseInt(getNumberOfproducts().split(" ")[0]);
+			int numberOfItems = Integer.parseInt(getNumberOfproducts());
 			logs.debug(LoggingMsg.REMOVE_ALL_ITEMS_FROM_CART);
 			for (int itemIndex = numberOfItems - 1; itemIndex >= 0; itemIndex--)
 				removeItemFromCart(0); // keep always remove the first item
@@ -296,7 +293,7 @@ public class Cart extends SelTestCase {
 
 	public static void removeItemFromCart(int itemIndex) throws Exception {
 		getCurrentFunctionName(true);
-		clickOnactionMenue(itemIndex);
+	//	clickOnactionMenue(itemIndex);
 		clickOnRemove(itemIndex);
 		getCartMsg();
 		getCurrentFunctionName(false);
@@ -306,7 +303,7 @@ public class Cart extends SelTestCase {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		subStrArr.add(CartSelectors.removeItem + itemIndex);
+		subStrArr.add(CartSelectors.removeItem);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
@@ -362,11 +359,11 @@ public class Cart extends SelTestCase {
 		List<String> valuesArr = new ArrayList<String>();
 		subStrArr.add(CartSelectors.unitPrice);
 		valuesArr.add("");
+		String salePrice = "";
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		String unitPrice = SelectorUtil.textValue.get();
 		logs.debug ( "unit price is: "+ unitPrice);
-		logs.debug("index is: " + (unitPrice.split("$").length));
-		String salePrice = unitPrice.split("$")[(unitPrice.split("$").length)-1];
+		salePrice = unitPrice.split("$")[(unitPrice.split("$").length)-1];
 		logs.debug ( "sale price is: "+ salePrice);
 		getCurrentFunctionName(false);
 		return salePrice;
