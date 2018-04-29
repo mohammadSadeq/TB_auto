@@ -377,11 +377,19 @@ public class SelectorUtil extends SelTestCase {
 		    			
 		    			if (action.equals("hover"))
 		    			{
-		    				
-		    				Wait<WebDriver> wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
-								       .withTimeout(30, TimeUnit.SECONDS)
+		 				   Wait<WebDriver> wait = null;
+						   if(browser.contains("firefox") ) {
+							   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+								       .withTimeout(40, TimeUnit.SECONDS)
 								       .pollingEvery(5, TimeUnit.SECONDS)
 								       .ignoring(NoSuchElementException.class);
+						   }
+						   else {
+							   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+								       .withTimeout(30, TimeUnit.SECONDS)
+								       .pollingEvery(5, TimeUnit.SECONDS)
+								       .ignoring(NoSuchElementException.class);   
+						   }
 									   //TODO: move it to general function
 							   
 						   logs.debug("Hovering: "+ byAction.toString());
@@ -429,10 +437,19 @@ public class SelectorUtil extends SelTestCase {
 					   }
 					   else if(value.contains("VisualTesting"))
 					   {
-						   Wait<WebDriver> wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
-							       .withTimeout(30, TimeUnit.SECONDS)
-							       .pollingEvery(5, TimeUnit.SECONDS)
-							       .ignoring(NoSuchElementException.class);
+						   Wait<WebDriver> wait = null;
+						   if(browser.contains("firefox") ) {
+							   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+								       .withTimeout(40, TimeUnit.SECONDS)
+								       .pollingEvery(5, TimeUnit.SECONDS)
+								       .ignoring(NoSuchElementException.class);
+						   }
+						   else {
+							   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+								       .withTimeout(30, TimeUnit.SECONDS)
+								       .pollingEvery(5, TimeUnit.SECONDS)
+								       .ignoring(NoSuchElementException.class);   
+						   }
 								   //TODO: move it to general function
 						   
 						   logs.debug("Visual testing for: " + field.toString());
@@ -450,10 +467,19 @@ public class SelectorUtil extends SelTestCase {
 					   }
 					   else if (action.equals("click"))
 					   {
-					   		Wait<WebDriver> wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
-						       .withTimeout(30, TimeUnit.SECONDS)
-						       .pollingEvery(5, TimeUnit.SECONDS)
-						       .ignoring(NoSuchElementException.class);
+						   Wait<WebDriver> wait = null;
+						   if(browser.contains("firefox") ) {
+							   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+								       .withTimeout(40, TimeUnit.SECONDS)
+								       .pollingEvery(5, TimeUnit.SECONDS)
+								       .ignoring(NoSuchElementException.class);
+						   }
+						   else {
+							   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+								       .withTimeout(30, TimeUnit.SECONDS)
+								       .pollingEvery(5, TimeUnit.SECONDS)
+								       .ignoring(NoSuchElementException.class);   
+						   }
 							   //TODO: move it to general function
 					   
 						   logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, byAction.toString()));
@@ -482,11 +508,20 @@ public class SelectorUtil extends SelTestCase {
 							   if (!field.isSelected())
 							   {
 								   logs.debug(MessageFormat.format(LoggingMsg.CHECKING_UNCHECKING_MSG, "", "not "));
-								   Wait<WebDriver> wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
-									       .withTimeout(30, TimeUnit.SECONDS)
-									       .pollingEvery(5, TimeUnit.SECONDS)
-									       .ignoring(NoSuchElementException.class);
-								   		
+								   Wait<WebDriver> wait = null;
+								   if(browser.contains("firefox") ) {
+									   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+										       .withTimeout(40, TimeUnit.SECONDS)
+										       .pollingEvery(5, TimeUnit.SECONDS)
+										       .ignoring(NoSuchElementException.class);
+								   }
+								   else {
+									   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+										       .withTimeout(30, TimeUnit.SECONDS)
+										       .pollingEvery(5, TimeUnit.SECONDS)
+										       .ignoring(NoSuchElementException.class);   
+								   }
+		
 								   //TODO: move it to general function
 									   logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, byAction.toString()));
 									   JavascriptExecutor jse = (JavascriptExecutor)getDriver();
@@ -515,10 +550,19 @@ public class SelectorUtil extends SelTestCase {
 							   if (field.isSelected())
 							   {
 								   logs.debug(MessageFormat.format(LoggingMsg.CHECKING_UNCHECKING_MSG,"un",""));
-								   Wait<WebDriver> wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
-									       .withTimeout(30, TimeUnit.SECONDS)
-									       .pollingEvery(5, TimeUnit.SECONDS)
-									       .ignoring(NoSuchElementException.class);
+								   Wait<WebDriver> wait = null;
+								   if(browser.contains("firefox") ) {
+									   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+										       .withTimeout(40, TimeUnit.SECONDS)
+										       .pollingEvery(5, TimeUnit.SECONDS)
+										       .ignoring(NoSuchElementException.class);
+								   }
+								   else {
+									   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+										       .withTimeout(30, TimeUnit.SECONDS)
+										       .pollingEvery(5, TimeUnit.SECONDS)
+										       .ignoring(NoSuchElementException.class);   
+								   }
 								   		
 								 //	TODO: move this to function 
 									   logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, byAction.toString()));
@@ -572,10 +616,19 @@ public class SelectorUtil extends SelTestCase {
 						   try 
 						   {
 							   if (value.isEmpty()) {
-								   Wait<WebDriver> wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
-									       .withTimeout(30, TimeUnit.SECONDS)
-									       .pollingEvery(5, TimeUnit.SECONDS)
-									       .ignoring(NoSuchElementException.class);
+								   Wait<WebDriver> wait = null;
+								   if(browser.contains("firefox") ) {
+									   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+										       .withTimeout(40, TimeUnit.SECONDS)
+										       .pollingEvery(5, TimeUnit.SECONDS)
+										       .ignoring(NoSuchElementException.class);
+								   }
+								   else {
+									   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+										       .withTimeout(30, TimeUnit.SECONDS)
+										       .pollingEvery(5, TimeUnit.SECONDS)
+										       .ignoring(NoSuchElementException.class);   
+								   }
 								   		//TODO: move this to function 
 								   
 									   logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, byAction.toString()));
@@ -742,6 +795,23 @@ public class SelectorUtil extends SelTestCase {
 		getCurrentFunctionName(false);
 		return attrValue;
 	}
+
+	 public Wait<WebDriver> waitForElementToLoad(Wait<WebDriver> wait) {
+		 String browser = SelTestCase.getBrowserName();
+		   if(browser.contains("firefox") ) {
+			   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+				       .withTimeout(40, TimeUnit.SECONDS)
+				       .pollingEvery(5, TimeUnit.SECONDS)
+				       .ignoring(NoSuchElementException.class);
+		   }
+		   else {
+			   wait = new FluentWait<WebDriver>(SelTestCase.getDriver())
+				       .withTimeout(30, TimeUnit.SECONDS)
+				       .pollingEvery(5, TimeUnit.SECONDS)
+				       .ignoring(NoSuchElementException.class);   
+		   }
+		return wait;
+	    	}
 	
 	@SuppressWarnings("rawtypes")
 	public static void typeText(List<String> subStrArr, String value) throws Exception {

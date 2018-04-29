@@ -17,6 +17,7 @@ public class SheetVariables {
 	
 	//SheetNames
     public static final String loginSheet = "LoginRegression";
+    public static final String CreateAccountssheet ="CreateAccountsRegression";
     public static final String USAccountSetupsheet = "USAccountSetupRegression";
     public static final String CanadaAccountSetupsheet = "CanadaAccountSetupRegression";
     public static final String KioskAccountSetupsheet = "USCheckOutRegression";
@@ -25,23 +26,14 @@ public class SheetVariables {
     public static final String KioskcheckoutSheet = "KioskCheckOutRegression";
     public static final String CSCcheckoutSheet = "CSCCheckOutRegression";
     public static final String plpSheet = "PLPRegression";
-    public static final String personalDetailsSheet = "PersonalDetailsRegression";
     public static final String orderHistorySheet = "OrderHistoryRegression";
     public static final String cartSheet = "CartRegression";
-    public static final String cart2Sheet = "Cart2Regression";
     public static final String PDPSheet = "PDPRegression";
     public static final String testCasesSheet = "Test Cases";
-    public static final String AddressBookSheet = "AddressBookRegression";
-    public static final String PaymentDetailsSheet = "PaymentDetailsRegression";
-    public static final String myAccountSheet = "MyAccountRegression";
-    public static final String storeLocatorSheet = "StoreLocatorRegression";
 	public static final String orderDetailsSheet = "OrderDetailsRegression";
 	public static final String MyAccountRegressionSheet = "MyAccountRegression";
-	public static final String PasswordRegressionSheet = "PasswordRegression";
 	public static final String registrationRegressionSheet = "RegistrationRegression";
-	public static final String ErrorPagesRegressionSheet = "ErrorPagesRegression";
 	public static final String checkoutNegativeCasesSheet = "CheckOutNegativeCasesRegression";
-	public static final String checkoutB2BSheet = "CheckOutB2BRegression";
 	public static final String SearchSheet = "SearchRegression";
 	public static final String MailSignupRegressionSheet = "MailSignupRegression";
 	public static final String QuickViewRegressionSheet = "QuickViewRegression";
@@ -58,8 +50,6 @@ public class SheetVariables {
     public static final String orderHistoryTestCaseId = "OrderHistory";
 	public static final String cartCaseId = "Cart";
 	public static final String PDPCaseId = "PDP";
-	public static final String addressbookTestCaseId="AddressBook";
-	public static final String PaymentDetailsTestCaseId = "PaymentDetails";
 	public static final String MailSignupTestCaseId = "MailSignup";
 	public static final String QuickViewTestCaseId = "QuickView";
 	public static final String VisualTestingHPTestCaseId = "VisualTestingHP case";

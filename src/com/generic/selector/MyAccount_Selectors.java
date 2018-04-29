@@ -1,6 +1,6 @@
 package com.generic.selector;
 
-public class MyAccount_Selectors_InProccess {
+public class MyAccount_Selectors {
 	public static final String Name = "css,sub-section.small>dl>dd";
 	public static final String Email = "css,sub-section.small>dl>dd";
 	public static final String changePasswordBtn = "css,sub-section.small>dl>dd";

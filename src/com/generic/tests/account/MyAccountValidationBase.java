@@ -28,7 +28,7 @@ import com.generic.util.dataProviderUtils;
 import com.generic.util.ReportUtil;
 import com.generic.util.SASLogger;
 
-public class MyAccountValidationBase_Done extends SelTestCase {
+public class MyAccountValidationBase extends SelTestCase {
 	private static LinkedHashMap<String, Object> addresses = null;
 	private static LinkedHashMap<String, Object> users = null;
 	private static LinkedHashMap<String, Object> paymentCards = null;

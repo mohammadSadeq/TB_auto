@@ -10,6 +10,7 @@ public class LoggingMsg {
 	public static String CLICKING_CART_BUTTON = "clicking on {0} btn from cart";
 	public static String NUMBER_OF_PRODUCTS = "number of products: {0}";
 	public static String NUMBER_OF_ORDERS = "number of orders: {0}";
+	public static String CART_ID = "Cart ID: {0}";
 	public static String ORDER_TOTAL = "Order Total: {0}";
 	public static String ORDER_SUBTOTAL = "Order subtotal: {0}";
 	public static String APPLYING_COUPON = "{0} Coupon {1}" ;

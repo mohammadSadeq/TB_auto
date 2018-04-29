@@ -4,6 +4,7 @@ import java.text.MessageFormat;
 import java.util.NoSuchElementException;
 
 public class PagesURLs extends SelTestCase {
+	public static String env = "env";
 	public static String HP = "HomePage";
 	public static String driversPath = "driversPath";
 	public static String personalDetailsPage = "personalDetailsPage";
@@ -312,5 +313,4 @@ public class PagesURLs extends SelTestCase {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, CLP));
 			}
 	}
-
 }

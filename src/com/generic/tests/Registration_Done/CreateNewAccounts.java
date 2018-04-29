@@ -24,7 +24,7 @@ public class CreateNewAccounts extends SelTestCase {
 	private static LinkedHashMap<String, Object> users = null;
 
 	// used sheet in test
-	public static final String testDataSheet = SheetVariables.USAccountSetupsheet;
+	public static final String testDataSheet = SheetVariables.CreateAccountssheet;
 	private static XmlTest testObject;
 
 	private static ThreadLocal<SASLogger> Testlogs = new ThreadLocal<SASLogger>();
@@ -49,13 +49,12 @@ public class CreateNewAccounts extends SelTestCase {
 
 	@SuppressWarnings("unchecked") // avoid warning from linked hashmap
 	@Test(dataProvider = "Account_Setup")
-	public void accountSetupUSBaseTest(String caseId, String runTest, String products, String shippingMethod, String payment,
-			String shippingAddress, String billingAddress, String email) throws Exception {
+	public void accountSetupUSBaseTest(String caseId, String runTest, String desc, String proprties, String email) throws Exception {
 		// Important to add this for logging/reporting
 		Testlogs.set(new SASLogger("AccountSetup_" + getBrowserName()));
 		setTestCaseReportName("AccountSetup Case");
-		logCaseDetailds(MessageFormat.format(LoggingMsg.CHECKOUTDESC, testDataSheet + "." + caseId,
-				this.getClass().getCanonicalName(), email, email, payment, shippingMethod));
+		logCaseDetailds(MessageFormat.format(LoggingMsg.TEST_CASE_DESC, testDataSheet + "." + caseId,
+				this.getClass().getCanonicalName(), email));
 
 		String Pemail = getSubMailAccount(email);
 		try {

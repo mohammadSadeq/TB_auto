@@ -34,8 +34,9 @@ public class Base_cart extends SelTestCase {
 	// user types
 	public static final String guestUser = "guest";
 	public static final String loggedInUser = "loggedin";
+	String Pemail = "";
 	// used sheet in test
-	public static final String testDataSheet = SheetVariables.cart2Sheet;
+	public static final String testDataSheet = SheetVariables.cartSheet;
 	private static ThreadLocal<String> products = new ThreadLocal<String>();
 	private static XmlTest testObject;
 	private static ThreadLocal<SASLogger> Testlogs = new ThreadLocal<SASLogger>();
@@ -71,14 +72,16 @@ public class Base_cart extends SelTestCase {
 		logCaseDetailds(MessageFormat.format(LoggingMsg.CARTDESC, testDataSheet + "." + caseId,
 				this.getClass().getCanonicalName(), desc, proprties.replace("\n", "<br>- "), newQty, promotion, OrderTotal));
 		
-		String CaseMail = "";
+//		String CaseMail = "";
+		String Pemail = "";
 		LinkedHashMap<String, Object> userdetails = null; 
 		String url = PagesURLs.getShoppingCartPage();
 		if (!email.equals(""))
 		{
 			userdetails = (LinkedHashMap<String, Object>) users.get(email);
-			CaseMail = (String) userdetails.get(Registration.keys.email);
-			Testlogs.get().debug("Mail will be used is: " + CaseMail);
+			Pemail = getSubMailAccount(email);
+	//		CaseMail = (String) userdetails.get(Registration.keys.email);
+			Testlogs.get().debug("Mail will be used is: " + Pemail);
 		}
 		try {
 
@@ -240,11 +243,9 @@ public class Base_cart extends SelTestCase {
 
 	public void prepareCartLoggedInUser(LinkedHashMap<String, Object> userdetails, String product) throws Exception {
 		logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, userdetails));
-		logs.debug((String) userdetails.get(Registration.keys.email));
+		logs.debug(Pemail);
 		logs.debug((String) userdetails.get(Registration.keys.password));
-		SignIn.logIn((String) userdetails.get(Registration.keys.email),
-				(String) userdetails.get(Registration.keys.password));
-
+		SignIn.logIn(Pemail,(String) userdetails.get(Registration.keys.password));
 		prepareCartNotLoggedInUser(product);
 
 	}

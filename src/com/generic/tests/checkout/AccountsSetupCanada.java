@@ -18,16 +18,13 @@ import com.generic.page.HomePage;
 import com.generic.page.SignIn;
 import com.generic.setup.Common;
 import com.generic.setup.LoggingMsg;
-import com.generic.setup.PagesURLs;
 import com.generic.setup.SelTestCase;
 import com.generic.setup.SheetVariables;
-import com.generic.util.TestUtilities;
 import com.generic.util.dataProviderUtils;
-import com.generic.util.RandomUtilities;
 import com.generic.util.ReportUtil;
 import com.generic.util.SASLogger;
 
-public class AccountsSetupUS_Done extends SelTestCase {
+public class AccountsSetupCanada extends SelTestCase {
 
 	private static LinkedHashMap<String, Object> addresses = null;
 	private static LinkedHashMap<String, Object> invintory = null;
@@ -40,7 +37,7 @@ public class AccountsSetupUS_Done extends SelTestCase {
 	public static final String loggedInUser = "loggedin";
 
 	// used sheet in test
-	public static final String testDataSheet = SheetVariables.USAccountSetupsheet;
+	public static final String testDataSheet = SheetVariables.CanadaAccountSetupsheet;
 
 
 	private static XmlTest testObject;
@@ -70,24 +67,23 @@ public class AccountsSetupUS_Done extends SelTestCase {
 
 	@SuppressWarnings("unchecked") // avoid warning from linked hashmap
 	@Test(dataProvider = "Account_Setup")
-	public void accountSetupUSBaseTest(String caseId, String runTest, String products, String shippingMethod, String payment,
+	public void accountSetupCanadaBaseTest(String caseId, String runTest, String products, String shippingMethod, String payment,
 			String shippingAddress, String billingAddress, String email) throws Exception {
 		// Important to add this for logging/reporting
 		Testlogs.set(new SASLogger("AccountSetup_" + getBrowserName()));
 		setTestCaseReportName("AccountSetup Case");
 		logCaseDetailds(MessageFormat.format(LoggingMsg.CHECKOUTDESC, testDataSheet + "." + caseId,
 				this.getClass().getCanonicalName(), email, email, payment, shippingMethod));
-
+	
+		String country = "Canada";
 		String Pemail = getSubMailAccount(email);
 		try {
 			LinkedHashMap<String, Object> userdetails = (LinkedHashMap<String, Object>) users.get(email);
 			Testlogs.get().debug(Pemail);
 			Testlogs.get().debug((String) userdetails.get(Registration.keys.password));
 			Thread.sleep(3000);
-			
-		//close production popup	
-		//	HomePage.closeSubcriptionPopup();
-
+	//		HomePage.closeSubcriptionPopup();
+			HomePage.changeCountry(country);
 	//		getDriver().get("https://10.30.50.17:9002/en/login");
 			Registration.fillAndClickRegister(Pemail, Pemail, (String) userdetails.get(Registration.keys.firstName), (String) userdetails.get(Registration.keys.lastName),
 					(String) userdetails.get(Registration.keys.country), (String) userdetails.get(Registration.keys.postalCode), (String) userdetails.get(Registration.keys.password),
@@ -110,10 +106,6 @@ public class AccountsSetupUS_Done extends SelTestCase {
 		//	String url = PagesURLs.getShoppingCartPage();
 		//	getDriver().get(url);
 			Cart.clickCheckout();
-			Thread.sleep(1000);
-			getDriver().get("https://qa-kiosk.tommybahama.com/en/cart/checkout");
-		//	getDriver().get("https://10.30.50.17:9002/en/cart/checkout");
-			// checkout- shipping address
 			LinkedHashMap<String, Object> addressDetails = (LinkedHashMap<String, Object>) addresses
 					.get(shippingAddress);
 			CheckOut.shippingAddress.fillAndClickNext(
@@ -124,7 +116,7 @@ public class AccountsSetupUS_Done extends SelTestCase {
 					(String) addressDetails.get(CheckOut.shippingAddress.keys.state),
 					(String) addressDetails.get(CheckOut.shippingAddress.keys.postal),
 					(String) addressDetails.get(CheckOut.shippingAddress.keys.phone), true);
-		//	CheckOut.shippingAddress.clickUseSuggestedAddress();
+
 			// Shipping method
 			CheckOut.shippingMethod.fillAndclickNext(shippingMethod);
 

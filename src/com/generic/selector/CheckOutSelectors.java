@@ -27,6 +27,8 @@ public class CheckOutSelectors
 	public static final String useSuggestedAddress = "use-suggested-address";
 	public static final String addNewAddress = "add-address";
 	public static final String chooseFromAddressBook = "view-address-book";
+	public static final String addressEntry = "address-entry";
+	public static final String cboxClose = "cboxClose";
 	public static final String addressBookBtn = "btn btn-default btn-block js-address-book";
 	public static final String selectFirstAddress = "Use This Address";
 	public static final String orderTotalShippingAddress = "test_cart_totalPrice_label_$";
@@ -36,8 +38,9 @@ public class CheckOutSelectors
 	public static final String address1Error = "line1.errors";
 	public static final String cityError = "townCity.errors";
 	public static final String postcodeEerror = "postcode.errors";
-	public static final String alertInfo = "alert alert-danger alert-dismissable";
-	public static final String titleError = "titleCode.errors";
+	public static final String alertInfo = "globalMessages";
+	public static final String stateError = "regionIso.errors";
+	public static final String phoneError = "phone.errors";
 	public static final String countryError = "countryIso.errors";
 	
 	//shipping method
@@ -77,12 +80,19 @@ public class CheckOutSelectors
 	public static final String orderShippingPymentInfo = "deliverycost";
 	public static final String orderSubtotalPymentInfo = "css,.subtotal";
 	public static final String orderTaxPymentInfo = "totaltax";
-	public static final String cardTypeError = "card_cardType.errors";
-	public static final String accountNumberError = "card_accountNumber.errors";
-	public static final String expirationMonthError = "card_expirationMonth.errors";
-	public static final String expirationYearError = "card_expirationYear.errors";
-	public static final String cvNumberError = "card_cvNumber.errors";
-	public static final String billToCountryError = "billTo_country.errors";
+	public static final String cardNameError = "nameOnCard.errors";
+	public static final String cardNumberError = "cardNumber.errors";
+	public static final String expirationMonthError = "expiryMonth.errors";
+	public static final String expirationYearError = "expiryYear.errors";
+	public static final String cvNumberError = "securityCode.errors";
+	public static final String billToFNameError = "billingAddress.firstName.errors";
+	public static final String billToLNameError = "billingAddress.lastName.errors";
+	public static final String billToAddressError = "billingAddress.line1.errors";
+	public static final String billToCountryError = "billingAddress.countryIso.errors";
+	public static final String billToCityError = "billingAddress.townCity.errors";
+	public static final String billToStateError = "billingAddress.regionIso.errors";
+	public static final String billToPostCodeError = "billingAddress.postcode.errors";
+	
 		
 	//summary - review / place order
 	public static final String summaryTotal = "css,.subtotal";

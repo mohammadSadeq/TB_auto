@@ -3,6 +3,8 @@ package com.generic.selector;
 
 public class CartSelectors
 {
+	public static final String CartContainer = "shopping-bag-container";
+	public static final String cartId = "cart-id-data";
 	public static final String proceedToCheckout = "btn btn-secondary-blue narrow mini-cart-checkout";
 	public static final String totals = "totals-line-items";
 	public static final String checkoutBtn = "css,#cart-checkout-button>form>input";

@@ -7,6 +7,7 @@ import java.util.List;
 import com.generic.selector.CartSelectors;
 import com.generic.selector.PDPSelectors;
 import com.generic.setup.LoggingMsg;
+import com.generic.setup.PagesURLs;
 import com.generic.setup.SelTestCase;
 import com.generic.util.SelectorUtil;
 
@@ -40,7 +41,8 @@ public class PDP extends SelTestCase {
 
 		defineQty(qty);
 		clickAddToCartBtn();
-		clickProceedToCheckout();
+	//	clickProceedToCheckout();
+		getDriver().get(PagesURLs.getShoppingCartPage());
 		getCurrentFunctionName(false);
 	}
 	

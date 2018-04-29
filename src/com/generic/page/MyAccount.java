@@ -4,7 +4,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.generic.selector.MyAccount_Selectors_InProccess;
+import com.generic.selector.MyAccount_Selectors;
 import com.generic.setup.SelTestCase;
 import com.generic.setup.LoggingMsg;
 import com.generic.util.SelectorUtil;
@@ -19,8 +19,8 @@ public class MyAccount extends SelTestCase {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors_InProccess.emailInput));
-		subStrArr.add(MyAccount_Selectors_InProccess.Name);
+		logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors.emailInput));
+		subStrArr.add(MyAccount_Selectors.Name);
 		valuesArr.add("");
 		String name = "";
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
@@ -34,8 +34,8 @@ public class MyAccount extends SelTestCase {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors_InProccess.Email));
-		subStrArr.add(MyAccount_Selectors_InProccess.Email);
+		logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors.Email));
+		subStrArr.add(MyAccount_Selectors.Email);
 		valuesArr.add("index,1");
 		String email = "";
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
@@ -49,8 +49,8 @@ public class MyAccount extends SelTestCase {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.changePasswordBtn));
-		subStrArr.add(MyAccount_Selectors_InProccess.changePasswordBtn);
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.changePasswordBtn));
+		subStrArr.add(MyAccount_Selectors.changePasswordBtn);
 		valuesArr.add("index,2");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
@@ -63,8 +63,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE,
-					MyAccount_Selectors_InProccess.currentPasswordInput, password));
-			subStrArr.add(MyAccount_Selectors_InProccess.currentPasswordInput);
+					MyAccount_Selectors.currentPasswordInput, password));
+			subStrArr.add(MyAccount_Selectors.currentPasswordInput);
 			valuesArr.add(password);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -75,8 +75,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE,
-					MyAccount_Selectors_InProccess.newPasswordInput, password));
-			subStrArr.add(MyAccount_Selectors_InProccess.newPasswordInput);
+					MyAccount_Selectors.newPasswordInput, password));
+			subStrArr.add(MyAccount_Selectors.newPasswordInput);
 			valuesArr.add(password);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -87,8 +87,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE,
-					MyAccount_Selectors_InProccess.checkNewPasswordInput, password));
-			subStrArr.add(MyAccount_Selectors_InProccess.checkNewPasswordInput);
+					MyAccount_Selectors.checkNewPasswordInput, password));
+			subStrArr.add(MyAccount_Selectors.checkNewPasswordInput);
 			valuesArr.add(password);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -99,8 +99,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(
-					MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.cancelPasswordForm));
-			subStrArr.add(MyAccount_Selectors_InProccess.cancelPasswordForm);
+					MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.cancelPasswordForm));
+			subStrArr.add(MyAccount_Selectors.cancelPasswordForm);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -110,8 +110,8 @@ public class MyAccount extends SelTestCase {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.savePasswordForm));
-			subStrArr.add(MyAccount_Selectors_InProccess.savePasswordForm);
+			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.savePasswordForm));
+			subStrArr.add(MyAccount_Selectors.savePasswordForm);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -125,8 +125,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE,
-					MyAccount_Selectors_InProccess.profileFName, fName));
-			subStrArr.add(MyAccount_Selectors_InProccess.profileFName);
+					MyAccount_Selectors.profileFName, fName));
+			subStrArr.add(MyAccount_Selectors.profileFName);
 			valuesArr.add(fName);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -137,8 +137,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE,
-					MyAccount_Selectors_InProccess.profileLName, lName));
-			subStrArr.add(MyAccount_Selectors_InProccess.profileLName);
+					MyAccount_Selectors.profileLName, lName));
+			subStrArr.add(MyAccount_Selectors.profileLName);
 			valuesArr.add(lName);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -149,8 +149,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE,
-					MyAccount_Selectors_InProccess.profileNewEmail, email));
-			subStrArr.add(MyAccount_Selectors_InProccess.profileNewEmail);
+					MyAccount_Selectors.profileNewEmail, email));
+			subStrArr.add(MyAccount_Selectors.profileNewEmail);
 			valuesArr.add(email);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -161,8 +161,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE,
-					MyAccount_Selectors_InProccess.profileCheckEmail, email));
-			subStrArr.add(MyAccount_Selectors_InProccess.profileCheckEmail);
+					MyAccount_Selectors.profileCheckEmail, email));
+			subStrArr.add(MyAccount_Selectors.profileCheckEmail);
 			valuesArr.add(email);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -173,8 +173,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE,
-					MyAccount_Selectors_InProccess.profilePassword, password));
-			subStrArr.add(MyAccount_Selectors_InProccess.profilePassword);
+					MyAccount_Selectors.profilePassword, password));
+			subStrArr.add(MyAccount_Selectors.profilePassword);
 			valuesArr.add(password);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -185,8 +185,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(
-					MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.cancelEditProfileLink));
-			subStrArr.add(MyAccount_Selectors_InProccess.cancelEditProfileLink);
+					MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.cancelEditProfileLink));
+			subStrArr.add(MyAccount_Selectors.cancelEditProfileLink);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -196,8 +196,8 @@ public class MyAccount extends SelTestCase {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.saveEditProfileBtn));
-			subStrArr.add(MyAccount_Selectors_InProccess.saveEditProfileBtn);
+			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.saveEditProfileBtn));
+			subStrArr.add(MyAccount_Selectors.saveEditProfileBtn);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -210,8 +210,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(
-					MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors_InProccess.orderLink));
-			subStrArr.add(MyAccount_Selectors_InProccess.orderLink);
+					MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors.orderLink));
+			subStrArr.add(MyAccount_Selectors.orderLink);
 			valuesArr.add("");
 			String orderLink = "";
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
@@ -226,8 +226,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(
-					MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors_InProccess.orderDate));
-			subStrArr.add(MyAccount_Selectors_InProccess.orderDate);
+					MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors.orderDate));
+			subStrArr.add(MyAccount_Selectors.orderDate);
 			valuesArr.add("indes,4");
 			String orderDate = "";
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
@@ -242,8 +242,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,
-					MyAccount_Selectors_InProccess.orderTrackingNumber));
-			subStrArr.add(MyAccount_Selectors_InProccess.orderTrackingNumber);
+					MyAccount_Selectors.orderTrackingNumber));
+			subStrArr.add(MyAccount_Selectors.orderTrackingNumber);
 			valuesArr.add("indes,5");
 			String orderTrackingNumber = "";
 			try {
@@ -265,8 +265,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,
-					MyAccount_Selectors_InProccess.paymentCard));
-			subStrArr.add(MyAccount_Selectors_InProccess.paymentCard);
+					MyAccount_Selectors.paymentCard));
+			subStrArr.add(MyAccount_Selectors.paymentCard);
 			valuesArr.add("");
 			String paymentCard = "";
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
@@ -281,8 +281,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,
-					MyAccount_Selectors_InProccess.paymentCard));
-			subStrArr.add(MyAccount_Selectors_InProccess.paymentCard);
+					MyAccount_Selectors.paymentCard));
+			subStrArr.add(MyAccount_Selectors.paymentCard);
 			valuesArr.add("");
 			int numberOfPaymentCards;
 			try {
@@ -303,8 +303,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(
-					MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.removePaymentCardBtn));
-			subStrArr.add(MyAccount_Selectors_InProccess.removePaymentCardBtn);
+					MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.removePaymentCardBtn));
+			subStrArr.add(MyAccount_Selectors.removePaymentCardBtn);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -315,8 +315,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(
-					MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.removePaymentBtn));
-			subStrArr.add(MyAccount_Selectors_InProccess.removePaymentBtn);
+					MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.removePaymentBtn));
+			subStrArr.add(MyAccount_Selectors.removePaymentBtn);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -326,8 +326,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL,
-					MyAccount_Selectors_InProccess.setPaymentCardAsDefaultBtn));
-			subStrArr.add(MyAccount_Selectors_InProccess.setPaymentCardAsDefaultBtn);
+					MyAccount_Selectors.setPaymentCardAsDefaultBtn));
+			subStrArr.add(MyAccount_Selectors.setPaymentCardAsDefaultBtn);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -341,8 +341,8 @@ public class MyAccount extends SelTestCase {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.addAddress));
-			subStrArr.add(MyAccount_Selectors_InProccess.addAddress);
+			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.addAddress));
+			subStrArr.add(MyAccount_Selectors.addAddress);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -353,8 +353,8 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,
-					MyAccount_Selectors_InProccess.addressDetails));
-			subStrArr.add(MyAccount_Selectors_InProccess.addressDetails);
+					MyAccount_Selectors.addressDetails));
+			subStrArr.add(MyAccount_Selectors.addressDetails);
 			valuesArr.add("");
 			String addressDetails = "";
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
@@ -368,8 +368,8 @@ public class MyAccount extends SelTestCase {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.editAddress));
-			subStrArr.add(MyAccount_Selectors_InProccess.editAddress);
+			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.editAddress));
+			subStrArr.add(MyAccount_Selectors.editAddress);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -379,8 +379,8 @@ public class MyAccount extends SelTestCase {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.removeAddress));
-			subStrArr.add(MyAccount_Selectors_InProccess.removeAddress);
+			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.removeAddress));
+			subStrArr.add(MyAccount_Selectors.removeAddress);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -390,8 +390,8 @@ public class MyAccount extends SelTestCase {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.removeAddressBtn));
-			subStrArr.add(MyAccount_Selectors_InProccess.removeAddressBtn);
+			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.removeAddressBtn));
+			subStrArr.add(MyAccount_Selectors.removeAddressBtn);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -401,7 +401,7 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "firstname ", firstName));
-			subStrArr.add(MyAccount_Selectors_InProccess.firstName);
+			subStrArr.add(MyAccount_Selectors.firstName);
 			valuesArr.add(firstName);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -413,7 +413,7 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "address ", address));
-			subStrArr.add(MyAccount_Selectors_InProccess.address);
+			subStrArr.add(MyAccount_Selectors.address);
 			valuesArr.add(address);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -425,7 +425,7 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "lastname ", lastName));
-			subStrArr.add(MyAccount_Selectors_InProccess.lastName);
+			subStrArr.add(MyAccount_Selectors.lastName);
 			valuesArr.add(lastName);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -437,7 +437,7 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "city ", city));
-			subStrArr.add(MyAccount_Selectors_InProccess.city);
+			subStrArr.add(MyAccount_Selectors.city);
 			valuesArr.add(city);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -449,7 +449,7 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.SELECTING_ELEMENT_VALUE, "Countery ", countery));
-			subStrArr.add(MyAccount_Selectors_InProccess.countery);
+			subStrArr.add(MyAccount_Selectors.countery);
 			valuesArr.add(countery);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			Thread.sleep(1500);
@@ -462,7 +462,7 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.SELECTING_ELEMENT_VALUE, "state ", state));
-			subStrArr.add(MyAccount_Selectors_InProccess.state);
+			subStrArr.add(MyAccount_Selectors.state);
 			valuesArr.add(state);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -473,7 +473,7 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "postal", postal));
-			subStrArr.add(MyAccount_Selectors_InProccess.postal);
+			subStrArr.add(MyAccount_Selectors.postal);
 			valuesArr.add(postal);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -485,7 +485,7 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "phone", phone));
-			subStrArr.add(MyAccount_Selectors_InProccess.phone);
+			subStrArr.add(MyAccount_Selectors.phone);
 			valuesArr.add(phone);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -497,7 +497,7 @@ public class MyAccount extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(LoggingMsg.SAVING_ADDRESS);
-			subStrArr.add(MyAccount_Selectors_InProccess.defaultAddressBox);
+			subStrArr.add(MyAccount_Selectors.defaultAddressBox);
 			valuesArr.add(String.valueOf(check));
 			try {
 				SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
@@ -512,8 +512,8 @@ public class MyAccount extends SelTestCase {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.saveAddressDetails));
-			subStrArr.add(MyAccount_Selectors_InProccess.saveAddressDetails);
+			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.saveAddressDetails));
+			subStrArr.add(MyAccount_Selectors.saveAddressDetails);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -523,8 +523,8 @@ public class MyAccount extends SelTestCase {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.cancelAddressDetails));
-			subStrArr.add(MyAccount_Selectors_InProccess.cancelAddressDetails);
+			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.cancelAddressDetails));
+			subStrArr.add(MyAccount_Selectors.cancelAddressDetails);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -535,8 +535,8 @@ public class MyAccount extends SelTestCase {
 			Thread.sleep(1000);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors_InProccess.alertInfo));
-			subStrArr.add(MyAccount_Selectors_InProccess.alertInfo);
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors.alertInfo));
+			subStrArr.add(MyAccount_Selectors.alertInfo);
 			valuesArr.add("");
 			String alertMsg = "";
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
@@ -574,8 +574,8 @@ public class MyAccount extends SelTestCase {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors_InProccess.updateBtn));
-		subStrArr.add(MyAccount_Selectors_InProccess.updateBtn);
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, MyAccount_Selectors.updateBtn));
+		subStrArr.add(MyAccount_Selectors.updateBtn);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
@@ -585,9 +585,9 @@ public class MyAccount extends SelTestCase {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, MyAccount_Selectors_InProccess.emailInput,
+		logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, MyAccount_Selectors.emailInput,
 				email));
-		subStrArr.add(MyAccount_Selectors_InProccess.emailInput);
+		subStrArr.add(MyAccount_Selectors.emailInput);
 		valuesArr.add(email);
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
@@ -598,8 +598,8 @@ public class MyAccount extends SelTestCase {
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
 		logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE,
-				MyAccount_Selectors_InProccess.confirmEmailInput, checkEmail));
-		subStrArr.add(MyAccount_Selectors_InProccess.confirmEmailInput);
+				MyAccount_Selectors.confirmEmailInput, checkEmail));
+		subStrArr.add(MyAccount_Selectors.confirmEmailInput);
 		valuesArr.add(checkEmail);
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
@@ -609,9 +609,9 @@ public class MyAccount extends SelTestCase {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, MyAccount_Selectors_InProccess.passwordInput,
+		logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, MyAccount_Selectors.passwordInput,
 				password));
-		subStrArr.add(MyAccount_Selectors_InProccess.passwordInput);
+		subStrArr.add(MyAccount_Selectors.passwordInput);
 		valuesArr.add(password);
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
@@ -642,8 +642,8 @@ public class MyAccount extends SelTestCase {
 		Thread.sleep(1000);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors_InProccess.emailError));
-		subStrArr.add(MyAccount_Selectors_InProccess.emailError);
+		logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors.emailError));
+		subStrArr.add(MyAccount_Selectors.emailError);
 		valuesArr.add("noClick");
 		String emailErrorMsg = "";
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
@@ -658,8 +658,8 @@ public class MyAccount extends SelTestCase {
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
 		logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,
-				MyAccount_Selectors_InProccess.confirmEmailError));
-		subStrArr.add(MyAccount_Selectors_InProccess.confirmEmailError);
+				MyAccount_Selectors.confirmEmailError));
+		subStrArr.add(MyAccount_Selectors.confirmEmailError);
 		valuesArr.add("noClick");
 		String confirmEmailErrorMsg = "";
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
@@ -674,8 +674,8 @@ public class MyAccount extends SelTestCase {
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
 		logs.debug(
-				MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors_InProccess.passwordError));
-		subStrArr.add(MyAccount_Selectors_InProccess.passwordError);
+				MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors.passwordError));
+		subStrArr.add(MyAccount_Selectors.passwordError);
 		valuesArr.add("noClick");
 		String passwordErrorMsg = "";
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
@@ -690,8 +690,8 @@ public class MyAccount extends SelTestCase {
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
 		logs.debug(
-				MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors_InProccess.globalAlerts));
-		subStrArr.add(MyAccount_Selectors_InProccess.globalAlerts);
+				MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, MyAccount_Selectors.globalAlerts));
+		subStrArr.add(MyAccount_Selectors.globalAlerts);
 		valuesArr.add("");
 		String globalAlertMsg = "";
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);

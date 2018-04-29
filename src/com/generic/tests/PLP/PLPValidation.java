@@ -45,16 +45,10 @@ public class PLPValidation extends SelTestCase {
 	}
 
 	@Test(dataProvider = "PLP")
-	public void verifyPLP(String caseId, String runTest, String desc, String sortOptions1,
-			String sortOptions2, String userLocationStore, String addToCartProduct, String pickUpInStoreProduct, String pickupNthIconIndex, String pickupInStoreQty,String plpFilter, String nthProductItem,
-			String nthAppliedFacet, String SdoClickAddToCart, String SdoClickPickupInStore, String SdoClickNthProductItem, String SdoClickCheckoutBtn, String SdoClickCloseBtn) throws Exception {
+	public void verifyPLP(String caseId, String runTest, String desc, String proprties, String PLPView,
+			String PLPFacets, String PLPFilter, String QuickShop, String numberOfProducts) throws Exception {
 		
-		boolean doClickAddToCart = Boolean.valueOf(SdoClickAddToCart);
-		boolean doClickPickupInStore = Boolean.valueOf(SdoClickPickupInStore);
-		boolean doClickNthProductItem = Boolean.valueOf(SdoClickNthProductItem);
-		boolean doClickCheckoutBtn = Boolean.valueOf(SdoClickCheckoutBtn);
-		boolean doClickCloseBtn = Boolean.valueOf(SdoClickCloseBtn);
-		
+		boolean verifyQuickShop = Boolean.valueOf(QuickShop);	
 		Testlogs.set(new SASLogger("PLP " + getBrowserName()));
 		// Important to add this for logging/reporting
 		setTestCaseReportName("PLP Case");
@@ -64,11 +58,46 @@ public class PLPValidation extends SelTestCase {
 		try {
 			String url = PagesURLs.getPLP();
 			getDriver().get(url);
-			
-			
+
 			String X = PLP.getProductInformation(0);
 			logs.debug(X);
-//			
+
+			if (!"".equals(PLPView)) {
+
+				if (PLPView.contains("Grid")) {
+				}
+				if (PLPView.contains("List")) {
+				}
+			}
+			if (!"".equals(PLPFacets)) {
+
+				if (PLPFacets.contains("Style")) {
+				}
+				if (PLPFacets.contains("Fit")) {
+				}
+				if (PLPFacets.contains("Color")) {
+				}
+				if (PLPFacets.contains("Size")) {
+				}
+			}
+			if (!"".equals(PLPFilter)) {
+				if (PLPFilter.contains("HTL")) {
+				}
+				if (PLPFilter.contains("LTH")) {
+				}
+				if (PLPFilter.contains("Rating")) {
+				}
+				if (PLPFilter.contains("Newest")) {
+				}
+			}
+			if (!"".equals(QuickShop)) {
+				if (QuickShop.contains("TRUE")) {
+
+				}
+			}
+			if (!"".equals(numberOfProducts)) {
+
+			}
 //			Thread.sleep(5000);
 //			
 //			PLP.selectSortOptions1ByValue(sortOptions1);

@@ -24,6 +24,36 @@ public class Cart extends SelTestCase {
 
 	}
 	
+	public static boolean isCartPageOpened() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		List<String> valuesArr = new ArrayList<String>();
+		boolean isCartPageOpened =false;
+		subStrArr.add(CartSelectors.CartContainer);
+		valuesArr.add("");
+		try {
+			SelectorUtil.textValue.set("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			isCartPageOpened =true;
+		} catch (Exception e) {
+			logs.debug(e.getMessage());
+		}
+		getCurrentFunctionName(false);
+		return isCartPageOpened;
+	}
+	
+	public static String getCartId() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		List<String> valuesArr = new ArrayList<String>();
+		subStrArr.add(CartSelectors.cartId);
+		valuesArr.add("");
+		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+	//	logs.debug(MessageFormat.format(LoggingMsg.CART_ID, SelectorUtil.textValue.get()));
+		getCurrentFunctionName(false);
+		return SelectorUtil.textValue.get();
+	}
+	
 	public static void clickCheckout() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
