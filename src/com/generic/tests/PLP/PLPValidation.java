@@ -46,9 +46,8 @@ public class PLPValidation extends SelTestCase {
 
 	@Test(dataProvider = "PLP")
 	public void verifyPLP(String caseId, String runTest, String desc, String proprties, String PLPView,
-			String PLPFacets, String PLPFilter, String QuickShop, String numberOfProducts) throws Exception {
-		
-		boolean verifyQuickShop = Boolean.valueOf(QuickShop);	
+			String PLPFacets, String PLPFilter, String QuickShop) throws Exception {
+
 		Testlogs.set(new SASLogger("PLP " + getBrowserName()));
 		// Important to add this for logging/reporting
 		setTestCaseReportName("PLP Case");
@@ -59,118 +58,101 @@ public class PLPValidation extends SelTestCase {
 			String url = PagesURLs.getPLP();
 			getDriver().get(url);
 
-			String X = PLP.getProductInformation(0);
-			logs.debug(X);
-
 			if (!"".equals(PLPView)) {
 
 				if (PLPView.contains("Grid")) {
+					sassert().assertTrue(PLP.checkGridViewSelected(), "Grid view is not selected by default");
+					sassert().assertTrue(PLP.checkGridViewProducts(), "Products are not displayed as expected");
+					sassert().assertTrue(PLP.checkGridViewQuickshop(), "Quickshop button is displayed as expected");
+					sassert().assertTrue(PLP.checkGridViewProductDes(), "Product Name is not displayed as expected");
+					sassert().assertTrue(PLP.checkGridViewProductPrice(), "Product price is not displayed as expected");
+					PLP.clickGridViewQuickshop();
+					Thread.sleep(3000);
+					sassert().assertTrue(PLP.checkQuickshopModalContent(), "Quickshop modal is not displayed as expected");
 				}
 				if (PLPView.contains("List")) {
+					sassert().assertTrue(PLP.checkGridViewSelected(), "Grid view is not selected by default");
+					PLP.clickListView();
+					sassert().assertTrue(PLP.checkListViewSelected(), "List view is not selected as expected");
+					sassert().assertTrue(PLP.checkListViewProducts(), "Products are not displayed as expected");
+					sassert().assertTrue(PLP.checkListViewQuickshop(), "Quickshop button is displayed as expected");
+					sassert().assertTrue(PLP.checkListViewProductTitle(), "Product Name is not displayed as expected");
+					sassert().assertTrue(PLP.checkListViewProductPrice(), "Product price is not displayed as expected");
+					PLP.clickListViewQuickshop();
+					Thread.sleep(3000);
+					sassert().assertTrue(PLP.checkQuickshopModalContent(), "Quickshop modal is not displayed as expected");
+					// TODO: update getPLP function to add a url variable
+					// url = PagesURLs.getPLP();
+					url = PagesURLs.getPLP();
+					getDriver().get(url);
+					sassert().assertTrue(PLP.checkListViewSelected(), "Listview is not persist for all categories");
 				}
 			}
 			if (!"".equals(PLPFacets)) {
 
 				if (PLPFacets.contains("Style")) {
+					if (PLP.isStyleFilterAvailable()) {
+						int itemsNumber = PLP.countProductsInPage();
+						PLP.clickFirstStyleFilter();
+						Thread.sleep(2000);
+						sassert().assertTrue(PLP.countProductsInPage() <= itemsNumber, "Style Fiter is not applied correctly");
+					}
+
 				}
 				if (PLPFacets.contains("Fit")) {
+					if (PLP.isFitFilterAvailable()) {
+						int itemsNumber = PLP.countProductsInPage();
+						PLP.clickFirstFitFilter();
+						Thread.sleep(2000);
+						sassert().assertTrue(PLP.countProductsInPage() <= itemsNumber, "Fit Fiter is not applied correctly");
+					}
 				}
 				if (PLPFacets.contains("Color")) {
+					if (PLP.isColorFilterAvailable()) {
+						int itemsNumber = PLP.countProductsInPage();
+						PLP.clickFirstColorFilter();
+						Thread.sleep(2000);
+						sassert().assertTrue(PLP.countProductsInPage() <= itemsNumber, "Color Fiter is not applied correctly");
+					}
 				}
 				if (PLPFacets.contains("Size")) {
+					if (PLP.isSizeFilterAvailable()) {
+						int itemsNumber = PLP.countProductsInPage();
+						PLP.clickFirstSizeFilter();
+						Thread.sleep(2000);
+						sassert().assertTrue(PLP.countProductsInPage() <= itemsNumber, "Size Fiter is not applied correctly");
+					}
+				}
+				if (PLPFacets.contains("Pattern")) {
+					int itemsNumber = PLP.countProductsInPage();
+					PLP.clickFirstPatternFilterIfAvaiable();
+					Thread.sleep(2000);
+					sassert().assertTrue(PLP.countProductsInPage() <= itemsNumber, "Pattern Fiter is not applied correctly");
+				}
+				if (PLPFacets.contains("Collection")) {
+					int itemsNumber = PLP.countProductsInPage();
+					PLP.clickFirstCollectionFilterIfAvaiable();
+					Thread.sleep(2000);
+					sassert().assertTrue(PLP.countProductsInPage() <= itemsNumber, "Collection Fiter is not applied correctly");
 				}
 			}
 			if (!"".equals(PLPFilter)) {
-				if (PLPFilter.contains("HTL")) {
-				}
-				if (PLPFilter.contains("LTH")) {
-				}
-				if (PLPFilter.contains("Rating")) {
-				}
-				if (PLPFilter.contains("Newest")) {
+				if (PLPFilter.contains("Price") || PLPFilter.contains("Rating")) {
+					sassert().assertTrue(PLP.sortAndValidate(PLPFilter), PLPFilter + " sorting is not OK");
+					Thread.sleep(3000);
+				} else {
+					sassert().assertTrue(PLP.sortAndValidate(PLPFilter), "Sorting is not OK.");
+					Thread.sleep(3000);
 				}
 			}
 			if (!"".equals(QuickShop)) {
 				if (QuickShop.contains("TRUE")) {
+					sassert().assertTrue(PLP.checkQuickshopModalContent(), "Quickshop modal is not displayed as expected");
+					PLP.clickQuickshopBtn();
 
 				}
 			}
-			if (!"".equals(numberOfProducts)) {
-
-			}
-//			Thread.sleep(5000);
-//			
-//			PLP.selectSortOptions1ByValue(sortOptions1);
-//			Thread.sleep(3000);
-//			
-//			PLP.selectSortOptions2ByValue(sortOptions2);
-//			Thread.sleep(3000);
-//			
-////			String productsNum = PLP.getNumberOfproducts();
-////			logs.debug(MessageFormat.format(LoggingMsg.NUMBER_OF_PRODUCTS, productsNum));
-//			
-//			sassert().assertTrue(PLP.doesDisplayedProductsNumTextMatchesProductsDisplayed());
-//		
-//			PLP.typeUserLocationStore(userLocationStore);
-//			Thread.sleep(4000);
-//			
-////			PLP.clickFindStores();
-////			Thread.sleep(3000);
-//			
-//			PLP.clickMoreStores();
-//			Thread.sleep(3000);
-//			
-//		
-//			
-//		     // PLP.clickleftNavCheckBoxCheckBox("London Hospital");
-//			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "Store", PLP.getFacetNavTitleStoresCount()));
-//			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "price", PLP.getFacetNavTitlePriceCount()));
-//			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "colour", PLP.getFacetNavTitleColourCount()));
-//			//logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, "Size", PLP.getFacetNavTitleSizeCount()));
-//			sassert().assertTrue(PLP.compareAppliedFilterWithDisplayedProductNumber(plpFilter));
-//			
-//			PLP.removeNthAppliedFacet(nthAppliedFacet);
-//			
-//			PLP.clickChangeLocationLink();
-//			Thread.sleep(3000);
-//			
-//		    PLP.verifyChangeLocationLink();
-//		    
-//		    if (doClickAddToCart) {
-//		    	PLP.clickAddToCart(addToCartProduct);
-//				Thread.sleep(3000);
-//				String productPriceAddedToCart = PLP.getPLPProductPriceFromCartBag();
-//				logs.debug(MessageFormat.format(LoggingMsg.PLP_PRODUCT_PRICE, productPriceAddedToCart));
-//				String productPrice = PLP.getPLPProductPrice(addToCartProduct);
-//				logs.debug(MessageFormat.format(LoggingMsg.PLP_PRODUCT_PRICE, productPrice));
-//				Thread.sleep(2000);
-//				if (doClickCloseBtn) {
-//					PLP.clickCboxCloseBtn();
-//				} else if (doClickCheckoutBtn) {
-//					PLP.clickCheckoutBtn();
-//				} else {
-//					PLP.clickContinueShoppingBtn();
-//				}
-//			}
-//		    
-//		    if (doClickPickupInStore) {
-//		    	PLP.clickProductPickupInStoreButton(pickUpInStoreProduct);
-//		    	PLP.typePickUpInStoreLocationForSearch(userLocationStore);
-//		    	PLP.clickPickupNthAccessibleTabIcon(pickupNthIconIndex);
-//		    	PLP.clickPickUpInStoreDecreaseQtyBtn(pickUpInStoreProduct);
-//		    	PLP.clickPickUpInStoreIncreaseQtyBtn(pickUpInStoreProduct);
-//		    	PLP.typePickUpInStoreQty(pickUpInStoreProduct, pickupInStoreQty);
-//		    	PLP.clickPickUpInStoreAddToBagBtn(pickUpInStoreProduct);
-//		    	PLP.clickCboxCloseBtn();
-//		    	Thread.sleep(2000);
-//		    }
-//		    
-//		    if (doClickNthProductItem) {
-//		    	PLP.clickNthProductItem(nthProductItem);
-//		    }
-//		    
-//			Thread.sleep(4000);
-//			sassert().assertAll();
+			sassert().assertAll();
 			Common.testPass();
 		} catch (Throwable t) {
 			setTestCaseDescription(getTestCaseDescription());

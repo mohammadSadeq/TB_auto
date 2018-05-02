@@ -682,9 +682,10 @@ public class SelectorUtil extends SelTestCase {
 									   }
 								   }
 							   }
-							   else
+								   else
 							   {
 								   textVal = select.getFirstSelectedOption().getText();
+								   logs.debug("text is :" + textVal);
 							   }
 						   }
 						   catch(Exception e)

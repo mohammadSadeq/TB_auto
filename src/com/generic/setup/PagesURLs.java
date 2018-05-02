@@ -4,7 +4,7 @@ import java.text.MessageFormat;
 import java.util.NoSuchElementException;
 
 public class PagesURLs extends SelTestCase {
-	public static String env = "env";
+//	public static String env = "env";
 	public static String HP = "HomePage";
 	public static String driversPath = "driversPath";
 	public static String personalDetailsPage = "personalDetailsPage";
@@ -49,7 +49,7 @@ public class PagesURLs extends SelTestCase {
 	}
 	public static String getLoginPage() {
 		try {
-			return getCONFIG().getProperty(loginPage);
+			return selectEnvironment(getCONFIG().getProperty(loginPage));
 			} catch(Throwable t) {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, loginPage));
 			}
@@ -63,7 +63,7 @@ public class PagesURLs extends SelTestCase {
 	}
 	public static String getKioskPage() {
 		try {
-			return getCONFIG().getProperty(kioskPage);
+			return selectEnvironment(getCONFIG().getProperty(kioskPage));
 			} catch(Throwable t) {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, kioskPage));
 			}
@@ -75,23 +75,9 @@ public class PagesURLs extends SelTestCase {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, kioskPage));
 			}
 	}
-	public static String getPersonalDetailsPage() {
-		try {
-			return getCONFIG().getProperty(kioskPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, kioskPage));
-			}
-	}
-	public static void setPersonalDetailsPage(String newPersonalDetailsPage) {
-		try {
-			getCONFIG().setProperty(personalDetailsPage,newPersonalDetailsPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, personalDetailsPage));
-			}
-	}
 	public static String getMyAccountPage() {
 		try {
-			return getCONFIG().getProperty(myAccountPage);
+			return selectEnvironment(getCONFIG().getProperty(myAccountPage));
 			} catch(Throwable t) {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, myAccountPage));
 			}
@@ -103,37 +89,9 @@ public class PagesURLs extends SelTestCase {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, myAccountPage));
 			}
 	}
-	public static String getPaymentDetailsPage() {
-		try {
-			return getCONFIG().getProperty(paymentDetailsPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, paymentDetailsPage));
-			}
-	}
-	public static void setPaymentDetailsPage(String newPaymentDetailsPage) {
-		try {
-			getCONFIG().setProperty(paymentDetailsPage,newPaymentDetailsPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, paymentDetailsPage));
-			}
-	}
-	public static String getPasswordPage() {
-		try {
-			return getCONFIG().getProperty(passwordPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, passwordPage));
-			}
-	}
-	public static void setPasswordPage(String newPasswordPage) {
-		try {
-			getCONFIG().setProperty(passwordPage,newPasswordPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, passwordPage));
-			}
-	}
 	public static String getOrderHistoryPage() {
 		try {
-			return getCONFIG().getProperty(orderHistoryPage);
+			return selectEnvironment(getCONFIG().getProperty(orderHistoryPage));
 			} catch(Throwable t) {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, orderHistoryPage));
 			}
@@ -145,65 +103,9 @@ public class PagesURLs extends SelTestCase {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, orderHistoryPage));
 			}
 	}
-	public static String getAddressBookPage() {
-		try {
-			return getCONFIG().getProperty(addressBookPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, addressBookPage));
-			}
-	}
-	public static void setAddressBookPage(String newAddressBookPage) {
-		try {
-			getCONFIG().setProperty(addressBookPage,newAddressBookPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, addressBookPage));
-			}
-	}
-	public static String getSavedCartsPage() {
-		try {
-			return getCONFIG().getProperty(savedCartsPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, savedCartsPage));
-			}
-	}
-	public static void setSavedCartsPage(String newSavedCartsPage) {
-		try {
-			getCONFIG().setProperty(savedCartsPage,newSavedCartsPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, savedCartsPage));
-			}
-	}
-	public static String getConsentManagementPage() {
-		try {
-			return getCONFIG().getProperty(consentManagementPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, consentManagementPage));
-			}
-	}
-	public static void setConsentManagementPage(String newConsentManagementPage) {
-		try {
-			getCONFIG().setProperty(consentManagementPage,newConsentManagementPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, consentManagementPage));
-			}
-	}
-	public static String getSupportTicketsPage() {
-		try {
-			return getCONFIG().getProperty(supportTicketsPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, supportTicketsPage));
-			}
-	}
-	public static void setSupportTicketsPage(String newSupportTicketsPage) {
-		try {
-			getCONFIG().setProperty(supportTicketsPage,newSupportTicketsPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, supportTicketsPage));
-			}
-	}
 	public static String getReturnHistoryPage() {
 		try {
-			return getCONFIG().getProperty(returnHistoryPage);
+			return selectEnvironment(getCONFIG().getProperty(returnHistoryPage));
 			} catch(Throwable t) {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, returnHistoryPage));
 			}
@@ -217,7 +119,7 @@ public class PagesURLs extends SelTestCase {
 	}
 	public static String getShoppingCartPage() {
 		try {
-			return getCONFIG().getProperty(shoppingCartPage);
+			return selectEnvironment(getCONFIG().getProperty(shoppingCartPage));
 			} catch(Throwable t) {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, shoppingCartPage));
 			}
@@ -231,7 +133,7 @@ public class PagesURLs extends SelTestCase {
 	}
 	public static String getSignOutPage() {
 		try {
-			return getCONFIG().getProperty(signOutPage);
+			return selectEnvironment(getCONFIG().getProperty(signOutPage));
 			} catch(Throwable t) {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, signOutPage));
 			}
@@ -243,39 +145,11 @@ public class PagesURLs extends SelTestCase {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, signOutPage));
 			}
 	}
-	public static String getStoreFinderPage() {
-		try {
-			return getCONFIG().getProperty(storeFinderPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, storeFinderPage));
-			}
-	}
-	public static void setStoreFinderPage(String newStoreFinderPage) {
-		try {
-			getCONFIG().setProperty(storeFinderPage,newStoreFinderPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, storeFinderPage));
-			}
-	}
-	public static String getErrorPage() {
-		try {
-			return getCONFIG().getProperty(errorPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, storeFinderPage));
-			}
-	}
-	public static void setErrorPage(String newErrorPage) {
-		try {
-			getCONFIG().setProperty(errorPage,newErrorPage);
-			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, newErrorPage));
-			}
-	}
 	public static String getPLP() {
 		try {
-			return getCONFIG().getProperty(PLP);
+			return selectEnvironment(getCONFIG().getProperty(PLP));
 			} catch(Throwable t) {
-				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, storeFinderPage));
+				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, PLP));
 			}
 	}
 	public static void setPLP(String newPLP) {
@@ -287,7 +161,7 @@ public class PagesURLs extends SelTestCase {
 	}
 	public static String getHomePage() {
 		try {
-			return getCONFIG().getProperty(HP);
+			return selectEnvironment(getCONFIG().getProperty(HP));
 			} catch(Throwable t) {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, HP));
 			}
@@ -301,7 +175,7 @@ public class PagesURLs extends SelTestCase {
 	}
 	public static String getCLP() {
 		try {
-			return getCONFIG().getProperty(CLP);
+			return selectEnvironment(getCONFIG().getProperty(CLP));
 			} catch(Throwable t) {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, CLP));
 			}
@@ -312,5 +186,13 @@ public class PagesURLs extends SelTestCase {
 			} catch(Throwable t) {
 				throw new NoSuchElementException(MessageFormat.format(LoggingMsg.PROPERTY_ERROR_MSG, CLP));
 			}
+	}
+	public static String selectEnvironment(String url) {
+	        logs.debug("Current URL: " + url);
+		    String env = getCONFIG().getProperty("testEnvironment").split("\\.")[0];
+		    String currentenv = url.split("\\.")[0];
+			String newURL = url.replaceAll(currentenv, env);
+		    logs.debug("Expected URL: " + newURL);
+			return newURL;
 	}
 }

@@ -739,7 +739,14 @@ public class CheckOut extends SelTestCase {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			subStrArr.add(CheckOutSelectors.shippingMethod +shippingMethod);
+		//	subStrArr.add(CheckOutSelectors.shippingMethod +shippingMethod);
+			if(getCONFIG().getProperty("testEnvironment").split("\\.")[0].contains("dev"))
+			{
+				subStrArr.add(shippingMethod.toUpperCase());
+			}
+			else {
+				subStrArr.add(shippingMethod);
+			}
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);

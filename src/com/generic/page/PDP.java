@@ -30,8 +30,17 @@ public class PDP extends SelTestCase {
 		public static final String scene7Image = "scene7Image";
 			
 	}
+	public static void getURL(String url) {
+        logs.debug("Current URL: " + url);
+	    String env = getCONFIG().getProperty("testEnvironment").split("\\.")[0];
+	    String currentenv = url.split("\\.")[0];
+		String newURL = url.replaceAll(currentenv, env);
+	    logs.debug("Expected URL: " + newURL);
+	    getDriver().get(newURL);
+
+}
 	public static void addProductsToCartAndClickCheckOut(String url, String color, String size, String qty) throws Exception {
-		getDriver().get(url);
+		getURL(url);
 		getCurrentFunctionName(true);
 		if (!"".equals(color))
 			selectcolor(color);
@@ -47,7 +56,7 @@ public class PDP extends SelTestCase {
 	}
 	
 	public static void addProductsToCart(String url, String color, String size, String qty) throws Exception {
-		getDriver().get(url);
+		getURL(url);
 		getCurrentFunctionName(true);
 		if (!"".equals(color))
 			selectcolor(color);

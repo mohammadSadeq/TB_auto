@@ -4,10 +4,9 @@ package com.generic.page;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
+import com.generic.selector.PDPSelectors;
 import com.generic.selector.PLPSelectors;
 import com.generic.setup.LoggingMsg;
 import com.generic.setup.SelTestCase;
@@ -15,462 +14,413 @@ import com.generic.util.SelectorUtil;
 
 public class PLP extends SelTestCase {
 
-    
-    public static class keys {
+	public static class keys {
 		public static final String caseId = "caseId";
 	}
 
-    public static void selectSortOptions1ByValue(String sortByTxt) throws Exception {
+	public static int countProductsInPage() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.SELECTING_ELEMENT_VALUE,PLPSelectors.sortOptions1, sortByTxt));
-		subStrArr.add(PLPSelectors.sortOptions1);
-		valuesArr.add(sortByTxt);
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		String SelectedOptions2Val = getSortOptions2SelectedValue();
-		logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_SORT_VALUES,"sortOptions1", sortByTxt, "sortOptions2", SelectedOptions2Val.trim()));
+		logs.debug("counting the products ");
+		subStrArr.add(PLPSelectors.productLink);
+		int itemsNumber = SelectorUtil.getAllElements(subStrArr).size();
+		logs.debug("product count is :" + itemsNumber);
 		getCurrentFunctionName(false);
+		return itemsNumber;
 	}
-    
-    public static String getSortOptions2SelectedValue() throws Exception {
+
+	public static void selectSortOptions(String sortOptions) throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,PLPSelectors.sortOptions2));
-		subStrArr.add(PLPSelectors.sortOptions2);
-		valuesArr.add("");
-		String sortOptions2SelectedValue = "";
+		subStrArr.add(PLPSelectors.sortOptions);
+		valuesArr.add(sortOptions);
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		sortOptions2SelectedValue = SelectorUtil.textValue.get();
 		getCurrentFunctionName(false);
-    	return sortOptions2SelectedValue;
-    }
-    
-    public static void selectSortOptions2ByValue(String sortByTxt) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.SELECTING_ELEMENT_VALUE,PLPSelectors.sortOptions2, sortByTxt));
-		subStrArr.add(PLPSelectors.sortOptions2);
-		valuesArr.add(sortByTxt);
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		String SelectedOptions1Val = getSortOptions2SelectedValue();
-		logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_SORT_VALUES,"sortOptions2", sortByTxt, "sortOptions1", SelectedOptions1Val.trim()));
-		getCurrentFunctionName(false);
+
 	}
-    
-    public static String getSortOptions1SelectedValue() throws Exception {
+
+	public static String getRating() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,PLPSelectors.sortOptions1));
-		subStrArr.add(PLPSelectors.sortOptions1);
-		valuesArr.add("");
-		String sortOptions2SelectedValue = "";
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		sortOptions2SelectedValue = SelectorUtil.textValue.get();
+		logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, PDPSelectors.ratingValue));
+		subStrArr.add(PLPSelectors.productsRating);
+		String dataRating = SelectorUtil.getAttr(subStrArr, "data-rating");
+		logs.debug("data-rating is: " + dataRating);
 		getCurrentFunctionName(false);
-    	return sortOptions2SelectedValue;
-    }
-    
-    public static String getNumberOfproducts() throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-	    int numberOfProductsShownInHeader;
-		subStrArr.add(PLPSelectors.numberOfProductsFound);
-		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		logs.debug(MessageFormat.format(LoggingMsg.NUMBER_OF_PRODUCTS, SelectorUtil.textValue.get()));
-		getCurrentFunctionName(false);
-		String productsNum = SelectorUtil.textValue.get().split(" ")[0];
-		numberOfProductsShownInHeader = Integer.parseInt(productsNum);
-		return productsNum;
+		return dataRating;
 	}
-    
-    public static String getProductInformation(int index) throws Exception
-    {
-    	getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		subStrArr.add(PLPSelectors.product);
-		valuesArr.add("");
-		WebElement product  = SelectorUtil.getNthElement(subStrArr, index);
-		getCurrentFunctionName(false);
-		return product.findElement(By.className("description-price")).getText();
-    }
-    
-    public static boolean doesDisplayedProductsNumTextMatchesProductsDisplayed () throws Exception {
-    	getCurrentFunctionName(true);
-    	List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-	    int numberOfProductsShownInHeader;
-		subStrArr.add(PLPSelectors.numberOfProductsFound);
-		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		logs.debug(MessageFormat.format(LoggingMsg.NUMBER_OF_PRODUCTS, SelectorUtil.textValue.get()));
-		getCurrentFunctionName(false);
-		String productsNum = SelectorUtil.textValue.get().split(" ")[0];
-		numberOfProductsShownInHeader = Integer.parseInt(productsNum);
-		subStrArr.clear();
-		valuesArr.clear();
-		subStrArr.add(PLPSelectors.productItem);
-		valuesArr.add("noClick");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		logs.debug(MessageFormat.format(LoggingMsg.EXPECTED_TEXT, numberOfProductsShownInHeader));
-		logs.debug(MessageFormat.format(LoggingMsg.ACTUAL_TEXT, SelectorUtil.numberOfFoundElements.get()));
-		getCurrentFunctionName(false);
-		if (numberOfProductsShownInHeader == Integer.parseInt(SelectorUtil.numberOfFoundElements.get())) {
-    		return true;
-    	} else {
-    		logs.debug(MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR, SelectorUtil.numberOfFoundElements.get(), numberOfProductsShownInHeader));
-    		return false;
-    	}
-    }
-    
-    public static void clickFindStores() throws Exception {
+
+	public static String getSelectedSort() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.findStoresNearMeAjax));
-		subStrArr.add(PLPSelectors.findStoresNearMeAjax);
+		logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR, PLPSelectors.sortOptions));
+		subStrArr.add(PLPSelectors.sortOptions);
 		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static void typeUserLocationStore(String storeName) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, PLPSelectors.userLocationStore, storeName));
-		subStrArr.add(PLPSelectors.userLocationStore);
-		valuesArr.add(storeName + ",pressEnter");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static void clickAddToCart(String productCodePost) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.addToCartForm + productCodePost));
-		subStrArr.add(PLPSelectors.addToCartForm + productCodePost);
-		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static void clickProductPickupInStoreButton(String productCodePost) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.productPickupInStoreButton + productCodePost));
-		subStrArr.add(PLPSelectors.productPickupInStoreButton + productCodePost);
-		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static void clickMoreStores() throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.moreStores));
-		subStrArr.add(PLPSelectors.moreStores);
-		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static String getPLPProductPrice(String productCodePost) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		String selText = MessageFormat.format(PLPSelectors.plpProductPriceLabel, productCodePost);
-		logs.debug(MessageFormat.format(LoggingMsg.GETTING_SEL, selText));
-		subStrArr.add(selText);
-		valuesArr.add("noClick");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
 		return SelectorUtil.textValue.get();
 	}
-    
-    public static String getPLPProductPriceFromCartBag() throws Exception {
+
+	public static boolean validateSorting(String sortType) throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.GETTING_SEL, PLPSelectors.addToCartItemPriceParent + ":"+ PLPSelectors.addToCartItemPrice));
-		subStrArr.add(PLPSelectors.addToCartItemPriceParent);
-		valuesArr.add("child,"+PLPSelectors.addToCartItemPrice);
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-		return SelectorUtil.textValue.get();
+		if (sortType.contains("Price")) {
+			logs.debug("verifiing the PLP pricing");
+			subStrArr.add(PLPSelectors.productsPrices);
+			String Price1 = SelectorUtil.getNthElement(subStrArr, 0).getText();
+			String Price2 = SelectorUtil.getNthElement(subStrArr, 1).getText();
+			String Price3 = SelectorUtil.getNthElement(subStrArr, 2).getText();
+			logs.debug("Prices for first 3 products is " + Price1 + ", " + Price2 + ", " + Price3);
+
+			double valuePrice1 = Double.parseDouble(Price1.trim().replace("$", ""));
+			double valuePrice2 = Double.parseDouble(Price2.trim().replace("$", ""));
+			double valuePrice3 = Double.parseDouble(Price3.trim().replace("$", ""));
+
+			getCurrentFunctionName(false);
+			if (sortType.contains("Low-High"))
+				return ((valuePrice1 <= valuePrice2) && (valuePrice2 <= valuePrice3));
+			else
+				return ((valuePrice1 >= valuePrice2) && (valuePrice2 >= valuePrice3));
+		}
+		if (sortType.contains("Rating")) {
+			subStrArr.add(PLPSelectors.productsRating);
+			String Rate1 = SelectorUtil.getAttr(subStrArr, "alt", 0).split(" ")[2].replaceAll("_", ".");
+			String Rate2 = SelectorUtil.getAttr(subStrArr, "alt", 1).split(" ")[2].replaceAll("_", ".");
+			String Rate3 = SelectorUtil.getAttr(subStrArr, "alt", 2).split(" ")[2].replaceAll("_", ".");
+			logs.debug("Rating for first 3 products is " + Rate1 + ", " + Rate2 + ", " + Rate3);
+
+			double valueRate1 = Double.parseDouble(Rate1);
+			double valueRate2 = Double.parseDouble(Rate2);
+			double valueRate3 = Double.parseDouble(Rate3);
+
+			getCurrentFunctionName(false);
+			if (sortType.contains("Low-High"))
+				return ((valueRate1 <= valueRate2) && (valueRate2 <= valueRate3));
+			else
+				return ((valueRate1 >= valueRate2) && (valueRate2 >= valueRate3));
+		} else {
+//			subStrArr.add(PLPSelectors.productLink);
+//			String Product1 = SelectorUtil.getAttr(subStrArr, "onclick", 0);
+//			return Product1.contains("new");
+			logs.debug("Expected sorting is:" + sortType);
+			logs.debug("Acual sorting is:" + getSelectedSort());
+			return getSelectedSort().contains(sortType);
+		}
 	}
-    
-    public static void clickCheckoutBtn() throws Exception {
+
+	public static boolean sortAndValidate(String sortType) throws Exception {
+		getCurrentFunctionName(true);
+		logs.debug("Sorting: " + sortType);
+
+		selectSortOptions(sortType);
+
+		boolean validation = validateSorting(sortType);
+
+		getCurrentFunctionName(false);
+		return validation;
+	}
+
+	public static void clickGridView() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.addToCartItemCheckoutBtn));
-		subStrArr.add(PLPSelectors.addToCartItemCheckoutBtn);
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.gridView));
+		subStrArr.add(PLPSelectors.gridView);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
 	}
-    
-    public static void clickContinueShoppingBtn() throws Exception {
+
+	public static void clickListView() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.addToCartItemContinueShoppingBtn));
-		subStrArr.add(PLPSelectors.addToCartItemContinueShoppingBtn);
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.listView));
+		subStrArr.add(PLPSelectors.listView);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
 	}
-    
-    public static void clickCboxCloseBtn() throws Exception {
+
+	public static void clickQuickshopBtn() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.cboxCloseBtn));
-		subStrArr.add(PLPSelectors.cboxCloseBtn);
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.quickShopBtn));
+		subStrArr.add(PLPSelectors.quickShopBtn);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
 	}
-    
-    public static void clickleftNavCheckBoxCheckBox(String checkBoxValue) throws Exception {
+
+	public static boolean checkGridViewSelected() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.gridViewSelected);
+		boolean isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+		logs.debug("Grid view is selected by default " + isDisplayed);
+		getCurrentFunctionName(false);
+		return isDisplayed;
+	}
+
+	public static boolean checkListViewSelected() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.listViewSelected);
+		boolean isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+		logs.debug("List view is selected as expected " + isDisplayed);
+		getCurrentFunctionName(false);
+		return isDisplayed;
+	}
+
+	public static boolean checkGridViewProducts() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.gridViewProducts);
+		boolean isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+		logs.debug("Products are displayed as expected " + isDisplayed);
+		getCurrentFunctionName(false);
+		return isDisplayed;
+	}
+
+	public static boolean checkListViewProducts() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.listViewProducts);
+		boolean isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+		logs.debug("Products are displayed as expected " + isDisplayed);
+		getCurrentFunctionName(false);
+		return isDisplayed;
+	}
+
+	public static boolean checkListViewQuickshop() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.listViewQuickshop);
+		boolean isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+		logs.debug("list view Quickshop is displayed as expected " + isDisplayed);
+		getCurrentFunctionName(false);
+		return isDisplayed;
+	}
+
+	public static void clickListViewQuickshop() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, checkBoxValue));
-		subStrArr.add(checkBoxValue);
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.listViewQuickshop));
+		subStrArr.add(PLPSelectors.listViewQuickshop);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
 	}
-    public static void clickFacetNavFirstPriceCheckBox() throws Exception {
+
+	public static boolean checkListViewProductTitle() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.listViewProductTitle);
+		boolean isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+		logs.debug("Product Title is displayed as expected " + isDisplayed);
+		getCurrentFunctionName(false);
+		return isDisplayed;
+	}
+
+	public static boolean checkListViewProductPrice() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.listViewProductPrice);
+		boolean isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+		logs.debug("Product price is displayed as expected " + isDisplayed);
+		getCurrentFunctionName(false);
+		return isDisplayed;
+	}
+
+	public static boolean checkGridViewQuickshop() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.gridViewQuickshop);
+		boolean isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+		logs.debug("Grid view Quickshop is displayed as expected " + isDisplayed);
+		getCurrentFunctionName(false);
+		return isDisplayed;
+	}
+
+	public static void clickGridViewQuickshop() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		subStrArr.add(PLPSelectors.facetNavFirstPrice);
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.gridViewQuickshop));
+		subStrArr.add(PLPSelectors.gridViewQuickshop);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
 	}
-    
-    public static String getFacetNavTitleStoresCount() throws Exception {
+
+	public static boolean checkGridViewProductDes() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.facetNavTitleStores + ": " + PLPSelectors.facetNavSecondCount));
-		subStrArr.add(PLPSelectors.facetNavTitleStores);
-		valuesArr.add("child,"+PLPSelectors.facetNavSecondCount);
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		subStrArr.add(PLPSelectors.gridViewProductDes);
+		boolean isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+		logs.debug("Product Name is displayed as expected " + isDisplayed);
 		getCurrentFunctionName(false);
-		return SelectorUtil.textValue.get();
+		return isDisplayed;
 	}
-    
-    public static String getFacetNavTitlePriceCount() throws Exception {
+
+	public static boolean checkGridViewProductPrice() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.facetNavTitlePrice + ": " + PLPSelectors.facetNavThirdCount));
-		subStrArr.add(PLPSelectors.facetNavTitlePrice);
-		valuesArr.add("child,"+PLPSelectors.facetNavThirdCount);
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		subStrArr.add(PLPSelectors.gridViewProductPrice);
+		boolean isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+		logs.debug("Product price is displayed as expected " + isDisplayed);
 		getCurrentFunctionName(false);
-		return SelectorUtil.textValue.get();
+		return isDisplayed;
 	}
-    
-    public static String getFacetNavTitleColourCount() throws Exception {
+
+	public static boolean checkQuickshopModalContent() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.facetNavTitleColour + ": " + PLPSelectors.facetNavThirdCount));
-		subStrArr.add(PLPSelectors.facetNavTitleColour);
-		valuesArr.add("child,"+PLPSelectors.facetNavThirdCount);
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		subStrArr.add(PLPSelectors.quickshopModalContent);
+		boolean isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+		logs.debug("Quickshop modal is displayed as expected " + isDisplayed);
 		getCurrentFunctionName(false);
-		return SelectorUtil.textValue.get();
+		return isDisplayed;
 	}
-    public static String getFacetNavTitleSizeCount() throws Exception {
+
+	public static boolean isStyleFilterAvailable() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.facetNavTitleSize + ": " + PLPSelectors.facetNavThirdCount));
-		subStrArr.add(PLPSelectors.facetNavTitleSize);
-		valuesArr.add("child,"+PLPSelectors.facetNavThirdCount);
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		subStrArr.add(PLPSelectors.sizeFilter);
+		boolean isDisplayed = false;
+		try {
+			isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+			logs.debug("Style filter is availabe for this category");
+		} catch (NoSuchElementException e) {
+			logs.debug("Style filter is not availabe for this category");
+		}
 		getCurrentFunctionName(false);
-		return SelectorUtil.textValue.get();
+		return isDisplayed;
 	}
-    
-    public static void clickChangeLocationLink() throws Exception {
+
+	public static void clickFirstStyleFilter() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.changeLocationLink));
-		subStrArr.add(PLPSelectors.changeLocationLink);
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.sizeFilter));
+		subStrArr.add(PLPSelectors.sizeFilter);
 		valuesArr.add("");
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
 	}
-    
-    public static boolean isLocationFacetContainerHidden() {
+
+	public static boolean isFitFilterAvailable() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.fitFilter);
+		boolean isDisplayed = false;
+		try {
+			isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+			logs.debug("Fit filter is availabe for this category");
+		} catch (NoSuchElementException e) {
+			logs.debug("Fit filter is not availabe for this category");
+		}
+		getCurrentFunctionName(false);
+		return isDisplayed;
+	}
+
+	public static void clickFirstFitFilter() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		boolean isLocationContainerHidden = false;
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.locationFacetContainer));
-		subStrArr.add(PLPSelectors.locationFacetContainer);
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.fitFilter));
+		subStrArr.add(PLPSelectors.fitFilter);
+		valuesArr.add("");
+		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		getCurrentFunctionName(false);
+	}
+
+	public static boolean isColorFilterAvailable() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.colorFilter);
+		boolean isDisplayed = false;
+		try {
+			isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+			logs.debug("Color filter is availabe for this category");
+		} catch (NoSuchElementException e) {
+			logs.debug("Color filter is not availabe for this category");
+		}
+		getCurrentFunctionName(false);
+		return isDisplayed;
+	}
+
+	public static void clickFirstColorFilter() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		List<String> valuesArr = new ArrayList<String>();
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.colorFilter));
+		subStrArr.add(PLPSelectors.colorFilter);
+		valuesArr.add("");
+		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		getCurrentFunctionName(false);
+	}
+
+	public static boolean isSizeFilterAvailable() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PLPSelectors.sizeFilter);
+		boolean isDisplayed = false;
+		try {
+			isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+			logs.debug("Size filter is availabe for this category");
+		} catch (NoSuchElementException e) {
+			logs.debug("Size filter is not availabe for this category");
+		}
+		getCurrentFunctionName(false);
+		return isDisplayed;
+	}
+
+	public static void clickFirstSizeFilter() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		List<String> valuesArr = new ArrayList<String>();
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.sizeFilter));
+		subStrArr.add(PLPSelectors.sizeFilter);
+		valuesArr.add("");
+		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		getCurrentFunctionName(false);
+	}
+
+	public static void clickFirstPatternFilterIfAvaiable() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		List<String> valuesArr = new ArrayList<String>();
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.patternFilter));
+		subStrArr.add(PLPSelectors.patternFilter);
 		valuesArr.add("");
 		try {
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		} catch (Exception e) {
-			isLocationContainerHidden = true;
+			logs.debug("Clicking first Pattern filter");
+		} catch (NoSuchElementException e) {
+			logs.debug("Pattern filter is not availabe for this category");
 		}
-		getCurrentFunctionName(false);
-		return isLocationContainerHidden;
-	}
-    
-    public static void verifyChangeLocationLink() throws Exception {
-		getCurrentFunctionName(true);
-		clickFindStores();
-		Thread.sleep(3000);
-		clickChangeLocationLink();
-		Thread.sleep(3000);
-		boolean isLocationContainerHidden = isLocationFacetContainerHidden();
-		if (!isLocationContainerHidden) {
-			logs.debug(LoggingMsg.PLP_CHANGE_LOCATION_LINK_FUNCTIONALITY_MSG);
-		}
+		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
 	}
-    
-    public static boolean compareAppliedFilterWithDisplayedProductNumber(String filterName) throws Exception {
-		getCurrentFunctionName(true);
-		String tempAppliedFilterCount = "";
-		boolean IsFilterAppliedCorectly =true;
-		if (filterName.equals("stores")) {
-			tempAppliedFilterCount = PLP.getFacetNavTitleStoresCount();
-		} else if (filterName.equals("price")) {
-			tempAppliedFilterCount = PLP.getFacetNavTitlePriceCount();
-		} else if (filterName.equals("colour")) {
-			tempAppliedFilterCount = PLP.getFacetNavTitleColourCount();
-		} else if (filterName.equals("size")) {
-			tempAppliedFilterCount = PLP.getFacetNavTitleSizeCount();
-		}
-		tempAppliedFilterCount = tempAppliedFilterCount.replace("(", "").replace(")", "");
-		logs.debug(MessageFormat.format(LoggingMsg.PLP_SELECTED_FILTER_COUNT, filterName, tempAppliedFilterCount));
-		String appliedFilterCount = tempAppliedFilterCount.trim();
-		String displayedProductsCount = PLP.getNumberOfproducts().trim();
-		logs.debug(MessageFormat.format(LoggingMsg.NUMBER_OF_PRODUCTS, displayedProductsCount));
-		logs.debug(MessageFormat.format(LoggingMsg.APPLIED_FILTER_COUNT, appliedFilterCount));
-		if (!appliedFilterCount.isEmpty() && displayedProductsCount.equals(appliedFilterCount)) {
-			logs.debug(MessageFormat.format(LoggingMsg.PLP_FILTER_FUNCTIONALITY, ""));
-	
-		} else {
-			logs.debug(MessageFormat.format(LoggingMsg.PLP_FILTER_FUNCTIONALITY, "not"));
-			IsFilterAppliedCorectly = false;
-		}
-		getCurrentFunctionName(false);
-		return IsFilterAppliedCorectly;
-    }
-    
-    public static void clickNthProductItem(String nthChild) throws Exception {
+
+	public static void clickFirstCollectionFilterIfAvaiable() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
 		List<String> valuesArr = new ArrayList<String>();
-		String selText = MessageFormat.format(PLPSelectors.nthProductItem, nthChild);
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, selText));
-		subStrArr.add(selText);
+		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, PLPSelectors.collectionFilter));
+		subStrArr.add(PLPSelectors.collectionFilter);
 		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static void removeNthAppliedFacet(String nthChild) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		String selText = MessageFormat.format(PLPSelectors.nthAppliedFacets, nthChild);
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, selText));
-		subStrArr.add(selText);
-		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static void typePickUpInStoreLocationForSearch(String storeName) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, PLPSelectors.pickupInStoreLocationSearch, storeName));
-		subStrArr.add(PLPSelectors.pickupInStoreLocationSearch);
-		valuesArr.add(storeName + ",pressEnter");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static void clickPickupNthAccessibleTabIcon(String nthIcon) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		String pickupNthAccessibleTabIcon = MessageFormat.format(PLPSelectors.pickupNthAccessibleTabIcon, nthIcon);
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, pickupNthAccessibleTabIcon));
-		subStrArr.add(pickupNthAccessibleTabIcon);
-		valuesArr.add("");
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static void clickPickUpInStoreAddToBagBtn(String productCodePost) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		String pickupModalAddToBagBtn = MessageFormat.format(PLPSelectors.pickupInStoreProduct, productCodePost);
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, pickupModalAddToBagBtn + ":"+ PLPSelectors.pickupAddToBagBtn));
-		subStrArr.add(pickupModalAddToBagBtn);
-		valuesArr.add("child,"+PLPSelectors.pickupAddToBagBtn);
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static void clickPickUpInStoreDecreaseQtyBtn(String productCodePost) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		String pickupModalDecreaseQtyBtn = MessageFormat.format(PLPSelectors.pickupInStoreProduct, productCodePost);
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, pickupModalDecreaseQtyBtn + ":" + PLPSelectors.pickupDecreaseQtyBtn));
-		subStrArr.add(pickupModalDecreaseQtyBtn);
-		valuesArr.add("child,"+PLPSelectors.pickupDecreaseQtyBtn);
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static void clickPickUpInStoreIncreaseQtyBtn(String productCodePost) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		String pickupModalIncreaseQtyBtn = MessageFormat.format(PLPSelectors.pickupInStoreProduct, productCodePost);
-		logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, pickupModalIncreaseQtyBtn + ":" + PLPSelectors.pickupIncreaseQtyBtn));
-		subStrArr.add(pickupModalIncreaseQtyBtn);
-		valuesArr.add("child,"+ PLPSelectors.pickupIncreaseQtyBtn);
-		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-		getCurrentFunctionName(false);
-	}
-    
-    public static void typePickUpInStoreQty(String productCodePost, String qty) throws Exception {
-		getCurrentFunctionName(true);
-		List<String> subStrArr = new ArrayList<String>();
-		List<String> valuesArr = new ArrayList<String>();
-		String pickupModalQtyInput = MessageFormat.format(PLPSelectors.pickupInStoreProduct, productCodePost);
-		logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, pickupModalQtyInput + ":" + PLPSelectors.pickupQtyInput, qty));
-		subStrArr.add(pickupModalQtyInput);
-		valuesArr.add("child," + PLPSelectors.pickupQtyInput + "," + qty);
+		try {
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug("Clicking first collection filter");
+		} catch (NoSuchElementException e) {
+			logs.debug("Collection filter is not availabe for this category");
+		}
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
 	}

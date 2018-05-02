@@ -210,7 +210,8 @@ public class Base_checkoutKIOSK extends SelTestCase {
 			if (proprties.contains("Gift Services")){
 			//TODO: Create functions to add gift services to orders	
 			}
-
+			CheckOut.kioskDetails.typeAssociateID("5");
+			CheckOut.kioskDetails.selectStoreNumber("5");
 			// Validate the order sub-total in shipping method section
 			actualOrderSubtotal = CheckOut.shippingMethod.getOrderSubTotal();
 			sassert().assertEquals(actualOrderSubtotal, orderSubtotal,
