@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="B2B regression" parallel="tests" thread-count="10" data-provider-thread-count="1">
-
-	<test name="checkoutb2b chrome">
+<suite name="Suite" parallel="tests" thread-count="10" data-provider-thread-count="3">
+	<test name="Registration Chrome">
 		<parameter name="browserName" value="chrome"></parameter>
 		<classes>
-			<class name="com.generic.tests.checkout.Base_checkout_B2B" />
+			<class name="com.generic.tests.Registration_Done.RegistrationFormValidation" />
 		</classes>
 	</test><!-- Test -->
-	
+
 </suite> <!-- Suite -->

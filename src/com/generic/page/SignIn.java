@@ -88,7 +88,7 @@ public class SignIn extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			subStrArr.add(SignInSelectors.WelcomeMsg);
-			valuesArr.add("getCurrentValue");
+			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		} catch (Exception e) {
 			LoggedUser = false;

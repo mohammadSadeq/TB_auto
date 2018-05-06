@@ -15,13 +15,11 @@ import com.generic.setup.LoggingMsg;
 import com.generic.setup.PagesURLs;
 import com.generic.setup.SelTestCase;
 import com.generic.setup.SheetVariables;
-import com.generic.util.TestUtilities;
 import com.generic.util.dataProviderUtils;
 import com.generic.util.ReportUtil;
 import com.generic.util.SASLogger;
 import com.generic.page.OrderDetails;
 import com.generic.page.OrderHistory;
-import com.generic.page.PaymentDetails;
 import com.generic.page.Registration;
 
 public class OrderHistoryValidation extends SelTestCase {

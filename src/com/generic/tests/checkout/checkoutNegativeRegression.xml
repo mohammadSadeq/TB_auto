@@ -9,6 +9,13 @@
 			<class name="com.generic.tests.checkout.Base_checkout_negativeCases" />
 		</classes>
 	</test><!-- Test -->
+	
+	<test name="checkout firefox">
+	<parameter name="browserName" value="firefox"></parameter>
+	<classes>
+		<class name="com.generic.tests.checkout.Base_checkout_negativeCases" />
+	</classes>
+</test><!-- Test -->
 
 
 </suite> <!-- Suite -->

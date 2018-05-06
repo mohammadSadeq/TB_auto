@@ -6,7 +6,7 @@ public class SignInSelectors
 	public static final String loginBtn = "accountSignIn";
 	public static final String errorMessage = "globalMessages";
 	public static final String myAccount = "My Account";
-	public static final String WelcomeMsg = "Aloha";
+	public static final String WelcomeMsg = "Aloha,";
 	public static final String forgotPasswordBtn = "pw-modal";
 	public static final String forgottenPwdInput = "forgottenPwd.email";
 	public static final String forgotPasswordSubmitBtn = "positive btn btn-accent2 small-text";
