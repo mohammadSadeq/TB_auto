@@ -3,8 +3,14 @@ package com.generic.page;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
+import com.generic.selector.CartSelectors;
 import com.generic.selector.CheckOutSelectors;
+import com.generic.selector.MyAccount_Selectors;
+import com.generic.selector.PDPSelectors;
+import com.generic.selector.PLPSelectors;
+import com.generic.selector.RegistrationSelectors;
 import com.generic.setup.LoggingMsg;
 import com.generic.setup.SelTestCase;
 import com.generic.util.SelectorUtil;
@@ -13,9 +19,25 @@ public class CheckOut extends SelTestCase {
 
 	public static class keys {
 		public static final String caseId = "caseId";
+		public static final String employeeCustomer = "employee customer";
+		public static final String handlingFee = "handling-fee";
 	}
 
 	public static class guestCheckout {
+		
+		
+		public static void clickCheckout() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_CART_BUTTON, "checkout"));
+			subStrArr.add(CartSelectors.checkoutBtn);
+			valuesArr.add("");
+				SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+
+		}
+		
 		public static void typeGuestMail(String email) throws Exception {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
@@ -55,16 +77,17 @@ public class CheckOut extends SelTestCase {
 		public static void fillAndClickGuestCheckout(String email) throws Exception {
 			getCurrentFunctionName(true);
 			typeGuestMail(email);
-			typeGuestConfMail(email);
+	//		typeGuestConfMail(email);
 			clickCheckoutAsGuest();
 			getCurrentFunctionName(false);
 		}
 
-		public static void fillPreRegFormAndClickRegBtn(String password, boolean newsLetterOptin) throws Exception {
+		public static void fillPreRegFormAndClickRegBtn(String firstName,String lastName, String password) throws Exception {
 			getCurrentFunctionName(true);
+			typeGuestFirstName(firstName);
+			typeGuestLastName(lastName);
 			typeGuestPassPreForm(password);
 			typeGuestPassConfPreForm(password);
-			checkNewsletterOptin(newsLetterOptin);
 			clickCreatAnaccount();
 			getCurrentFunctionName(false);
 
@@ -118,6 +141,29 @@ public class CheckOut extends SelTestCase {
 
 		}
 		
+		public static void typeGuestFirstName(String firstName) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "firstName ", firstName));
+			subStrArr.add(CheckOutSelectors.guestFirstName);
+			valuesArr.add(firstName);
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+
+		}
+		
+		public static void typeGuestLastName(String lastName) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "password ", lastName));
+			subStrArr.add(CheckOutSelectors.guestLastName);
+			valuesArr.add(lastName);
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+
+		}
 		public static void returningCustomerLogin(String username, String password) throws Exception
 		{
 			getCurrentFunctionName(true);
@@ -132,7 +178,7 @@ public class CheckOut extends SelTestCase {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.CLICKING_SEL, "Log In and Check Out"));
-			subStrArr.add(CheckOutSelectors.returningcustomerloginBtn);
+			subStrArr.add(CheckOutSelectors.returningcustomerSignInBtn);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -231,9 +277,10 @@ public class CheckOut extends SelTestCase {
 		public static class keys {
 
 			public static final String isSavedShipping = "saved-shipping";
-
+			public static final String isDefaultAddress = "default-address";
+			public static final String isNotDefaultAddress = "not-default-address";
 			public static final String countery = "countery";
-			public static final String title = "title";
+			public static final String state = "state";
 			public static final String lastName = "lastName";
 			public static final String firstName = "firstName";
 			public static final String adddressLine = "adddressLine";
@@ -242,6 +289,19 @@ public class CheckOut extends SelTestCase {
 			public static final String phone = "phone";
 		}
 
+		public static void clickAddAddressBtn() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.addAdress);
+			valuesArr.add("");
+			try {
+				SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			} catch (Exception e) {
+				logs.debug("Add address form is opened by default");
+			}
+		}
+		
 		public static void selectCountery(String countery) throws Exception {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
@@ -255,13 +315,13 @@ public class CheckOut extends SelTestCase {
 
 		}
 
-		public static void selectTitle(String title) throws Exception {
+		public static void selectState(String state) throws Exception {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.SELECTING_ELEMENT_VALUE, "title ", title));
-			subStrArr.add(CheckOutSelectors.title);
-			valuesArr.add(title);
+			logs.debug(MessageFormat.format(LoggingMsg.SELECTING_ELEMENT_VALUE, "state ", state));
+			subStrArr.add(CheckOutSelectors.state);
+			valuesArr.add(state);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
 		}
@@ -373,6 +433,18 @@ public class CheckOut extends SelTestCase {
 			getCurrentFunctionName(false);
 			return SelectorUtil.textValue.get();
 		}
+		
+		public static String getHandlingFeeTotal() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.totalItem);
+			valuesArr.add("index,1");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(SelectorUtil.textValue.get());
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
 
 		public static void clickNext() throws Exception {
 			getCurrentFunctionName(true);
@@ -385,16 +457,23 @@ public class CheckOut extends SelTestCase {
 			getCurrentFunctionName(false);
 
 		}
-
-		public static void fillAndClickNext(String Countery, String title, String firstName, String lastName,
-				String address, String city, String postal, String phone, boolean saveAdderss) throws Exception {
+		
+		public static void useSuggestedAddress() throws Exception {
 			getCurrentFunctionName(true);
-
-			if (!"".equals(Countery))
-				selectCountery(Countery);
-
-			if (!"".equals(title))
-				selectTitle(title);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.useSuggestedAddress);
+			valuesArr.add("");
+			try {
+				SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			} catch (Exception e) {
+				logs.debug("Address suggest modal is not displayed");
+			}
+		}
+		
+		public static void fillAndClickNext(String firstName, String lastName,
+				String address, String city, String state, String postal, String phone, boolean saveAdderss) throws Exception {
+			getCurrentFunctionName(true);
 
 			if (!"".equals(firstName))
 				typeFirstName(firstName);
@@ -407,7 +486,10 @@ public class CheckOut extends SelTestCase {
 
 			if (!"".equals(city))
 				typeCity(city);
-
+			
+			if (!"".equals(state))
+				selectState(state);
+			
 			if (!"".equals(postal))
 				typePostalCode(postal);
 
@@ -416,19 +498,13 @@ public class CheckOut extends SelTestCase {
 
 			checkSaveAddress(saveAdderss);
 			clickNext();
-
+			useSuggestedAddress();
 			getCurrentFunctionName(false);
 		}
 
-		public static void fillAndClickNext(String Countery, String title, String firstName, String lastName,
-				String address, String city, String postal, String phone) throws Exception {
+		public static void fillAndClickNext(String firstName, String lastName,
+				String address, String city, String state, String postal, String phone) throws Exception {
 			getCurrentFunctionName(true);
-
-			if (!"".equals(Countery))
-				selectCountery(Countery);
-
-			if (!"".equals(title))
-				selectTitle(title);
 
 			if (!"".equals(firstName))
 				typeFirstName(firstName);
@@ -442,6 +518,9 @@ public class CheckOut extends SelTestCase {
 			if (!"".equals(city))
 				typeCity(city);
 
+			if (!"".equals(state))
+				selectState(state);
+
 			if (!"".equals(postal))
 				typePostalCode(postal);
 
@@ -449,15 +528,42 @@ public class CheckOut extends SelTestCase {
 				typePhone(phone);
 
 			clickNext();
-
-			getCurrentFunctionName(false);
+			useSuggestedAddress();
+			getCurrentFunctionName(false);		
 		}
 
-		// in case of using the address book
-		public static void fillAndClickNext(boolean selectFromAddressBook) throws Exception {
+		public static void clickUseSuggestedAddress() throws Exception {
 			getCurrentFunctionName(true);
-			clickOnAddressBook();
-			selectFirstAddress();
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+		//	logs.debug(LoggingMsg.CLICKING_SHIPPING_NEXT_BTN);
+			subStrArr.add(CheckOutSelectors.useSuggestedAddress);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+
+		}
+		
+		// in case of using the address book
+		public static void fillAndClickNext(boolean useDefault) throws Exception {
+			getCurrentFunctionName(true);
+			if(useDefault) {
+				clickNext();
+				useSuggestedAddress();	
+			}
+			else {
+				clickOnChooseFroAddressBook();
+				if(getNumberOfSavedAdresses() > 1) {
+					selectFirstAddress();
+					useSuggestedAddress();	
+				}
+				else {
+					logs.debug("User has only one saved address");
+					clickCloseAddressBookModal();
+					clickNext();
+					useSuggestedAddress();		
+				}
+			}
 			getCurrentFunctionName(false);
 		}
 
@@ -472,11 +578,44 @@ public class CheckOut extends SelTestCase {
 
 		}
 
-		private static void clickOnAddressBook() throws Exception {
+		public static int getNumberOfSavedAdresses() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,
+					CheckOutSelectors.addressEntry));
+			subStrArr.add(CheckOutSelectors.addressEntry);
+			valuesArr.add("");
+			int numberOfSavedAddresses;
+			try {
+
+				SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+				logs.debug(MessageFormat.format(LoggingMsg.ACTUAL_TEXT, SelectorUtil.numberOfFoundElements.get()));
+				numberOfSavedAddresses = Integer.parseInt(SelectorUtil.numberOfFoundElements.get());
+			} catch (Exception e) {
+				logs.debug("No Saved Cards");
+				numberOfSavedAddresses = 0;
+			}
+			getCurrentFunctionName(false);
+			return numberOfSavedAddresses;
+		}
+		
+		private static void clickOnChooseFroAddressBook() throws Exception {
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			getCurrentFunctionName(true);
-			subStrArr.add(CheckOutSelectors.addressBookBtn);
+			subStrArr.add(CheckOutSelectors.chooseFromAddressBook);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+
+		}
+		
+		private static void clickCloseAddressBookModal() throws Exception {
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			getCurrentFunctionName(true);
+			subStrArr.add(CheckOutSelectors.cboxClose);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -502,19 +641,6 @@ public class CheckOut extends SelTestCase {
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.countryError));
 			subStrArr.add(CheckOutSelectors.countryError);
-			valuesArr.add("index,1");
-			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
-			getCurrentFunctionName(false);
-			return SelectorUtil.textValue.get();
-		}
-		
-		public static String getTitelError() throws Exception {
-			getCurrentFunctionName(true);
-			List<String> subStrArr = new ArrayList<String>();
-			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.titleError));
-			subStrArr.add(CheckOutSelectors.titleError);
 			valuesArr.add("index,1");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
@@ -573,13 +699,38 @@ public class CheckOut extends SelTestCase {
 			getCurrentFunctionName(false);
 			return SelectorUtil.textValue.get();
 		}
-
+		
+		public static String getStateError() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.cityError));
+			subStrArr.add(CheckOutSelectors.stateError);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
 		public static String getPostCodeEerror() throws Exception {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.postcodeEerror));
 			subStrArr.add(CheckOutSelectors.postcodeEerror);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+		public static String getPhoneError() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.cityError));
+			subStrArr.add(CheckOutSelectors.phoneError);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
@@ -599,27 +750,49 @@ public class CheckOut extends SelTestCase {
 
 		}
 
-		private static void selectShippingMethod(String shippingMethod) throws Exception {
+		public static void selectShippingMethod(String shippingMethod) throws Exception {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			subStrArr.add(CheckOutSelectors.shippingMethod);
-			valuesArr.add(shippingMethod);
+		//	subStrArr.add(CheckOutSelectors.shippingMethod +shippingMethod);
+			if(getCONFIG().getProperty("testEnvironment").split("\\.")[0].contains("dev"))
+			{
+				subStrArr.add(shippingMethod.toUpperCase());
+			}
+			else {
+				subStrArr.add(shippingMethod);
+			}
+			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
 
 		}
 
-		private static void clickNext() throws Exception {
+		public static void clickNext() throws Exception {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			subStrArr.add(CheckOutSelectors.submitShippingMethodbtn);
+			subStrArr.add(CheckOutSelectors.continueCheckout);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
 		}
-
+		
+		public static boolean checkPromotionMessage() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.totalItemPromotion);
+			boolean isDisplayed = false;
+			try {
+				isDisplayed = SelectorUtil.isDisplayed(subStrArr);
+				logs.debug("An order-level promotion is applied to this order");
+			} catch (NoSuchElementException e) {
+				logs.debug("This order does not contain any order-level promotion");
+			}
+			getCurrentFunctionName(false);
+			return isDisplayed;
+		}
+		
 		public static String getOrderTotal() throws Exception {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
@@ -643,10 +816,165 @@ public class CheckOut extends SelTestCase {
 			getCurrentFunctionName(false);
 			return SelectorUtil.textValue.get();
 		}
-
+		public static String getHandlingFeeTotal(Boolean IsPromotionApplied) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.totalItem);
+			if(checkPromotionMessage()) {
+				valuesArr.add("index,2");
+			}
+			else {
+				valuesArr.add("index,1");
+			}
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(SelectorUtil.textValue.get());
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		public static String getOrderTax() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.orderTaxShippingMethod);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(SelectorUtil.textValue.get());
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+		public static String getOrderShipping() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.orderShippingShippingMethod);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(SelectorUtil.textValue.get());
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
 	}// shipping method
 
-	public static class paymentInnformation {
+	public static class kioskDetails {
+		
+		public static void checkWaiveShipping(boolean CheckWaiveShipping) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.waiveShipping);
+			valuesArr.add(String.valueOf(CheckWaiveShipping));
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+		}
+		
+		public static void typeAssociateID2(String associateID) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "associateID ", associateID));
+			subStrArr.add(CheckOutSelectors.associateID);
+			valuesArr.add(associateID);
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+
+		}
+		
+		public static void typeAssociateID(String associateID) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "associateID ", associateID));
+			subStrArr.add(CheckOutSelectors.associateID);
+			SelectorUtil.typeText(subStrArr, associateID);
+			getCurrentFunctionName(false);
+		}
+
+		public static void selectStoreNumber(String storeNumber) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.SELECTING_ELEMENT_VALUE, "storeNumber ", storeNumber));
+			subStrArr.add(CheckOutSelectors.storeNumber);
+			valuesArr.add(storeNumber);
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+		}
+	} //kiosk Details 
+	
+	public static class giftServices {
+		public static class keys {
+			public static final String addGiftServices= "add-gift-services";
+
+		}
+		public static void clicGiftOptionTrue() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.giftOptionTrue);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+		}
+		public static void selectGiftSelectOption(String giftSelectOption) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.SELECTING_ELEMENT_VALUE, "giftSelectOption ", giftSelectOption));
+			subStrArr.add(CheckOutSelectors.giftSelectOption);
+			valuesArr.add(giftSelectOption);
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+		}
+		
+		public static void typeGiftContainerTo1(String giftContainerTo1) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "giftContainerTo1 ", giftContainerTo1));
+			subStrArr.add(CheckOutSelectors.giftContainerTo1);
+			valuesArr.add(giftContainerTo1);
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+
+		}
+		public static void typeGiftContainerFrom1(String giftContainerFrom1) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "giftContainerFrom1 ", giftContainerFrom1));
+			subStrArr.add(CheckOutSelectors.giftContainerFrom1);
+			valuesArr.add(giftContainerFrom1);
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+
+		}
+		public static void typeGiftContainerMessage1(String giftContainerMessage1) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "giftContainerMessage1 ", giftContainerMessage1));
+			subStrArr.add(CheckOutSelectors.giftContainerMessage1);
+			valuesArr.add(giftContainerMessage1);
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+
+		}
+		
+		public static void clickNext() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.continueCheckout);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			getCurrentFunctionName(false);
+		}
+		
+	} //Gift Services
+	
+	public static class paymentInformation {
 
 		public static class keys {
 			public static final String isSavedPayement = "saved-payment";
@@ -656,17 +984,14 @@ public class CheckOut extends SelTestCase {
 			public static final String expireYear = "expireYear";
 			public static final String expireMonth = "expireMonth";
 			public static final String CVCC = "CVCC";
-
 		}
 
-		public static void fillAndclickNext(String cardtype, String cardHolder, String cardNumber, String expireDay,
-				String expireYear, String CVC, boolean savePayment, boolean billSameShip, String countery, String title,
-				String firstName, String lastName, String address, String city, String postal, String phone)
+		public static void fillAndclickNext(String cardHolder, String cardNumber, String expireDay,
+				String expireYear, String CVC, boolean savePayment, boolean billSameShip,
+				String firstName, String lastName, String address, String countery, String city, String state, String postal)
 				throws Exception {
 			getCurrentFunctionName(true);
 
-			if (!"".equals(cardtype))
-				selectCardType(cardtype);
 			if (!"".equals(cardHolder))
 				typeCardholder(cardHolder);
 			if (!"".equals(cardNumber))
@@ -683,7 +1008,7 @@ public class CheckOut extends SelTestCase {
 			checkBillingAddressSameshipping(billSameShip);
 
 			if (!billSameShip) {
-				fillBillingAddress(countery, title, firstName, lastName, address, city, postal, phone);
+				fillBillingAddress(firstName, lastName, address, countery, city, state, postal);
 			}
 
 			clickNext();
@@ -691,13 +1016,11 @@ public class CheckOut extends SelTestCase {
 			getCurrentFunctionName(false);
 		}
 
-		public static void fillAndclickNext(String cardtype, String cardHolder, String cardNumber, String expireDay,
-				String expireYear, String CVC, boolean billSameShip, String countery, String title, String firstName,
-				String lastName, String address, String city, String postal, String phone) throws Exception {
+		public static void fillAndclickNext(String cardHolder, String cardNumber, String expireDay,
+				String expireYear, String CVC, boolean billSameShip, String firstName,
+				String lastName, String address, String countery, String city,  String state, String postal) throws Exception {
 			getCurrentFunctionName(true);
 
-			if (!"".equals(cardtype))
-				selectCardType(cardtype);
 			if (!"".equals(cardHolder))
 				typeCardholder(cardHolder);
 			if (!"".equals(cardNumber))
@@ -712,7 +1035,7 @@ public class CheckOut extends SelTestCase {
 			checkBillingAddressSameshipping(billSameShip);
 
 			if (!billSameShip) {
-				fillBillingAddress(countery, title, firstName, lastName, address, city, postal, phone);
+				fillBillingAddress(firstName, lastName, address, countery, city, state, postal);
 			}
 
 			clickNext();
@@ -723,41 +1046,51 @@ public class CheckOut extends SelTestCase {
 		// in case of using wallet
 		public static void fillAndclickNext(boolean useAlreadySavedPayment) throws Exception {
 			getCurrentFunctionName(true);
-			clickOnUseedSavedCard();
-			pickFirstpaymentsaved();
+		//	clickOnUseedSavedCard();
+	//		pickFirstpaymentsaved();
 			getCurrentFunctionName(false);
 		}
 
-		public static void fillBillingAddress(String countery, String title, String firstName, String lastName,
-				String address, String city, String postal, String phone) throws Exception {
+		public static void fillBillingAddress( String firstName, String lastName,
+				String address, String countery, String city, String state, String postal) throws Exception {
 			getCurrentFunctionName(true);
-
-			if (!"".equals(countery))
-				shippingAddress.selectCountery(countery);
-			if (!"".equals(title))
-				shippingAddress.selectTitle(title);
+			
 			if (!"".equals(firstName))
 				shippingAddress.typeFirstName(firstName);
 			if (!"".equals(lastName))
 				shippingAddress.typeLastName(lastName);
 			if (!"".equals(address))
 				shippingAddress.typeAddress(address);
+			if (!"".equals(countery))
+				shippingAddress.selectCountery(countery);
 			if (!"".equals(city))
-				shippingAddress.typeCity(city);
+				typeCity(city);
+			if (!"".equals(state))
+				shippingAddress.selectState(state);
 			if (!"".equals(postal))
 				shippingAddress.typePostalCode(postal);
-			if (!"".equals(phone))
-				shippingAddress.typePhone(phone);
 
 			getCurrentFunctionName(false);
 		}
 
-		private static void pickFirstpaymentsaved() throws Exception {
+		private static void typeCity(String city) throws Exception {
+				getCurrentFunctionName(true);
+				List<String> subStrArr = new ArrayList<String>();
+				List<String> valuesArr = new ArrayList<String>();
+				logs.debug(MessageFormat.format(LoggingMsg.TYPING_ELEMENT_VALUE, "city ", city));
+				subStrArr.add(CheckOutSelectors.billingAddressCity);
+				valuesArr.add(city);
+				SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+				getCurrentFunctionName(false);
+			
+		}
+
+		public static void pickFirstpaymentsaved(String savedPayment) throws Exception {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			subStrArr.add(CheckOutSelectors.selectFirstPayment);
-			valuesArr.add("");
+			subStrArr.add(CheckOutSelectors.selectPayment);
+			valuesArr.add(savedPayment);
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
 
@@ -777,7 +1110,7 @@ public class CheckOut extends SelTestCase {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			subStrArr.add(CheckOutSelectors.submitPayment);
+			subStrArr.add(CheckOutSelectors.continueCheckout);
 			valuesArr.add(String.valueOf(""));
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			getCurrentFunctionName(false);
@@ -906,6 +1239,29 @@ public class CheckOut extends SelTestCase {
 			return SelectorUtil.textValue.get();
 		}
 		
+		public static String getGiftServices() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.totalItem);
+			valuesArr.add("index,1");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(SelectorUtil.textValue.get());
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+		public static String getOrderTax() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.orderTaxPymentInfo);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(SelectorUtil.textValue.get());
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
 		public static String getAlertInfo() throws Exception {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
@@ -919,13 +1275,13 @@ public class CheckOut extends SelTestCase {
 			return SelectorUtil.textValue.get();
 		}
 		
-		public static String getCardTypeError() throws Exception {
+		public static String getCardNameError() throws Exception {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.cardTypeError));
-			subStrArr.add(CheckOutSelectors.cardTypeError);
-			valuesArr.add("index,1");
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.cardNameError));
+			subStrArr.add(CheckOutSelectors.cardNameError);
+			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
 			getCurrentFunctionName(false);
@@ -936,8 +1292,8 @@ public class CheckOut extends SelTestCase {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
-			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.accountNumberError));
-			subStrArr.add(CheckOutSelectors.accountNumberError);
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.cardNumberError));
+			subStrArr.add(CheckOutSelectors.cardNumberError);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
@@ -951,7 +1307,7 @@ public class CheckOut extends SelTestCase {
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.expirationMonthError));
 			subStrArr.add(CheckOutSelectors.expirationMonthError);
-			valuesArr.add("index,1");
+			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
 			getCurrentFunctionName(false);
@@ -964,7 +1320,7 @@ public class CheckOut extends SelTestCase {
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.expirationYearError));
 			subStrArr.add(CheckOutSelectors.expirationYearError);
-			valuesArr.add("index,1");
+			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
 			getCurrentFunctionName(false);
@@ -977,6 +1333,97 @@ public class CheckOut extends SelTestCase {
 			List<String> valuesArr = new ArrayList<String>();
 			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.cvNumberError));
 			subStrArr.add(CheckOutSelectors.cvNumberError);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+		public static String getBillToFNmaeError() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.billToFNameError));
+			subStrArr.add(CheckOutSelectors.billToFNameError);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+		public static String getBillToLNameError() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.billToLNameError));
+			subStrArr.add(CheckOutSelectors.billToLNameError);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+		public static String getBillToAddressError() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.billToAddressError));
+			subStrArr.add(CheckOutSelectors.billToAddressError);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+		public static String getBillToCountryError() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.billToCountryError));
+			subStrArr.add(CheckOutSelectors.billToCountryError);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+		public static String getBillToCityError() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.billToCityError));
+			subStrArr.add(CheckOutSelectors.billToCityError);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+		public static String getBillToStateError() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.billToStateError));
+			subStrArr.add(CheckOutSelectors.billToStateError);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+		public static String getBillToPostCodeError() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			logs.debug(MessageFormat.format(LoggingMsg.GET_ELEMENT_BY_LOCATOR,CheckOutSelectors.billToPostCodeError));
+			subStrArr.add(CheckOutSelectors.billToPostCodeError);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			logs.debug(MessageFormat.format(LoggingMsg.ERROR_MSG, SelectorUtil.textValue.get()));
@@ -1059,6 +1506,18 @@ public class CheckOut extends SelTestCase {
 			return SelectorUtil.textValue.get();
 		}
 
+		public static String getOrderTax() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.orderTaxOrderSumary);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+
 	}// order review information
 
 	public static class orderConfirmation {
@@ -1114,11 +1573,78 @@ public class CheckOut extends SelTestCase {
 
 		}
 
+		public static String getGiftServices(Boolean IsPromotionApplied) throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.totalItem);
+			if(IsPromotionApplied) {
+				valuesArr.add("index,2");
+			}
+			else {
+				valuesArr.add("index,1");
+			}
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(SelectorUtil.textValue.get());
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
 		public static String getShippingCost() throws Exception {
 			getCurrentFunctionName(true);
 			List<String> subStrArr = new ArrayList<String>();
 			List<String> valuesArr = new ArrayList<String>();
 			subStrArr.add(CheckOutSelectors.orderConfirmationShippingCost);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+
+		}
+
+		public static String getOrderTax() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.orderConfirmationTax);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+
+		public static String getShippingAddrerss() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.orderconfirmationshippingAddress);
+			valuesArr.add("");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+
+		public static String getDeliveryMethod() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.orderconfirmationDeliveryMethod);
+			valuesArr.add("index,1");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+		}
+		
+		public static String getPaymentMethod() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(CheckOutSelectors.orderconfirmationPaymentMethod);
 			valuesArr.add("");
 			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
@@ -1138,18 +1664,6 @@ public class CheckOut extends SelTestCase {
 			getCurrentFunctionName(false);
 			return SelectorUtil.textValue.get();
 
-		}
-
-		public static String getShippingAddrerss() throws Exception {
-			getCurrentFunctionName(true);
-			List<String> subStrArr = new ArrayList<String>();
-			List<String> valuesArr = new ArrayList<String>();
-			subStrArr.add(CheckOutSelectors.orderconfirmationshippingAddress);
-			valuesArr.add("");
-			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
-			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
-			getCurrentFunctionName(false);
-			return SelectorUtil.textValue.get();
 		}
 
 		public static String getBillToCountryError() throws Exception {
