@@ -4,7 +4,7 @@
 	<test name="Login chrome">
 		<parameter name="browserName" value="chrome"></parameter>
 		<classes>
-			<class name="com.generic.tests.login_Done.LoginValidation" />
+			<class name="com.generic.tests.login.LoginValidation" />
 		</classes>
 	</test><!-- Test -->	
 </suite> <!-- Suite -->

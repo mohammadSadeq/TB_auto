@@ -138,7 +138,19 @@ public class Cart extends SelTestCase {
 		return SelectorUtil.textValue.get();
 
 	}
+	
+	public static String getHandlingFeeTotal() throws Exception {
+		getCurrentFunctionName(true);
+		List<String> subStrArr = new ArrayList<String>();
+		List<String> valuesArr = new ArrayList<String>();
+		subStrArr.add(CartSelectors.OrderSubTotal);
+		valuesArr.add("index,1");
+		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		logs.debug(MessageFormat.format(LoggingMsg.ORDER_SUBTOTAL, SelectorUtil.textValue.get()));
+		getCurrentFunctionName(false);
+		return SelectorUtil.textValue.get();
 
+	}
 	public static String getOrderTax() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
