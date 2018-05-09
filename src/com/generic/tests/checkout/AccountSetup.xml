@@ -7,7 +7,6 @@
 	<classes>
 		<class name="com.generic.tests.checkout.AccountsSetupUS" />
 		<class name="com.generic.tests.checkout.AccountsSetupCanada" />
-		<class name="com.generic.tests.Registration_Done.CreateNewAccounts" />
 	</classes>
 </test><!-- Test -->
 
@@ -16,7 +15,6 @@
 <classes>
 	<class name="com.generic.tests.checkout.AccountsSetupUS" />
 	<class name="com.generic.tests.checkout.AccountsSetupCanada" />
-	<class name="com.generic.tests.Registration_Done.CreateNewAccounts" />
 </classes>
 </test><!-- Test -->
 </suite> <!-- Suite -->

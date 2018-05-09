@@ -22,6 +22,8 @@ public class EnvironmentFiles {
 	public static String executinResultsIndexFileTemplate = System.getProperty("user.dir")+"//src//com//generic//reports//reportsTemplates//indexTemplate.html";
 	public static String visualTestingAssetsPath = System.getProperty("user.dir")+"//VisualTestingAssets";
 	
+	public static String templateIconPath = System.getProperty("user.dir")+"//src//com//generic//reports//reportsTemplates";
+	
 	public static String getConfigFilePath() {
 		return configFilePath;
 	}
@@ -113,6 +115,10 @@ public class EnvironmentFiles {
 	 */
 	public static void setExecutinResultsIndexFileTemplate(String executinResultsIndexFileTemplate) {
 		EnvironmentFiles.executinResultsIndexFileTemplate = executinResultsIndexFileTemplate;
+	}
+
+	public static String getTemplateDir() {
+		return templateIconPath ; 
 	}
 	
 }

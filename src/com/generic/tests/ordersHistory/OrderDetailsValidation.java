@@ -126,12 +126,12 @@ public class OrderDetailsValidation extends SelTestCase {
 
 			logs.debug(Arrays.asList(paymentDetails)+"");
 			
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC), true,
+					CheckOut.paymentInformation.fillAndclickNext(
+							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
+							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
+							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
+							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
+							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC), true,
 							billingAddress.equalsIgnoreCase(shippingAddress),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
