@@ -1,4 +1,4 @@
-package com.generic.tests.Registration;
+package com.generic.tests.Registration_Done;
 
 import java.text.MessageFormat;
 import java.util.Arrays;

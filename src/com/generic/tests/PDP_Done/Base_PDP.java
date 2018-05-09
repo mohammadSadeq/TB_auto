@@ -2,7 +2,7 @@
  * this generic test for PDP regression that will pull tests from PDPRegression tab from
  * datasheet.xlsx. 
 */
-package com.generic.tests.PDP;
+package com.generic.tests.PDP_Done;
 
 import java.text.MessageFormat;
 import java.util.Arrays;

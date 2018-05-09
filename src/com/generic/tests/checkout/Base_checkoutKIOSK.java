@@ -223,10 +223,10 @@ public class Base_checkoutKIOSK extends SelTestCase {
 			CheckOut.shippingMethod.clickNext();
 			
 			// Validate the order total in billing form section
-			actualOrderSubtotal = CheckOut.paymentInformation.getOrderSubTotal();
-			String actualOrderShipping = CheckOut.paymentInformation.getOrdershipping();
-			String actualOrderTax = CheckOut.paymentInformation.getOrderTax();
-			String actualOrderTotal = CheckOut.paymentInformation.getOrderTotal();
+			actualOrderSubtotal = CheckOut.paymentInnformation.getOrderSubTotal();
+			String actualOrderShipping = CheckOut.paymentInnformation.getOrdershipping();
+			String actualOrderTax = CheckOut.paymentInnformation.getOrderTax();
+			String actualOrderTotal = CheckOut.paymentInnformation.getOrderTotal();
 			sassert().assertEquals(actualOrderSubtotal, orderSubtotal, "<font color=#f442cb>Order subtotal in payment page is not as expected. Expectd: " + orderSubtotal + "Actual: " + actualOrderSubtotal+"</font>");
 			sassert().assertEquals(actualOrderShipping, orderShipping, "<font color=#f442cb>Order shipping in payment page is not as expected. Expectd: " + orderShipping + "Actual: " + actualOrderShipping+"</font>");
 			sassert().assertEquals(actualOrderTax, orderTax, "<font color=#f442cb>Order Taxes in payment page is not as expected. Expectd: " + orderTax + "Actual: " + actualOrderTax+"</font>");
@@ -237,12 +237,12 @@ public class Base_checkoutKIOSK extends SelTestCase {
 			LinkedHashMap<String, Object> paymentDetails = (LinkedHashMap<String, Object>) paymentCards
 					.get(payment);
 			
-			if (proprties.contains(CheckOut.paymentInformation.keys.isSavedPayement) && !proprties.contains(freshUser)
+			if (proprties.contains(CheckOut.paymentInnformation.keys.isSavedPayement) && !proprties.contains(freshUser)
 					&& !proprties.contains(guestUser)) {
 				
-				CheckOut.paymentInformation.pickFirstpaymentsaved(payment);
-				CheckOut.paymentInformation.typeCVC((String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC));
-				CheckOut.paymentInformation.clickNext();
+				CheckOut.paymentInnformation.pickFirstpaymentsaved(payment);
+				CheckOut.paymentInnformation.typeCVC((String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC));
+				CheckOut.paymentInnformation.clickNext();
 				
 				
 			} else {
@@ -253,12 +253,12 @@ public class Base_checkoutKIOSK extends SelTestCase {
 						.get(billingAddress);
 
 				if (saveBilling) {
-					CheckOut.paymentInformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC), saveBilling,
+					CheckOut.paymentInnformation.fillAndclickNext(
+							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
+							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
+							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
+							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
+							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC), saveBilling,
 							billingAddress.equalsIgnoreCase(shippingAddress),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
@@ -268,12 +268,12 @@ public class Base_checkoutKIOSK extends SelTestCase {
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.state),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.postal));
 				} else {
-					CheckOut.paymentInformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
+					CheckOut.paymentInnformation.fillAndclickNext(
+							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
+							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
+							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
+							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
+							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
 							billingAddress.equalsIgnoreCase(shippingAddress),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),

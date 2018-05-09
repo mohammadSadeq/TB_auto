@@ -125,12 +125,12 @@ public class AccountsSetupCanada extends SelTestCase {
 			LinkedHashMap<String, Object> paymentDetails = (LinkedHashMap<String, Object>) paymentCards.get(payment);
 			LinkedHashMap<String, Object> billAddressDetails = (LinkedHashMap<String, Object>) addresses
 					.get(billingAddress);
-			CheckOut.paymentInformation.fillAndclickNext(
-					(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
-					(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
-					(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
-					(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
-					(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC), saveBilling,
+			CheckOut.paymentInnformation.fillAndclickNext(
+					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
+					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
+					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
+					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
+					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC), saveBilling,
 					billingAddress.equalsIgnoreCase(shippingAddress),
 					(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 					(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),

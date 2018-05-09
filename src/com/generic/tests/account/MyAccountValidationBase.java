@@ -115,12 +115,12 @@ public class MyAccountValidationBase extends SelTestCase {
 						(String) addressDetails.get(CheckOut.shippingAddress.keys.phone));
 				CheckOut.shippingMethod.selectShippingMethod(shippingMethod);
 				CheckOut.shippingMethod.clickNext();
-				CheckOut.paymentInformation.fillAndclickNext(
-						(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
-						(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
-						(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
-						(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
-						(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC), true,
+				CheckOut.paymentInnformation.fillAndclickNext(
+						(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
+						(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
+						(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
+						(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
+						(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC), true,
 						billingAddress.equalsIgnoreCase(shippingAddress),
 						(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 						(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
