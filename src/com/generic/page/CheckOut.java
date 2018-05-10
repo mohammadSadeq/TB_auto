@@ -7,16 +7,6 @@ import java.util.NoSuchElementException;
 
 import com.generic.selector.CartSelectors;
 import com.generic.selector.CheckOutSelectors;
-import com.generic.selector.MyAccount_Selectors;
-import com.generic.selector.PDPSelectors;
-import com.generic.selector.PLPSelectors;
-<<<<<<< HEAD
-=======
-import com.generic.selector.RegistrationSelectors;
-import com.generic.selector.MyAccount_Selectors;
-import com.generic.selector.PDPSelectors;
->>>>>>> branch 'checkout' of https://github.com/ibatta/TB_auto
-import com.generic.selector.RegistrationSelectors;
 import com.generic.setup.LoggingMsg;
 import com.generic.setup.SelTestCase;
 import com.generic.util.SelectorUtil;
@@ -27,7 +17,6 @@ public class CheckOut extends SelTestCase {
 		public static final String caseId = "caseId";
 		public static final String handlingFee = "handling-fee";
 		public static final String employeeCustomer = "employee customer";
-		public static final String handlingFee = "handling-fee";
 	}
 
 	public static class guestCheckout {

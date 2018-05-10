@@ -56,11 +56,7 @@ public class CheckOutSelectors
 	//kiosk Details 
 	public static final String waiveShipping = "waiveShipping";
 	public static final String associateID = "associateID";
-<<<<<<< HEAD
 	public static final String storeNumber = "storeNumber";
-=======
-	public static final String storeNumber = "storeNumber";
->>>>>>> branch 'checkout' of https://github.com/ibatta/TB_auto
 	
 	//Gift Services
 	public static final String giftOptionTrue = "gift_option_true";
