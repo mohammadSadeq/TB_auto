@@ -826,9 +826,12 @@ public class SelectorUtil extends SelTestCase {
 		LinkedHashMap<String, LinkedHashMap> webelementsInfo = initializeSelectorsAndDoActions(
 				new ArrayList<String>(subStrArr), valuesArr, false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
+=======
+>>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 		List<WebElement> items = getDriver().findElements((By) webelementsInfo.get(subStrArr.get(0)).get("by"));
 		items.get(0).sendKeys(value);
 		getCurrentFunctionName(false);
@@ -860,9 +863,13 @@ public class SelectorUtil extends SelTestCase {
 		return items.get(index);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 	
+=======
+
+>>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 	@SuppressWarnings({ "unused", "rawtypes" })
 	public static Element returnHTMLDoc(LinkedHashMap<String, LinkedHashMap> webElementsInfo){
 		 if ((webElementsInfo.toString().contains("parentiframe"))) {
@@ -890,7 +897,10 @@ public class SelectorUtil extends SelTestCase {
 			return htmlDoc;
 		}
 	 }
+<<<<<<< HEAD
 >>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
+=======
+>>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 	@SuppressWarnings("rawtypes")
 	public static List<WebElement> getAllElements(List<String> subStrArr) throws Exception {
 		getCurrentFunctionName(true);

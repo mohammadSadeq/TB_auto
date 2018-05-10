@@ -5,10 +5,13 @@
 		<parameter name="browserName" value="chrome"></parameter>
 		<classes>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	     	<class name="com.generic.tests.checkout.Base_checkoutCanada" />
 		</classes>
 	</test><!-- Test -->
 =======
+=======
+>>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 		    <class name="com.generic.tests.checkout.Base_checkoutUS" />
 		    <class name="com.generic.tests.checkout.Base_checkoutCanada" />
             <class name="com.generic.tests.checkout.Base_checkoutKIOSK" />
@@ -26,5 +29,8 @@
 	</classes>
 </test><!-- Test -->
 
+<<<<<<< HEAD
 >>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
+=======
+>>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 </suite> <!-- Suite -->

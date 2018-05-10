@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="tests" thread-count="10" data-provider-thread-count="3">
@@ -8,4 +9,16 @@
 		</classes>
 	</test><!-- Test -->
 
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="10" data-provider-thread-count="3">
+	<test name="Registration Chrome">
+		<parameter name="browserName" value="chrome"></parameter>
+		<classes>
+			<class name="com.generic.tests.Registration.RegistrationFormValidation" />
+		</classes>
+	</test><!-- Test -->
+
+>>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 </suite> <!-- Suite -->
