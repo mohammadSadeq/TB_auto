@@ -125,27 +125,13 @@ public class AccountsSetupCanada extends SelTestCase {
 			LinkedHashMap<String, Object> paymentDetails = (LinkedHashMap<String, Object>) paymentCards.get(payment);
 			LinkedHashMap<String, Object> billAddressDetails = (LinkedHashMap<String, Object>) addresses
 					.get(billingAddress);
-<<<<<<< HEAD
-<<<<<<< HEAD
-			CheckOut.paymentInnformation.fillAndclickNext(
-					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
-					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
-					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC), saveBilling,
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
+
 			CheckOut.paymentInformation.fillAndclickNext(
 					(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
 					(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
 					(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 					(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 					(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC), saveBilling,
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					billingAddress.equalsIgnoreCase(shippingAddress),
 					(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 					(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),

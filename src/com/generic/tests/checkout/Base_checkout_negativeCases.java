@@ -205,25 +205,11 @@ public class Base_checkout_negativeCases extends SelTestCase {
 
 				if (proprties.contains("Payment_Without name on card")) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext("",
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext("",
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
@@ -236,15 +222,7 @@ public class Base_checkout_negativeCases extends SelTestCase {
 					String globalAlertMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR,
 							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
 					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-<<<<<<< HEAD
-<<<<<<< HEAD
-					String currentEerrorsMsg = CheckOut.paymentInnformation.getCardNameError();
-=======
 					String currentEerrorsMsg = CheckOut.paymentInformation.getCardNameError();
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
-					String currentEerrorsMsg = CheckOut.paymentInformation.getCardNameError();
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					String ErrorMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR, currentEerrorsMsg,
 							ValidationMsg);
 					sassert().assertTrue(currentEerrorsMsg.contains(ValidationMsg), ErrorMsg);
@@ -253,25 +231,11 @@ public class Base_checkout_negativeCases extends SelTestCase {
 
 				if (proprties.contains("Payment_Without CardNumber")) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name), "",
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name), "",
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
@@ -291,26 +255,11 @@ public class Base_checkout_negativeCases extends SelTestCase {
 				}
 
 				if (proprties.contains("Payment_With invalid CardNumber")) {
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name), "4222222222222222",
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name), "4222222222222222",
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
@@ -331,25 +280,11 @@ public class Base_checkout_negativeCases extends SelTestCase {
 
 				if (proprties.contains("Payment_Without expiry month")) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number), "",
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number), "",
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
@@ -370,25 +305,11 @@ public class Base_checkout_negativeCases extends SelTestCase {
 
 				if (proprties.contains("Payment_Without expiry year")) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth), "",
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth), "",
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
@@ -409,25 +330,11 @@ public class Base_checkout_negativeCases extends SelTestCase {
 
 				if (proprties.contains("Payment_Without cvNumber")) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear), "",
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear), "",
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
@@ -447,28 +354,12 @@ public class Base_checkout_negativeCases extends SelTestCase {
 				}
 
 				if (proprties.contains("Payment_Without first name")) {
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false, "",
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.adddressLine),
@@ -478,21 +369,9 @@ public class Base_checkout_negativeCases extends SelTestCase {
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.postal));
 
 					String globalAlertMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR,
-<<<<<<< HEAD
-<<<<<<< HEAD
-							CheckOut.paymentInnformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInnformation.getBillToFNmaeError();
-=======
 							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
 					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
 					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToFNmaeError();
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
-							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToFNmaeError();
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					String ErrorMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR, currentEerrorsMsg,
 							ValidationMsg);
 					sassert().assertTrue(currentEerrorsMsg.contains(ValidationMsg), ErrorMsg);
@@ -500,27 +379,12 @@ public class Base_checkout_negativeCases extends SelTestCase {
 
 				if (proprties.contains("Payment_Without last name")) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName), "",
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.adddressLine),
@@ -530,21 +394,9 @@ public class Base_checkout_negativeCases extends SelTestCase {
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.postal));
 
 					String globalAlertMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR,
-<<<<<<< HEAD
-<<<<<<< HEAD
-							CheckOut.paymentInnformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInnformation.getBillToLNameError();
-=======
 							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
 					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
 					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToLNameError();
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
-							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToLNameError();
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					String ErrorMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR, currentEerrorsMsg,
 							ValidationMsg);
 					sassert().assertTrue(currentEerrorsMsg.contains(ValidationMsg), ErrorMsg);
@@ -552,25 +404,11 @@ public class Base_checkout_negativeCases extends SelTestCase {
 
 				if (proprties.contains("Payment_Without address line")) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name), "",
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name), "",
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName), "",
@@ -580,21 +418,9 @@ public class Base_checkout_negativeCases extends SelTestCase {
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.postal));
 
 					String globalAlertMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR,
-<<<<<<< HEAD
-<<<<<<< HEAD
-							CheckOut.paymentInnformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInnformation.getBillToAddressError();
-=======
 							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
 					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
 					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToAddressError();
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
-							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToAddressError();
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					String ErrorMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR, currentEerrorsMsg,
 							ValidationMsg);
 					sassert().assertTrue(currentEerrorsMsg.contains(ValidationMsg), ErrorMsg);
@@ -602,27 +428,12 @@ public class Base_checkout_negativeCases extends SelTestCase {
 
 				if (proprties.contains("Payment_Without country")) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
@@ -632,21 +443,9 @@ public class Base_checkout_negativeCases extends SelTestCase {
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.postal));
 
 					String globalAlertMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR,
-<<<<<<< HEAD
-<<<<<<< HEAD
-							CheckOut.paymentInnformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInnformation.getBillToCountryError();
-=======
 							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
 					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
 					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToCountryError();
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
-							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToCountryError();
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					String ErrorMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR, currentEerrorsMsg,
 							ValidationMsg);
 					sassert().assertTrue(currentEerrorsMsg.contains(ValidationMsg), ErrorMsg);
@@ -654,27 +453,12 @@ public class Base_checkout_negativeCases extends SelTestCase {
 
 				if (proprties.contains("Payment_Without city")) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
@@ -684,21 +468,9 @@ public class Base_checkout_negativeCases extends SelTestCase {
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.postal));
 
 					String globalAlertMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR,
-<<<<<<< HEAD
-<<<<<<< HEAD
-							CheckOut.paymentInnformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInnformation.getBillToCityError();
-=======
-							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
+                            CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
 					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
 					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToCityError();
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
-							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToCityError();
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					String ErrorMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR, currentEerrorsMsg,
 							ValidationMsg);
 					sassert().assertTrue(currentEerrorsMsg.contains(ValidationMsg), ErrorMsg);
@@ -706,27 +478,12 @@ public class Base_checkout_negativeCases extends SelTestCase {
 
 				if (proprties.contains("Payment_Without state")) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
@@ -736,49 +493,21 @@ public class Base_checkout_negativeCases extends SelTestCase {
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.postal));
 
 					String globalAlertMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR,
-<<<<<<< HEAD
-<<<<<<< HEAD
-							CheckOut.paymentInnformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInnformation.getBillToStateError();
-=======
 							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
 					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
 					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToStateError();
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
-							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
-					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToStateError();
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					String ErrorMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR, currentEerrorsMsg,
 							ValidationMsg);
 					sassert().assertTrue(currentEerrorsMsg.contains(ValidationMsg), ErrorMsg);
 				}
 
 				if (proprties.contains("Payment_Without postcode")) {
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-					CheckOut.paymentInnformation.fillAndclickNext(
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
-							(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC),
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC),
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 							false,
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 							(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),
@@ -790,15 +519,7 @@ public class Base_checkout_negativeCases extends SelTestCase {
 					String globalAlertMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR,
 							CheckOut.paymentInformation.getAlertInfo(), globalAlerts);
 					Assert.assertTrue(globalAlertMsg.contains(globalAlerts), globalAlertMsg);
-<<<<<<< HEAD
-<<<<<<< HEAD
-					String currentEerrorsMsg = CheckOut.paymentInnformation.getBillToPostCodeError();
-=======
 					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToPostCodeError();
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
-					String currentEerrorsMsg = CheckOut.paymentInformation.getBillToPostCodeError();
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 					String ErrorMsg = MessageFormat.format(LoggingMsg.ACTUAL_EXPECTED_ERROR, currentEerrorsMsg,
 							ValidationMsg);
 					sassert().assertTrue(currentEerrorsMsg.contains(ValidationMsg), ErrorMsg);

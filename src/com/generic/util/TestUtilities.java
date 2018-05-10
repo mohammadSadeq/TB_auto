@@ -27,14 +27,7 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import org.apache.commons.io.FileUtils;
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
-import org.apache.commons.io.FileUtils;
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 import org.testng.util.Strings;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -85,11 +78,6 @@ public class TestUtilities extends SelTestCase {
 				ReportUtil.startTesting(reportDirectory + "//index.html", ReportUtil.now(SelTestCase.time_date_format),
 						SelTestCase.getCONFIG().getProperty("testEnvironment"));
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 				Path PathObj = Paths.get(EnvironmentFiles.getTemplateDir());
 
 				File index = new File(PathObj.toString());
@@ -105,10 +93,6 @@ public class TestUtilities extends SelTestCase {
 					}
 				}
 
-<<<<<<< HEAD
->>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
-=======
->>>>>>> 5e067e529774ccdb04a21a650f35a529e6636338
 				runReportSetup = false;
 			}
 
