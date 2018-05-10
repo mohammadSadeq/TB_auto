@@ -2,11 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="tests" thread-count="10" data-provider-thread-count="3">
 
-	
-	<test name="PLP validation chrome merge">
+	<test name="checkout chrome">
 		<parameter name="browserName" value="chrome"></parameter>
 		<classes>
-              <class name="com.generic.tests.PLP.PLPValidation" />
+			<class name="com.generic.tests.checkout.Base_checkout_CSC" />
 		</classes>
 	</test><!-- Test -->
+
 </suite> <!-- Suite -->

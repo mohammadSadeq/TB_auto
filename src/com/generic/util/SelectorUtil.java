@@ -855,8 +855,8 @@ public class SelectorUtil extends SelTestCase {
 		getCurrentFunctionName(false);
 		return items.get(index);
 	}
-	
-	@SuppressWarnings({ "rawtypes" })
+
+	@SuppressWarnings({ "unused", "rawtypes" })
 	public static Element returnHTMLDoc(LinkedHashMap<String, LinkedHashMap> webElementsInfo){
 		 if ((webElementsInfo.toString().contains("parentiframe"))) {
 				Jsoup.parse(getDriver().switchTo().parentFrame().getPageSource());

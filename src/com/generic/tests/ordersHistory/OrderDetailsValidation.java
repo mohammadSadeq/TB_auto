@@ -126,7 +126,7 @@ public class OrderDetailsValidation extends SelTestCase {
 
 			logs.debug(Arrays.asList(paymentDetails)+"");
 			
-					CheckOut.paymentInformation.fillAndclickNext(
+				 CheckOut.paymentInformation.fillAndclickNext(
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
 							(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
