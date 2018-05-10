@@ -11,18 +11,15 @@ import org.testng.xml.XmlTest;
 import java.util.LinkedHashMap;
 
 import com.generic.page.PDP;
-import com.generic.page.Registration;
 import com.generic.page.Cart;
 import com.generic.page.CheckOut;
 import com.generic.page.EnvoyCheckOut;
 import com.generic.page.HomePage;
-import com.generic.page.SignIn;
 import com.generic.setup.Common;
 import com.generic.setup.LoggingMsg;
 import com.generic.setup.SelTestCase;
 import com.generic.setup.SheetVariables;
 import com.generic.util.dataProviderUtils;
-import com.generic.util.RandomUtilities;
 import com.generic.util.ReportUtil;
 import com.generic.util.SASLogger;
 
@@ -32,7 +29,7 @@ public class Base_EnvoyCheckout extends SelTestCase {
 	private static  LinkedHashMap<String, Object> invintory = null ;
 	private static  LinkedHashMap<String, Object> paymentCards = null;
 	private static  LinkedHashMap<String, Object> users =null ;
-
+	String expireDate = "06 / 22";
 	// used sheet in test
 	public static final String testDataSheet = SheetVariables.envoyCheckoutSheet;
 
@@ -52,7 +49,6 @@ public class Base_EnvoyCheckout extends SelTestCase {
 
 	@DataProvider(name = "Orders", parallel = true)
 	public static Object[][] loadTestData() throws Exception {
-		//concurrency mentainance on sheet reading 
 		getBrowserWait(testObject.getParameter("browserName"));	
 		dataProviderUtils TDP = dataProviderUtils.getInstance();
 		Object[][] data = TDP.getData(testDataSheet);
@@ -109,7 +105,7 @@ public class Base_EnvoyCheckout extends SelTestCase {
 						(String) addressDetails.get(CheckOut.shippingAddress.keys.phone), "");
 	//			EnvoyCheckOut.deliveryMethod.selectDHLExpressMethod("");
 				EnvoyCheckOut.deliveryMethod.clickContinue();
-				String expireDate = "06 / 22";
+				
 				LinkedHashMap<String, Object> billAddressDetails = (LinkedHashMap<String, Object>) addresses
 						.get(billingAddress);
 				LinkedHashMap<String, Object> paymentDetails = (LinkedHashMap<String, Object>) paymentCards

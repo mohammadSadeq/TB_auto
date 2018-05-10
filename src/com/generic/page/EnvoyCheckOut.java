@@ -408,5 +408,70 @@ public class EnvoyCheckOut extends SelTestCase {
 
 		}
 		
+		public static String getTotalSalePrice() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(EnvoyCheckOutSelectors.totalSalePrice);
+			valuesArr.add("index,3");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+
+		}
+		
+		public static String getShippingCost() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(EnvoyCheckOutSelectors.shippingCost);
+			valuesArr.add("index,3");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+
+		}
+		
+		public static String getDuties() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(EnvoyCheckOutSelectors.duties);
+			valuesArr.add("index,3");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+
+		}
+		
+		public static String getTaxes() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(EnvoyCheckOutSelectors.taxes);
+			valuesArr.add("index,3");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+
+		}
+		
+		public static String getTotalAmount() throws Exception {
+			getCurrentFunctionName(true);
+			List<String> subStrArr = new ArrayList<String>();
+			List<String> valuesArr = new ArrayList<String>();
+			subStrArr.add(EnvoyCheckOutSelectors.totalAmount);
+			valuesArr.add("index,3");
+			SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+			logs.debug(MessageFormat.format(LoggingMsg.SEL_TEXT, SelectorUtil.textValue.get()));
+			getCurrentFunctionName(false);
+			return SelectorUtil.textValue.get();
+
+		}	
+		
 	}
 }
