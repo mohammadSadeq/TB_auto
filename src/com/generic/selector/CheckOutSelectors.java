@@ -33,6 +33,11 @@ public class CheckOutSelectors
 	public static final String selectFirstAddress = "Use This Address";
 	public static final String orderTotalShippingAddress = "test_cart_totalPrice_label_$";
 	public static final String orderSubTotalShippingAddress = "css,.subtotal";
+<<<<<<< HEAD
+=======
+	//public static final String totalItem = "css,.total-item>span";
+	public static final String totalItemPromotion = "total-item promotion";
+>>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
 	public static final String fnameError = "firstName.errors";
 	public static final String lnameError = "lastName.errors";
 	public static final String address1Error = "line1.errors";
@@ -55,6 +60,7 @@ public class CheckOutSelectors
 	public static final String waiveShipping = "waiveShipping";
 	public static final String associateID = "associateID";
 	public static final String storeNumber = "storeNumber";
+<<<<<<< HEAD
 	public static final String giftOptionTrue = "container-from-1";
 	
 	//Gift Services
@@ -63,6 +69,22 @@ public class CheckOutSelectors
 	public static final String giftContainerFrom1 = "gift_option_true";
 	public static final String giftContainerMessage1 = "container-message-1";
 
+=======
+	
+	//Gift Services
+	public static final String giftOptionTrue = "gift_option_true";
+	public static final String giftSelectOption = "gift-select-option";
+	public static final String giftContainerTo1 = "container-to-1";
+	public static final String giftContainerFrom1 = "container-from-1";
+	public static final String giftContainerMessage1 = "container-message-1";
+	public static final String removeGiftOption = "remove-giftoption btn btn-pass";
+	public static final String orderTotalGiftOption = "css,.order-summary-totals>span";
+	public static final String orderShippingGiftOption = "deliverycost";
+	public static final String orderSubtotalGiftOption = "css,.subtotal";
+	public static final String orderTaxGiftOption = "totaltax";
+	public static final String giftServices = "css,.total-item>span";
+	public static final String totalItem = "css,.total-item>span";
+>>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
 	//Payment info
 	public static final String cardtype = "card_cardType";
 	public static final String cardHolder = "name-on-card";

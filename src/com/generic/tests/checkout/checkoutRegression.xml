@@ -4,7 +4,27 @@
 	<test name="checkout chrome">
 		<parameter name="browserName" value="chrome"></parameter>
 		<classes>
+<<<<<<< HEAD
 	     	<class name="com.generic.tests.checkout.Base_checkoutCanada" />
 		</classes>
 	</test><!-- Test -->
+=======
+		    <class name="com.generic.tests.checkout.Base_checkoutUS" />
+		    <class name="com.generic.tests.checkout.Base_checkoutCanada" />
+            <class name="com.generic.tests.checkout.Base_checkoutKIOSK" />
+            <class name="com.generic.tests.checkout.Base_EnvoyCheckout" />
+		</classes>
+	</test><!-- Test -->
+
+	<test name="checkout firefox">
+	<parameter name="browserName" value="firefox"></parameter>
+	<classes>
+	    <class name="com.generic.tests.checkout.Base_checkoutUS" />
+	    <class name="com.generic.tests.checkout.Base_checkoutCanada" />
+        <class name="com.generic.tests.checkout.Base_checkoutKIOSK" />
+        <class name="com.generic.tests.checkout.Base_EnvoyCheckout" />
+	</classes>
+</test><!-- Test -->
+
+>>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
 </suite> <!-- Suite -->

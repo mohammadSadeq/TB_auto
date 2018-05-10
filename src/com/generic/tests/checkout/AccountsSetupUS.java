@@ -126,12 +126,21 @@ public class AccountsSetupUS extends SelTestCase {
 			LinkedHashMap<String, Object> paymentDetails = (LinkedHashMap<String, Object>) paymentCards.get(payment);
 			LinkedHashMap<String, Object> billAddressDetails = (LinkedHashMap<String, Object>) addresses
 					.get(billingAddress);
+<<<<<<< HEAD:src/com/generic/tests/checkout/AccountsSetupUS.java
 			CheckOut.paymentInnformation.fillAndclickNext(
 					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.name),
 					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.number),
 					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireMonth),
 					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.expireYear),
 					(String) paymentDetails.get(CheckOut.paymentInnformation.keys.CVCC), saveBilling,
+=======
+			CheckOut.paymentInformation.fillAndclickNext(
+					(String) paymentDetails.get(CheckOut.paymentInformation.keys.name),
+					(String) paymentDetails.get(CheckOut.paymentInformation.keys.number),
+					(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireMonth),
+					(String) paymentDetails.get(CheckOut.paymentInformation.keys.expireYear),
+					(String) paymentDetails.get(CheckOut.paymentInformation.keys.CVCC), saveBilling,
+>>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4:src/com/generic/tests/checkout/AccountsSetupUS.java
 					billingAddress.equalsIgnoreCase(shippingAddress),
 					(String) billAddressDetails.get(CheckOut.shippingAddress.keys.firstName),
 					(String) billAddressDetails.get(CheckOut.shippingAddress.keys.lastName),

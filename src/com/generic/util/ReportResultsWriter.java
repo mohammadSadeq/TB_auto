@@ -60,7 +60,11 @@ public class ReportResultsWriter {
 
 
 		out.write(calculateTestCaseRunTime(testCaseStartTime, testCaseEndTime));
+<<<<<<< HEAD
 		out.write("<td>" + browser + "</td>\n");
+=======
+		out.write("<td align='center'> <img src='"+ browser +".png' alt='"+ browser +"'/> </td>\n");
+>>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
 		
 		out.write("</tr>\n");
 		ReportAnalyzer.analyze(ReportUtil.currentDir + "//" + logFileName, Float.parseFloat(SelTestCase.getCONFIG().getProperty("report_analysis_period")));

@@ -41,7 +41,11 @@ public class SheetVariables {
 	public static final String VisualTestingCLPRegressionsheet = "VisualTestingCLPRegression";
 	public static final String RunnersRegressionSheet = "SetupRunners";
 	public static final String BrowsersListingSheet = "SetupBrowsers";
+<<<<<<< HEAD
 	
+=======
+	   public static final String envoyCheckoutSheet = "EnvoyCheckOutRegression";
+>>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
     //Test Case id
     public static final String registrationTestCaseId = "Registration";
     public static final String checkoutTestCaseId = "CheckOut";

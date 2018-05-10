@@ -50,10 +50,9 @@ public class SelectorUtil extends SelTestCase {
 	 {
 		Thread.sleep(1000);
 		try {
-		Document doc = Jsoup.parse(SelTestCase.getDriver().getPageSource());
-		Element htmlDoc = doc.select("html").first();
-		initializeElementsSelectorsMaps(webElementsInfo, isValidationStep, htmlDoc);
-		}catch (NoSuchElementException e) {
+			Element htmlDoc = returnHTMLDoc(webElementsInfo);
+			initializeElementsSelectorsMaps(webElementsInfo, isValidationStep, htmlDoc);
+		} catch (NoSuchElementException e) {
 			Thread.sleep(2000);
 			if (SelTestCase.getBrowserName().contains("firfox"))
 				Thread.sleep(2000);
@@ -62,7 +61,7 @@ public class SelectorUtil extends SelTestCase {
 			Element htmlDoc = doc.select("html").first();
 			initializeElementsSelectorsMaps(webElementsInfo, isValidationStep, htmlDoc);
 		}
-	 }
+	}
 	
 	 @SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void initializeElementsSelectorsMaps(LinkedHashMap<String, LinkedHashMap> webElementsInfo , boolean isValidationStep, Element htmlDoc) throws IOException
@@ -163,7 +162,12 @@ public class SelectorUtil extends SelTestCase {
 	    	    	 String selType = "css," + subStrTemp;
 	    	    	 selectorType = (!(foundElements.isEmpty()) ? selType:selectorType);
 	    	     }
-				 
+				 if (foundElements.isEmpty()&& subStr.contains("iframe"))
+	    	     {				 
+					 foundElements = htmlDoc.select(subStr.split(",")[1]);
+					 String subStrTemp = "css," + subStr.split(",")[1];
+	    	    	 selectorType = (!(foundElements.isEmpty()) ? subStrTemp:selectorType);
+	    	     }
 				 //The following if is used to get the parent element from which we do a recursive call to get the child on which is our target
 				 if (webElementsInfo.get(subStr) != null && (webElementsInfo.get(subStr).get("value")).toString().contains("child") && !foundElements.isEmpty()) {
 					 String tempValue = (webElementsInfo.get(subStr).get("value")).toString();
@@ -821,7 +825,10 @@ public class SelectorUtil extends SelTestCase {
 		valuesArr.add("");
 		LinkedHashMap<String, LinkedHashMap> webelementsInfo = initializeSelectorsAndDoActions(
 				new ArrayList<String>(subStrArr), valuesArr, false);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
 		List<WebElement> items = getDriver().findElements((By) webelementsInfo.get(subStrArr.get(0)).get("by"));
 		items.get(0).sendKeys(value);
 		getCurrentFunctionName(false);
@@ -852,7 +859,38 @@ public class SelectorUtil extends SelTestCase {
 		getCurrentFunctionName(false);
 		return items.get(index);
 	}
+<<<<<<< HEAD
 
+=======
+	
+	@SuppressWarnings({ "unused", "rawtypes" })
+	public static Element returnHTMLDoc(LinkedHashMap<String, LinkedHashMap> webElementsInfo){
+		 if ((webElementsInfo.toString().contains("parentiframe"))) {
+				Jsoup.parse(getDriver().switchTo().parentFrame().getPageSource());
+				Document doc = Jsoup.parse(SelTestCase.getDriver().getPageSource());
+				Element htmlDoc = doc.select("html").first();
+				return htmlDoc;
+			}
+		 else if ((webElementsInfo.toString().contains("iframe"))) {
+			logs.debug("try inside ifram");
+			String iframe = webElementsInfo.toString().split(",")[0].replace("{iframe", "").trim();
+			Document doc = Jsoup.parse(getDriver().switchTo().frame(iframe).getPageSource());;
+			Element htmlDoc = doc.select("html").first();
+			return htmlDoc;
+			
+//			//TODO Return to the parent iframe after switching to the sub-windows.
+//			String iframe = webElementsInfo.toString().split(",")[0].replace("{iframe", "").trim();
+//			for(int c = 0 ;c < iframe.split("_").length; c++) 
+//		    	Document doc = Jsoup.parse(getDriver().switchTo().frame(iframe.split("_")[c]).getPageSource());
+//				Element htmlDoc = doc.select("html").first();
+//				return htmlDoc;
+		 }else{
+			Document doc = Jsoup.parse(SelTestCase.getDriver().getPageSource());
+			Element htmlDoc = doc.select("html").first();
+			return htmlDoc;
+		}
+	 }
+>>>>>>> 9e27e1a6d23438899df9f419315ab8f999e578f4
 	@SuppressWarnings("rawtypes")
 	public static List<WebElement> getAllElements(List<String> subStrArr) throws Exception {
 		getCurrentFunctionName(true);
