@@ -11,6 +11,9 @@ import com.generic.selector.MyAccount_Selectors;
 import com.generic.selector.PDPSelectors;
 import com.generic.selector.PLPSelectors;
 import com.generic.selector.RegistrationSelectors;
+import com.generic.selector.MyAccount_Selectors;
+import com.generic.selector.PDPSelectors;
+import com.generic.selector.RegistrationSelectors;
 import com.generic.setup.LoggingMsg;
 import com.generic.setup.SelTestCase;
 import com.generic.util.SelectorUtil;
@@ -19,8 +22,8 @@ public class CheckOut extends SelTestCase {
 
 	public static class keys {
 		public static final String caseId = "caseId";
-		public static final String employeeCustomer = "employee customer";
 		public static final String handlingFee = "handling-fee";
+		public static final String employeeCustomer = "employee customer";
 	}
 
 	public static class guestCheckout {
