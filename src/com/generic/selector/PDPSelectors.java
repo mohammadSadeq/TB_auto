@@ -7,12 +7,13 @@ public class PDPSelectors
 	public static String summary = "description";
 	
 	public static String title = "description";
-	public static String color = "color"; 
+	public static String color = "swatch"; 
 	public static String size = "css,.size"; 
 	public static String qty = "quantity";
 	public static String addToCartBtn = "btn add-to-bag";
 	public static String price = "pdp-price";
-	
+	public static String image="pdp-main-image";
+	public static String mini_image="css,#mini-cart-item-holder>div>div.mini-cart-left>div.mini-cart-image>a>img";
 	//TODO: remove those vars 
 	public static String cart_popup = "Check Out";
 	public static String id = "code";

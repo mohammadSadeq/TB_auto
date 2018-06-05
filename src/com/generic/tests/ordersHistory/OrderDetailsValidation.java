@@ -71,6 +71,7 @@ public class OrderDetailsValidation extends SelTestCase {
 		Object[][] data = TDP.getData(testDataSheet);
 		Testlogs.get().debug(Arrays.deepToString(data).replace("\n", "--"));
 		return data;
+		
 	}
 
 	@SuppressWarnings("unchecked") // avoid warning from linked hashmap
@@ -158,7 +159,7 @@ public class OrderDetailsValidation extends SelTestCase {
 			OrderHistory.clickNthResponsiveTableItemTableCellAnchor("1",
 					Integer.parseInt(orderNumToBeClicked));
 			//OrderDetails.getOrderId();			
-			sassert().assertEquals(OrderDetails.getOrderId(),orderId);
+			sassert().assertEquals(OrderDetails.getOrderNumber(),orderId);
 			OrderDetails.getOrderStatus();
 			OrderDetails.getOrderDatePlaced();
 			OrderDetails.getOrderTotal();
@@ -178,9 +179,9 @@ public class OrderDetailsValidation extends SelTestCase {
 			sassert().assertEquals(OrderDetails.orderSumary.getOrderTotal(),orderShipping);
 			OrderDetails.orderSumary.getOrderTax();
 
-			sassert().assertTrue(shippingAddrerss.contains(OrderDetails.getShippingAddrerss()),
+			sassert().assertTrue(shippingAddrerss.contains(OrderDetails.getDeliveryAddrerssDetails()),
 					"<font color=#f442cb>Shipping Addrerss is Not ok</font>");
-			sassert().assertTrue(billingAddrerss.contains(OrderDetails.getBillingAddrerss()),
+			sassert().assertTrue(billingAddrerss.contains(OrderDetails.getBillingAddrerssDetails()),
 					"<font color=#f442cb>Billing Addrerss is Not ok</font>");
 			sassert().assertTrue(payment.contains(OrderDetails.getPaymentDetails()),
 					"<font color=#f442cb>Payment Details is Not ok</font>");
@@ -195,7 +196,7 @@ public class OrderDetailsValidation extends SelTestCase {
 			Thread.sleep(80000);
 		    Common.refreshBrowser();
 		    Thread.sleep(4000);
-			sassert().assertTrue(shippingMethod.contains(OrderDetails.getDeliveryMethod()),
+			sassert().assertTrue(shippingMethod.contains(OrderDetails.getDeliveryOptions()),
 					"<font color=#f442cb>Delivery Method is Not ok</font>");
 			sassert().assertTrue(OrderDetails.vifyCancelOrderBtnIsNotDisplayed(),
 					"<font color=#f442cb>Cancel Order Btn is Not Displayed as expected</font>");

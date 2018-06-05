@@ -981,7 +981,7 @@ public class CheckOut extends SelTestCase {
 
 		public static class keys {
 			public static final String isSavedPayement = "saved-payment";
-
+			public static final String card = "card";
 			public static final String name = "name";
 			public static final String number = "number";
 			public static final String expireYear = "expireYear";

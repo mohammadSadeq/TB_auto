@@ -113,6 +113,7 @@ public class LoggingMsg {
 	public static String ORDER_HISTORY_NO_ORDERS = "No Orders";
 	public static final String ADDRESSPOOKDESC = "<b>Case ID: </b>{0} <br><b>File of execution:</b> {1}<br><b>Decrption: </b>{2}";
 	public static final String PAYMENTDESC = "<b>Case ID: </b>{0} <br><b>File of execution:</b> {1}<br><b>Decrption: </b>{2}";
+	public static final String TESTING_PRODUCT = "Testing product {0}";
 	public static String CLICKING_CLOSE_ICON = "clicking on {0} btn from subcription modal";;
 	public static String GETTING_TEXT = "Getting text of : {0}";
 	public static String REGISTRATION_FIELDS_ERRORS = "Verifying {0} Message";

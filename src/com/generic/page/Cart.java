@@ -453,4 +453,9 @@ public class Cart extends SelTestCase {
 		return totals;
 	}
 
+	public static void clickMen() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

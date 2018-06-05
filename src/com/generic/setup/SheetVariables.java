@@ -27,7 +27,10 @@ public class SheetVariables {
     public static final String CSCcheckoutSheet = "CSCCheckOutRegression";
     public static final String plpSheet = "PLPRegression";
     public static final String orderHistorySheet = "OrderHistoryRegression";
+    public static final String orderSheet = "OrderRegression";
+
     public static final String cartSheet = "CartRegression";
+    public static final String miniCartSheet = "MiniCartRegression";
     public static final String PDPSheet = "PDPRegression";
     public static final String testCasesSheet = "Test Cases";
 	public static final String orderDetailsSheet = "OrderDetailsRegression";

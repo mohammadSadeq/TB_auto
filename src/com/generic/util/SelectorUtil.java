@@ -248,7 +248,7 @@ public class SelectorUtil extends SelTestCase {
 						return "click";
 					}
 					else if (e.tagName().equals("p")||
-							e.tagName().equals("body") || e.tagName().equals("td") || e.tagName().contains("h")||e.tagName().contains("ul")) {
+							e.tagName().equals("body") || e.tagName().equals("td") || e.tagName().contains("h")||e.tagName().contains("ul")||e.tagName().contains("dd")||e.tagName().contains("dl")) {
 						return "gettext";
 					}else if (e.tagName().equals("div") || e.tagName().equals("span"))
 					{
@@ -829,6 +829,22 @@ public class SelectorUtil extends SelTestCase {
 		items.get(0).sendKeys(value);
 		getCurrentFunctionName(false);
 	}
+	public static String getText(List<String> subStrArr) throws Exception {
+	
+		return getTextOfItemNumber(subStrArr,0);
+	}
+	public static String getTextOfItemNumber(List<String> subStrArr,int index) throws Exception {
+		getCurrentFunctionName(true);
+		List<String> valuesArr = new ArrayList<String>();
+		valuesArr.add("");
+		LinkedHashMap<String, LinkedHashMap> webelementsInfo = initializeSelectorsAndDoActions(
+				new ArrayList<String>(subStrArr), valuesArr, false);
+		List<WebElement> items = getDriver().findElements((By) webelementsInfo.get(subStrArr.get(0)).get("by"));
+		getCurrentFunctionName(false);
+		return items.get(index).getText();
+		
+	}
+	
 
 	@SuppressWarnings("rawtypes")
 	public static void clickButton(List<String> subStrArr) throws Exception {

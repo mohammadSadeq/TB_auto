@@ -12,5 +12,5 @@ public class SignInSelectors
 	public static final String forgotPasswordSubmitBtn = "positive btn btn-accent2 small-text";
 	public static final String alertPositiveForgottenPassword = "alert";
 	public static final String forgottenPwdEmailError = "email.errors";
-	
+	public static final String men="Men";
 }

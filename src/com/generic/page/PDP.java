@@ -92,7 +92,22 @@ public class PDP extends SelTestCase {
 		getCurrentFunctionName(false);
 		return SelectorUtil.textValue.get();
 	}
-
+public static String getImageUrl() throws Exception {
+	getCurrentFunctionName(true);
+		/*List<String> subStrArr = new ArrayList<String>();
+		List<String> valuesArr = new ArrayList<String>();
+		subStrArr.add(PDPSelectors.image);
+		valuesArr.add("");
+		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
+		getCurrentFunctionName(false);
+		return SelectorUtil.textValue.get();*/
+	List<String> subStrArr = new ArrayList<String>();
+	subStrArr.add("pdp-main-image");
+	String url=SelectorUtil.getAttr(subStrArr, "src");
+	
+	return url;
+	
+}
 	private static void clickAddToCartBtn() throws Exception {
 		getCurrentFunctionName(true);
 		List<String> subStrArr = new ArrayList<String>();
@@ -369,5 +384,16 @@ public class PDP extends SelTestCase {
 		SelectorUtil.initializeSelectorsAndDoActions(subStrArr, valuesArr);
 		getCurrentFunctionName(false);
 		return SelectorUtil.textValue.get();
+	}
+	public static String getMiniImageUrl()  throws Exception{
+		// TODO Auto-generated method stub
+		List<String> subStrArr = new ArrayList<String>();
+		subStrArr.add(PDPSelectors.mini_image);
+		String url=SelectorUtil.getAttr(subStrArr, "src");
+		String mini_url=url.split("[?]")[1];
+		if(mini_url.equals("$main_minicart$"))
+		return url;
+		else return "";
+		
 	}
 }
