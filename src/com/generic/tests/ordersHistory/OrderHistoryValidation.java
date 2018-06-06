@@ -29,7 +29,6 @@ import com.generic.setup.SheetVariables;
 import com.generic.util.ReportUtil;
 import com.generic.util.SASLogger;
 import com.generic.util.dataProviderUtils;
-//TEST
 
 public class OrderHistoryValidation extends SelTestCase {
 
